@@ -1,0 +1,102 @@
+---
+title: "Social Networks and the Decision to Insure"
+subtitle: "(Cai et al., 2015) · Micro Networks Reading Group"
+author: 
+- "Max Heinze ([mheinze@wu.ac.at](mailto:mheinze@wu.ac.at))"
+institute:
+- "Department of Economics, Vienna University of Economics and Business (WU Vienna)"
+date: "2025-05-12"
+date-format: long
+lang: en
+format: 
+  revealjs:
+    theme: [default, ../style/mhslides.css]
+    width: 1280
+    height: 720
+    margin: 0
+    progress: false
+    overview: false
+    highlight-style: github
+    slideNumber: true
+    html-math-method: mathjax
+    embed-resources: true
+    pdfMaxPagesPerSlide: 1
+    pdfSeparateFragments: false
+    template-partials:
+      - ../style/title-slide.html
+    filters:
+      - ../style/section-header.lua
+engine: knitr
+bibliography: references.bib
+csl: ../style/apa.csl
+nocite: |
+  @cai2015
+---
+
+
+## Short Overview
+
+. . .
+
+@cai2015 study how **social networks** influence the **decision** by farmers to **take up insurance** against extreme weather events.
+
+:::{.incremental}
+* They provide two sets of **information sessions** to farmers, 
+  * basic ones to one group,
+  * and **intensive information sessions** to another group.
+* They show that for farmers who do not receive the intensive session, having [**intensively informed friends**]{.col1} increases the take-up rate.
+* This effect is driven by [**knowledge spillovers**]{.col1} rather than simple diffusion of purchase decisions.
+* Conducting an additional **price randomization** experiment on village level enables them to quantify the effect of **one additional such friend** as being equivalent to a **13 percent reduction** in the insurance premium.
+:::
+
+## Background
+
+:::{.incremental}
+* The study concerns **rice farmers** in China, i.e., producers of the most important crop in the country.
+* The [**insurance product**]{.col1} is **new**, meaning that farmers and local officials were unaware of its characteristics.
+* In China, **village meetings** are a common format of introducing new products or policy and disseminating information about them. [The **information meetings** can be seen in this context.]{.fragment}
+* The **fair price** of the insurance is 12 RMB per mu, but it is heavily **subsidized**; farmers pay 3.6 RMB, which is deducted from their main subsidy account.
+* Payout is a linear function of the crop loss rate, and maximum payout is 200 RMB. The usual gross income from rice crops is 800 RMB, production cost is 400 RMB.
+:::
+
+
+## Experimental Design
+
+. . .
+
+![](figures/fig11.png)
+
+. . .
+
+In the [**First Round**]{.col1}, households are divided into treated (intensive session) and control (simple session). In the [**Second Round**]{.col2}, farmers are again divided into intensive and simple sessions, and are **then shown** either no, aggregate, or individualized **information** on purchasers of the insurance.
+
+## What do They Find?
+
+:::{.incremental}
+* Households are asked to list their **five closest friends**. The **share** of this group invited to first-round intensive session is then the network measure.
+* The **take-up rate** in first-round intensive sessions is **14 percentage points higher** than in simple sessions (49 vs. 35 percent).
+* Having **one additional friend** who was treated in the first round increases take-up by **5.8 percentage points**, 42 percent of the impact of attending the session oneself.
+* People are not influenced by first-round simple session attendees; they are also less influenced if they are educated about insurance.
+* The **price randomization** experiment shows that increasing the price by 1 RMB decreases takeup by 12.3 percentage points.
+* Having **one additional treated friend** is equivalent in take-up effect to a 13-percent decrease in the average insurance premium.
+:::
+
+## What Is the Effect Driven by?
+
+:::{.incremental}
+* There are **three potential channels**:
+  * People **gain knowledge** about the value of the product from their informed friends,
+  * People **learn how to use the product** from their friends, and
+  * People learn that their friends **purchased** the product and copy their decisions.
+* Using the accompanying survey, @cai2015 estimate the knowledge spillover effect and find that people who were informed by friends after the first round have a comparable level of knowledge to their informed friends.
+* As for whether purchase decisions diffuse by themselves, they found that only if information on overall take-up rate or on which friends purchased the product is **disseminated** to farmers are they influenced by their friends' decisions — if no information is provided, take-up rate among friends had no effect.
+:::
+
+## References
+
+<br>
+
+::: {#refs}
+:::
+
+

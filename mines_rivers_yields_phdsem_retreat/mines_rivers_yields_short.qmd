@@ -1,0 +1,1396 @@
+---
+title: "Mines ☛ Rivers ☛ Yields"
+subtitle: "Downstream Mining Impacts on Agriculture in Africa"
+author: 
+- "Lukas Vashold ([lvashold@wu.ac.at](mailto:lvashold@wu.ac.at))"
+- "Gustav Pirich ([gustav@pirich.at](mailto:gustav@pirich.at))"
+- "**Max Heinze** ([mheinze@wu.ac.at](mailto:mheinze@wu.ac.at))"
+- "Nikolas Kuschnig ([nkuschnig@wu.ac.at](mailto:nkuschnig@wu.ac.at))"
+institute:
+- "Department of Economics, Vienna University of Economics and Business (WU Vienna)"
+date: "2025-05-16"
+date-format: long
+lang: en
+format: 
+  revealjs:
+    theme: [default, ../style/mhslides.css]
+    width: 1280
+    height: 720
+    margin: 0
+    progress: false
+    overview: false
+    highlight-style: github
+    slideNumber: true
+    html-math-method: mathjax
+    embed-resources: true
+    pdfMaxPagesPerSlide: 1
+    pdfSeparateFragments: false
+    template-partials:
+      - ../style/title-slide.html
+    filters:
+      - ../style/section-header.lua
+      - _filters/pdf-to-svg.lua
+      - _filters/vspace.lua
+engine: knitr
+bibliography: references.bib
+csl: ../style/apa.csl
+---
+
+# Snapshot
+
+## Mines — Curse or Blessing?
+
+::: {.columns}
+::: {.column width="50%" .fragment}
+::: {.titlebox1}
+**A Blessing?**
+:::
+:::{.incremental}
+* Demand for relevant **minerals** is projected to increase **fourfold** until 2050 [[@hund2023]]{.smc}.
+* [**Extraction Benefits**]{.col1b} include:
+  * enabling the **green transition**,
+  * increasing local **incomes** [[@bazillier2020]]{.smc},
+  * and improving **wealth** and **asset ownership** [[@vondergoltz2019]]{.smc}.
+:::
+:::
+::: {.column width="50%" .li2 .fragment}
+::: {.titlebox2}
+**A Curse?**
+:::
+:::{.incremental}
+* Resource extraction causes **negative externalities**.  
+* [**Ecological effects**]{.col2b} include the following:
+  * Mines **use water** and produce **sediments and tailings** [[@moura2022]]{.smc}.
+  * Pollutants include **mercury** and **lead** [[@schwarzenbach2010]]{.smc}.
+  * Industrial pollution **harms plant growth** [[@ruppen2023]]{.smc}.
+:::
+:::
+:::
+
+## How Pollution Travels
+
+:vspace1
+
+::: {.columns}
+::: {.column width="65%" .fragment}
+![](figures/intro.pdf){width="100%"}
+:::
+::: {.column width="35%"}
+
+:vspace2
+
+[If **water pollution** from mines affects vegetation, we should observe reduced vegetation health [**downstream**]{.coldb} of a mine.]{.fragment}
+
+[Using a **remotely-sensed vegetation index**, we find evidence for less healthy vegetation [**downstream**]{.coldb}.]{.fragment}
+:::
+:::
+
+
+
+# Background
+
+## Mining and Water Pollution
+
+::::{.columns}
+:::{.column width="50%" .fragment}
+
+:vspace3
+
+![](figures/2015.png)
+
+:::{.centering}
+2015
+:::
+:::
+:::{.column width="50%" .fragment}
+
+:vspace3
+
+![](figures/2025.png)
+
+:::{.centering}
+2025
+:::
+:::
+::::
+
+
+## Research Question
+
+::: {.titlebox2 .fragment}
+**What is the causal effect of water pollution from mining on agricultural productivity in Africa?**
+:::
+
+:::{.incremental}
+- **Africa** is a particularly interesting focus because  
+  - it has a **booming mining industry** [[@icmm2022]]{.smc},  
+  - with many **artisanal and small-scale mines** [[@asm2022; @girard2022]]{.smc},  
+  - and a **lack of containment facilities** [[@kossoff2014; @macklin2023]]{.smc}.  
+- Negative effects are **more locally concentrated** than benefits.  
+- Informing this discussion enables **improved environmental governance**.
+:::
+
+# Methods & Data
+
+## How to Find Affected Areas {#mainbasins}
+
+::: {.columns}
+::: {.column width="40%" .fragment}
+![](figures/basins.pdf){height="90%"}
+:::
+::: {.column width="60%" .fragment}
+
+:vspace4
+
+Our **unit of observation** is the **river basin**. @lehner2013 provide a nested basin collection, of which we use the **most granular level**.
+
+If we spill a cup of water anywhere in a basin, it always ends up in the next basin [**downstream**]{.coldb}.
+
+Water moves from [**upstream**]{.colub} to [**downstream**]{.coldb} of a mine.
+
+[show actual basins](#appbasins){.butn} 
+
+:::
+:::
+
+## Intuition
+
+:::{.centering .fragment}
+![](figures/mine-basin_angola.pdf){width="67%"}
+:::
+
+## Mines
+
+::: {.columns}
+::: {.column width="45%"}
+
+:vspace4
+
+We use **mine locations** from @maus2022, which includes some ASM sites.
+
+We then designate **mine basins** and determine 10 levels each of [**upstream**]{.colub} and [**downstream**]{.coldb} basins.
+:::
+::: {.column width="55%" .flushright}
+![](figures/whole_africa_map.pdf){width="90%"}
+:::
+:::
+
+## Variables and Observations {#mainvars}
+
+::: {.columns}
+::: {.column width="50%" .fragment}
+::: {.titlebox1}
+**Outcome**
+:::
+:::{.incremental}
+* We use the [**Enhanced Vegetation Index (EVI)**]{.col4b}, which
+  * is **remotely sensed**, and
+  * ranges **between –1** (water) **and 1** (dense vegetation).
+* We extract the **annual maximum** on
+  * all areas covered by [**vegetation**]{.col4b}, and
+  * only on [**croplands**]{.col4b}.
+:::
+:::
+::: {.column width="50%" .li2 .fragment}
+::: {.titlebox2}
+**Observations and Covariates**
+:::
+:::{.incremental}
+* We observe **6,307 upstream** basins, **1,900 mine** basins, and **6,127 downstream** basins over $T=8$ years. [show order × basins](#appnumbers){.butn} 
+* We collate **covariates** on:
+  * topography [[@amatulli2018]]{.smc},
+  * soil type [[@hengl2017]]{.smc},
+  * climate [[@abatzoglou2018]]{.smc}, and
+  * soioeconomic characteristics [[@weiss2018]]{.smc}.
+:::
+:::
+:::
+
+
+## Empirical Strategy (Spatial RDD)
+
+. . .
+
+We estimate:
+
+$$
+y_{imt} = \colorbox{var(--secondary-color-lightened)}{$\phantom{_i}\boldsymbol{\beta}'$}\:\colorbox{var(--primary-color-lightened)}{$F(x_i)\phantom{'}$}+\boldsymbol{\theta}'W_{it}+\mu_m+\psi_t+\varepsilon_{imt},
+$$
+
+
+:::{.fragment}
+
+where we let $\colorbox{var(--primary-color-lightened)}{\(F(x_i)\)}$ return indicators:
+
+$$
+\colorbox{var(--primary-color-lightened)}{$f(x_i)_j\phantom{'}$} = \mathbb{I}(x=j)\qquad\text{for } j \in\{-10,\dots,-2,0,1,2,\dots,10\}.
+$$
+
+:::
+
+
+::::{.columns}
+:::{.column}
+* $y_{imt}$: **outcome** of basin $i$ near mine $m$ in year $t$,
+* $\mu_m$ and $\psi_t$: mine and year **fixed effects**,
+* $\boldsymbol{W}_{it}$: basin-specific **covariates**.
+:::
+:::{.column}
+* Parameter $\colorbox{var(--secondary-color-lightened)}{\(\boldsymbol{\beta}'\)}$ is identified under the assumption that there are **no other discontinuous changes** at the mine basin.
+:::
+::::
+
+## Identification Assumption {#mainident}
+
+:::{.incremental}
+* To validate our results, we conduct a battery of robustness checks to address potential threats to identification.
+  (1) Extensive set of controls: **geophysical features** (elevation, slope, distance to coast, soil composition), **meteorological conditions** (temperature, precipitation), and **socioeconomic indicators** (population, accessibility, conflict)
+  (2) **placebo outcomes** [show more](#appplacebo){.butn}
+  (3) **matching procedure** [show more](#appmatch){.butn}
+  (4) **permutation test** [show more](#appper){.butn}
+:::
+
+
+
+# Results
+
+## Results Overview
+
+:vspace4
+
+:::{.incremental .spacey}
+* We find a **significant reduction** in vegetation health [**downstream**]{.coldb} of mines.
+* Impacts are particularly strong in [**fertile regions**]{.col1b} and where [**gold mining**]{.col2b} predominates.
+* These results are **robust** to varying the sample, the outcome measurement, and the level of fixed effects.
+:::
+
+## Results
+
+::::{.columns}
+:::{.column width="40%" .incremental}
+
+:vspace3
+
+* Reduction in peak biomass by **1.28–1.35%** relative to the mean on an affected area of **255,000 km²**.
+
+* For croplands, the estimates imply a **1.38–1.47% reduction** across **74,000 km²**.
+
+:::
+:::{.column width="60%"}
+
+:vspace2
+
+<style>
+.table-custom{
+  border-collapse:collapse;
+  width:100%;
+}
+.table-custom th,
+.table-custom td{
+  padding:0.125em 0.5em;
+}
+.table-custom thead th{border-bottom:2px solid currentColor;}
+.table-custom .midrule td{border-top:1px solid currentColor;}
+.table-custom .bottomrule td{border-top:2px solid currentColor;}
+.default-30{background-color:color-mix(in srgb,var(--primary-color) 30%,white);}
+.default-20{background-color:color-mix(in srgb,var(--primary-color) 20%,white);}
+.default-10{background-color:color-mix(in srgb,var(--primary-color) 10%,white);}
+.second-30{background-color:color-mix(in srgb,var(--secondary-color) 30%,white);}
+.second-20{background-color:color-mix(in srgb,var(--secondary-color) 20%,white);}
+.second-10{background-color:color-mix(in srgb,var(--secondary-color) 10%,white);}
+.bold{font-weight:700;}
+.spacer{padding-left:2em;}
+.table-custom{font-size:0.6em;}
+.table-custom th:not(:first-child),
+.table-custom td:not(:first-child){text-align:center;}
+</style>
+
+<table class="table-custom">
+  <thead>
+    <tr>
+      <th rowspan="2"><em>Outcome</em></th>
+      <th colspan="2"><em>Peak Vegetation</em></th>
+      <th colspan="2" class="spacer"><em>Peak Cropland Veg.</em></th>
+    </tr>
+    <tr>
+      <th>(Plain)</th><th class="default-30">(Full)</th>
+      <th class="spacer">(Plain)</th><th class="second-30">(Full)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="midrule"><td class="bold">Pooled Order</td><td colspan="4"></td></tr>
+    <tr>
+      <td>Downstream&nbsp;(1<sup>st</sup>&ndash;3<sup>rd</sup>)</td>
+      <td>-0.0057<sup>&ast;&ast;&ast;</sup></td><td class="default-20">-0.0056<sup>&ast;&ast;&ast;</sup></td>
+      <td class="spacer">-0.0064<sup>&ast;&ast;</sup></td><td class="second-20">-0.0068<sup>&ast;&ast;&ast;</sup></td>
+    </tr>
+    <tr>
+      <td></td><td>(0.0018)</td><td class="default-20">(0.0020)</td>
+      <td class="spacer">(0.0025)</td><td class="second-20">(0.0026)</td>
+    </tr>
+
+    <tr class="midrule"><td class="bold"><em>Fit statistics</em></td><td colspan="4"></td></tr>
+    <tr>
+      <td>&nbsp;&nbsp;Observations</td>
+      <td>110,576</td><td class="default-10">110,524</td>
+      <td class="spacer">93,036</td><td class="second-10">93,000</td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;R<sup>2</sup></td>
+      <td>0.903</td><td class="default-10">0.908</td>
+      <td class="spacer">0.816</td><td class="second-10">0.822</td>
+    </tr>
+
+    <tr class="midrule"><td class="bold"><em>Controls</em></td><td colspan="4"></td></tr>
+    <tr>
+      <td>&nbsp;&nbsp;Geophysical</td>
+      <td><span style="color:gray;">No</span></td><td class="default-10">Yes</td>
+      <td class="spacer"><span style="color:gray;">No</span></td><td class="second-10">Yes</td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;Meteorological</td>
+      <td><span style="color:gray;">No</span></td><td class="default-10">Yes</td>
+      <td class="spacer"><span style="color:gray;">No</span></td><td class="second-10">Yes</td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;Socioeconomic</td>
+      <td><span style="color:gray;">No</span></td><td class="default-10">Yes</td>
+      <td class="spacer"><span style="color:gray;">No</span></td><td class="second-10">Yes</td>
+    </tr>
+
+    <tr class="midrule"><td class="bold"><em>Fixed-effects</em></td><td colspan="4"></td></tr>
+    <tr>
+      <td>&nbsp;&nbsp;Year&nbsp;(2016&ndash;2023)</td>
+      <td>Yes</td><td class="default-10">Yes</td>
+      <td class="spacer">Yes</td><td class="second-10">Yes</td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;Mine</td>
+      <td>Yes</td><td class="default-10">Yes</td>
+      <td class="spacer">Yes</td><td class="second-10">Yes</td>
+    </tr>
+
+    <tr class="bottomrule"><td colspan="5"><em>Clustered (by mine-basin) standard errors in parentheses.</em></td></tr>
+    <tr><td colspan="5"><em>Significance levels: &ast;&ast;&ast;: 0.01, &ast;&ast;: 0.05, &ast;: 0.1. </em></td></tr>
+  </tbody>
+</table>
+
+
+:::
+::::
+
+## Results – What Do These Impacts Mean? {#mainmean}
+
+:vspace1
+
+:::{.incremental .bitspacey}
+* We use **survey data** from farmers in Africa from @ifpri2020 to estimate the crop yield–EVI elasticity.
+* Our measure is **highly predictive of crop yields**. [show more](#appifpri){.butn}
+* We estimate a [**2.16–2.31% decrease**]{.col1b} in the **value** of **overall crop production**.
+* This amounts to a reduction in **agricultural production** of about [**91,000 metric tons of cereals**]{.col1b},
+* comparable to **5.4%** of the 1.7 million tons that the **World Food Program WFP** distributes annually.
+:::
+
+## How Far Downstream Do These Effects Persist?
+
+:::{.centering .fragment}
+![](figures/plot_main-order_maxorder10_pooling3_20250226.pdf){width="80%"}
+:::
+
+## Heterogeneity – Which Areas Are Affected?
+
+:::{.columns}
+:::{.column width="60%" .incremental}
+* [**Commodity Types**]{.col0b} [[@padilla2021]]{.smc}:
+  * Gold mining regions are particularly affected
+* [**Region**]{.col0b}:
+  * greater effect in West Africa
+* [**Characteristics of the mine**]{.col0b} [[@jasansky2023]]{.smc}:
+  * greater effect for larger mines
+* [**Biome**]{.col0b} [[@fao2023]]{.smc}
+  * larger effect for mines located on highly fertile croplands
+  * larger effect in grasslands and forests
+:::
+:::{.column width="40%"}
+![](figures/commodity_pred.png)
+:::
+:::
+
+
+## Heterogeneity – Which Areas Are Affected?
+
+![](figures/heterogeneity_cropped.png){width="100%"}
+
+:::{.incremental}
+* Stronger effects in **West Africa** and on **highly fertile croplands**.
+* [**Gold mining**]{.col1b} regions show **75% larger impacts** on croplands.
+:::
+
+## Robustness
+
+::::{.columns}
+:::{.column}
+
+:vspace3
+
+:::{.incremental .spacey}
+* We conduct a battery of robustness checks along several dimensions.
+* We check the validity of our assumptions by conducting additional exercises. [permutation test](#appper){.butn} [placebo outcomes](#appplacebo){.butn} [matching on covariates](#appmatch){.butn}
+:::
+:::
+:::{.column}
+![](figures/robustness_plot.pdf){width="100%"}
+:::
+:::
+
+## Impact Decay Assessment
+
+. . .
+
+* We re-estimate the main specification using an **exponential distance decay** function, $\mathrm{exp}(-\delta d_{ij})$, where $d_{ij}$ is the distance along the river from a mine.
+
+:::{.centering .fragment}
+![](figures/plot_effect_decay_exp_maxorder10-EVI.pdf){width="47%"} ![](figures/plot_effect_decay_exp_maxorder10-EVI-c.pdf){width="47%"}
+:::
+
+
+## More on Water Pollution {#mainpoll}
+
+:vspace2
+
+:::{.incremental .spacey}
+* We identify the impact of water pollution from mining on agricutural productivity.
+* Water quality data is sparse, and limited to South Africa.
+* We provide suggestive evidence of levels of **water pollution** as a mediating mechanism [[@GEMStat2025]]{.smc}
+* We find **elevated levels of key pollutant measures** for mine and downstream basins. [show more](#apppoll){.butn} 
+:::
+
+## Limitations
+
+:vspace2
+
+:::{.incremental .spacey}
+* Remotely sensed vegetation indices capture **crop yields** only indirectly.
+* Differentiating between **artisanal and industrial mining** remains challenging due to data scarcity and co-location of mines.
+* No direct evidence on **farmers' adaptive responses** (e.g., migration, altered crop choices, or barrier to irrigation).
+* Noise from multiple data sources likely leads to **attenuation of true estimates**.
+:::
+
+
+## Conclusion
+
+::::{.columns}
+:::{.column width="40%" .fragment}
+:::{.box1f style="white-space:normal; align-items:flex-start;text-align:left; height:600px;"}
+**We identified the causal effects of mining**
+
+* on agricultural productivity,
+* mediated by water pollution.
+:::
+:::
+:::{.column width="60%"}
+:::{.box1o style="align-items:flex-start; height:175px;" .fragment}
+Our results showed a **negative impact** on vegetation health.
+:::
+
+:::{.box1o style="align-items:flex-start;height:175px;" .fragment}
+Effects were particularly **strong** for larger mines, gold mining regions, and in regions with highly fertile croplands.
+:::
+
+:::{.box1o style="align-items:flex-start;height:175px;" .fragment}
+Results were **robust** to changes of treatment, outcome, sample, methods, and estimation procedures.
+:::
+:::
+::::
+
+## References 
+
+:::{.centering .titlebox1}
+_This list is **scrollable**._
+:::
+
+::: {#refs}
+:::
+
+# Appendix
+
+## [Appendix ·]{.col1l} Basins {#appbasins}
+
+::::{.columns}
+:::{.column width="40%"}
+![](figures/basins_lehnergrill.png){width="100%"}
+:::
+:::{.column width = "50%" .col0}
+
+:vspace5
+
+Illustration from @lehner2013
+
+[go back](#mainbasins){.butn}
+:::
+::::
+
+## [Appendix ·]{.col1l} A Proxy for Agricultural Activity {#appagri}
+
+We get a **proxy** for **agricultural productivity** like this:
+
+:vspace1
+
+:::{.bitspacey}
+(1) Filter out **cloud cover**.
+(2) Aggregate the **mean EVI** per basin.
+(3) Take the **annual maximum** per basin per year. [**🠖 Max. EVI**]{.col4b}
+(4) Apply a **cropland mask**. [**🠖 Max. Cropland EVI**]{.col4b}
+:::
+
+This **peak vegetation index** has been shown to proxy well for crop yields [[@azzari2017;@beckerreshef2010;@bolton2013;@johnson2016]]{.smc}.
+
+## [Appendix ·]{.col1l} Summary Statistics {#appsummary}
+
+:vspace1
+
+<style>
+.table-stats{border-collapse:collapse;width:100%;font-size:1em;}
+.table-stats th,
+.table-stats td{padding:0.25em 0.5em;}
+.table-stats thead tr:first-child th{border-top:2px solid currentColor;}
+.table-stats thead th{border-bottom:2px solid currentColor;}
+.table-stats .bottomrule td{border-top:2px solid currentColor;}
+.table-stats th:not(:first-child),
+.table-stats td:not(:first-child){text-align:right;}
+/* 1. Shrink overall font to 50 % */
+.table-stats{font-size:0.8em;}
+
+/* 2. Tighten row height (halve top/bottom padding) */
+.table-stats th,
+.table-stats td{padding:0.125em 0.5em;}
+</style>
+
+<table class="table-stats">
+  <thead>
+    <tr>
+      <th>Variable</th><th>Unit</th><th>NT</th><th>Mean</th><th>St.&nbsp;Dev.</th><th>Min.</th><th>Max.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Peak Vegetation</td><td>Index [−1, 1]</td><td>110,576</td><td>0.428</td><td>0.154</td><td>0.016</td><td>0.993</td></tr>
+    <tr><td>Mean Vegetation</td><td>Index [−1, 1]</td><td>110,576</td><td>0.279</td><td>0.112</td><td>&minus;0.021</td><td>0.578</td></tr>
+    <tr><td>Peak Cropland Veg.</td><td>Index [−1, 1]</td><td>93,036</td><td>0.464</td><td>0.133</td><td>&minus;0.068</td><td>0.978</td></tr>
+    <tr><td>Mean Cropland Veg.</td><td>Index [−1, 1]</td><td>93,036</td><td>0.298</td><td>0.101</td><td>&minus;0.104</td><td>0.601</td></tr>
+    <tr><td>Elevation</td><td>Meters</td><td>110,568</td><td>820.4</td><td>481.1</td><td>&minus;118.3</td><td>3,059.7</td></tr>
+    <tr><td>Slope</td><td>Degrees</td><td>110,568</td><td>2.23</td><td>2.34</td><td>0.0</td><td>20.9</td></tr>
+    <tr><td>Max.&nbsp;Temperature</td><td>Degree&nbsp;Celsius</td><td>110,572</td><td>34.3</td><td>3.9</td><td>15.6</td><td>48.8</td></tr>
+    <tr><td>Precipitation</td><td>Millimeters</td><td>110,576</td><td>901.8</td><td>595.2</td><td>0.64</td><td>4,456.7</td></tr>
+    <tr><td>Population</td><td>Capita</td><td>110,576</td><td>8,471</td><td>37,716</td><td>0.0</td><td>1,396,921</td></tr>
+    <tr><td>Accessibility</td><td>Minutes</td><td>110,528</td><td>164.3</td><td>179.1</td><td>1.0</td><td>2,659.9</td></tr>
+    <tr class="bottomrule"><td colspan="7"></td></tr>
+  </tbody>
+</table>
+
+
+## [Appendix ·]{.col1l} Impact Decay Assessment {#appdecay}
+
+* We re-estimate our main specification using an **exponential decay** function: $\mathrm{exp}(-\delta d_{ij})$. 
+* **Hydrological studies** on dispersion patterns suggest using an exponential decay function.
+* Since the **decay parameter** is unknown, we conduct a grid search for $\delta\in[0.001,2]$. 
+* We then use a **Bayesian Model Averaging** approach with BIC as marginal likelihood approximation.
+* Finally, we compute the **mean effect decay** at increasing distances.
+
+## [Appendix ·]{.col1l} Basin Numbers {#appnumbers .centering}
+
+![](figures/mine-basin_extents.png)
+
+The number of mine-basins with Y upstream and X downstream basins in the dataset. [go back](#mainvars){.butn}
+
+## [Appendix ·]{.col1l} Basins by Order {#apporder}
+
+:vspace1
+
+<style>
+.table-order{border-collapse:collapse;width:100%;}
+.table-order th,
+.table-order td{padding:0.25em 0.5em;}
+.table-order thead tr:first-child th{border-top:2px solid currentColor;}
+.table-order thead th{border-bottom:2px solid currentColor;}
+.table-order .midrule td{border-top:1px solid currentColor;}
+.table-order .bottomrule td{border-top:2px solid currentColor;}
+.table-order td:first-child,
+.table-order th:first-child{text-align:right;}
+/* 1. Shrink overall font to 50 % */
+.table-order{font-size:0.8em;}
+
+/* 2. Tighten row height (halve top/bottom padding) */
+.table-order th,
+.table-order td{padding:0.125em 0.5em;}
+</style>
+
+<table class="table-order">
+  <thead>
+    <tr>
+      <th>Order</th><th colspan="2">Upstream</th><th colspan="2">Downstream</th>
+    </tr>
+    <tr>
+      <th></th><th>N</th><th>Distance</th><th>N</th><th>Distance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="midrule"><td>0</td><td>(1900)</td><td>(0.0)</td><td>(1900)</td><td>(0.0)</td></tr>
+    <tr><td>1</td><td>847</td><td>13.9</td><td>1162</td><td>11.1</td></tr>
+    <tr><td>2</td><td>781</td><td>24.5</td><td>882</td><td>22.0</td></tr>
+    <tr><td>3</td><td>722</td><td>35.0</td><td>743</td><td>32.7</td></tr>
+    <tr><td>4</td><td>698</td><td>44.9</td><td>643</td><td>43.3</td></tr>
+    <tr><td>5</td><td>653</td><td>55.3</td><td>578</td><td>54.0</td></tr>
+    <tr><td>6</td><td>576</td><td>66.3</td><td>512</td><td>64.3</td></tr>
+    <tr><td>7</td><td>562</td><td>75.8</td><td>458</td><td>74.1</td></tr>
+    <tr><td>8</td><td>522</td><td>86.5</td><td>416</td><td>84.4</td></tr>
+    <tr><td>9</td><td>494</td><td>95.8</td><td>382</td><td>95.0</td></tr>
+    <tr><td>10</td><td>452</td><td>104.2</td><td>351</td><td>104.7</td></tr>
+    <tr class="bottomrule"><td colspan="5"></td></tr>
+  </tbody>
+</table>
+
+## [Appendix ·]{.col1l} Full Order Specifiaction Results {#appfullord}
+
+:vspace0.1
+
+<style>
+.table-results{border-collapse:collapse;width:100%;}
+.table-results th,
+.table-results td{
+  padding:0.1em 0.5em;
+  line-height:0.9;
+}
+.table-results thead tr:first-child th{border-top:2px solid currentColor;}
+.table-results thead th{border-bottom:2px solid currentColor;}
+.table-results .midrule td{border-top:1px solid currentColor;}
+.table-results .bottomrule td{border-top:2px solid currentColor;}
+.table-results th:not(:first-child),
+.table-results td:not(:first-child){text-align:center;}
+.bold{font-weight:700;}
+.spacer{padding-left:2em;}
+.table-results{font-size:0.5em;}
+</style>
+
+<table class="table-results">
+  <thead>
+    <tr>
+      <th><em>Outcome</em></th>
+      <th colspan="2"><em>Peak Vegetation</em></th>
+      <th colspan="2" class="spacer"><em>Peak Cropland Veg.</em></th>
+    </tr>
+    <tr>
+      <th>(Specification)</th><th>(Plain)</th><th>(Full)</th>
+      <th class="spacer">(Plain)</th><th>(Full)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="midrule"><td class="bold">Individual Order</td><td colspan="4"></td></tr>
+
+    <tr>
+      <td>Downstream&nbsp;(1<sup>st</sup>)</td>
+      <td>-0.0045<sup>&ast;&ast;&ast;</sup></td><td>-0.0043<sup>&ast;&ast;</sup></td>
+      <td class="spacer">-0.0051<sup>&ast;&ast;</sup></td><td>-0.0050<sup>&ast;&ast;</sup></td>
+    </tr>
+    <tr>
+      <td></td><td>(0.0017)</td><td>(0.0018)</td>
+      <td class="spacer">(0.0025)</td><td>(0.0025)</td>
+    </tr>
+
+    <tr>
+      <td>Downstream&nbsp;(2<sup>nd</sup>)</td>
+      <td>-0.0049<sup>&ast;&ast;</sup></td><td>-0.0048<sup>&ast;&ast;</sup></td>
+      <td class="spacer">-0.0058<sup>&ast;</sup></td><td>-0.0067<sup>&ast;&ast;</sup></td>
+    </tr>
+    <tr>
+      <td></td><td>(0.0022)</td><td>(0.0024)</td>
+      <td class="spacer">(0.0031)</td><td>(0.0032)</td>
+    </tr>
+
+    <tr>
+      <td>Downstream&nbsp;(3<sup>rd</sup>)</td>
+      <td>-0.0085<sup>&ast;&ast;&ast;</sup></td><td>-0.0087<sup>&ast;&ast;&ast;</sup></td>
+      <td class="spacer">-0.0088<sup>&ast;&ast;</sup></td><td>-0.0099<sup>&ast;&ast;&ast;</sup></td>
+    </tr>
+    <tr>
+      <td></td><td>(0.0028)</td><td>(0.0029)</td>
+      <td class="spacer">(0.0037)</td><td>(0.0038)</td>
+    </tr>
+
+    <tr>
+      <td>Downstream&nbsp;(4<sup>th</sup>)</td>
+      <td>-0.0049<sup>&ast;</sup></td><td>-0.0062<sup>&ast;</sup></td>
+      <td class="spacer">&minus;0.0029</td><td>&minus;0.0044</td>
+    </tr>
+    <tr>
+      <td></td><td>(0.0030)</td><td>(0.0033)</td>
+      <td class="spacer">(0.0038)</td><td>(0.0040)</td>
+    </tr>
+
+    <tr>
+      <td>Downstream&nbsp;(5<sup>th</sup>)</td>
+      <td>&minus;0.0034</td><td>&minus;0.0053</td>
+      <td class="spacer">0.0007</td><td>&minus;0.0016</td>
+    </tr>
+    <tr>
+      <td></td><td>(0.0033)</td><td>(0.0037)</td>
+      <td class="spacer">(0.0042)</td><td>(0.0045)</td>
+    </tr>
+
+    <tr class="midrule"><td><em>Fit statistics</em></td><td colspan="4"></td></tr>
+    <tr>
+      <td>&nbsp;&nbsp;Observations</td>
+      <td>110,576</td><td>110,524</td>
+      <td class="spacer">93,036</td><td>93,000</td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;R<sup>2</sup></td>
+      <td>0.903</td><td>0.908</td>
+      <td class="spacer">0.816</td><td>0.822</td>
+    </tr>
+
+    <tr class="midrule"><td class="bold">Pooled Order</td><td colspan="4"></td></tr>
+
+    <tr>
+      <td>Downstream&nbsp;(1<sup>st</sup>&ndash;3<sup>rd</sup>)</td>
+      <td>-0.0057<sup>&ast;&ast;&ast;</sup></td><td>-0.0056<sup>&ast;&ast;&ast;</sup></td>
+      <td class="spacer">-0.0064<sup>&ast;&ast;</sup></td><td>-0.0068<sup>&ast;&ast;&ast;</sup></td>
+    </tr>
+    <tr>
+      <td></td><td>(0.0018)</td><td>(0.0020)</td>
+      <td class="spacer">(0.0025)</td><td>(0.0026)</td>
+    </tr>
+
+    <tr class="midrule"><td><em>Fit statistics</em></td><td colspan="4"></td></tr>
+    <tr>
+      <td>&nbsp;&nbsp;Observations</td>
+      <td>110,576</td><td>110,524</td>
+      <td class="spacer">93,036</td><td>93,000</td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;R<sup>2</sup></td>
+      <td>0.903</td><td>0.908</td>
+      <td class="spacer">0.816</td><td>0.822</td>
+    </tr>
+
+    <tr class="midrule"><td><em>Controls</em></td><td colspan="4"></td></tr>
+    <tr>
+      <td>&nbsp;&nbsp;Geophysical</td>
+      <td><span style="color:gray;">No</span></td><td>Yes</td>
+      <td class="spacer"><span style="color:gray;">No</span></td><td>Yes</td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;Meteorological</td>
+      <td><span style="color:gray;">No</span></td><td>Yes</td>
+      <td class="spacer"><span style="color:gray;">No</span></td><td>Yes</td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;Socioeconomic</td>
+      <td><span style="color:gray;">No</span></td><td>Yes</td>
+      <td class="spacer"><span style="color:gray;">No</span></td><td>Yes</td>
+    </tr>
+
+    <tr class="midrule"><td><em>Fixed-effects</em></td><td colspan="4"></td></tr>
+    <tr>
+      <td>&nbsp;&nbsp;Year&nbsp;(2016&ndash;2023)</td>
+      <td>Yes</td><td>Yes</td>
+      <td class="spacer">Yes</td><td>Yes</td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;Mine</td>
+      <td>Yes</td><td>Yes</td>
+      <td class="spacer">Yes</td><td>Yes</td>
+    </tr>
+
+    <tr class="bottomrule"><td colspan="5"></td></tr>
+    <tr><td colspan="5"><em>Clustered (Mine) standard-errors in parentheses</em></td></tr>
+    <tr><td colspan="5"><em>Signif.&nbsp;Codes: &ast;&ast;&ast;: 0.01, &ast;&ast;: 0.05, &ast;: 0.1</em></td></tr>
+  </tbody>
+</table>
+
+
+
+## [Appendix ·]{.col1l} Distance Specification Results {#appfulldist}
+
+:vspace0.1
+
+<style>
+.table-dist{border-collapse:collapse;width:100%;}
+.table-dist th,
+.table-dist td{padding:0.25em 0.5em;}
+.table-dist thead tr:first-child th{border-top:2px solid currentColor;}
+.table-dist thead th{border-bottom:2px solid currentColor;}
+.table-dist .midrule td{border-top:1px solid currentColor;}
+.table-dist .bottomrule td{border-top:2px solid currentColor;}
+.table-dist th:not(:first-child),
+.table-dist td:not(:first-child){text-align:center;}
+
+/* 1. Shrink overall font to 50 % */
+.table-dist{font-size:0.4em;}
+
+/* 2. Tighten row height (halve top/bottom padding) */
+.table-dist th,
+.table-dist td{
+  padding:0.1em 0.5em;   /* vertical | horizontal */
+  line-height:0.9;         /* tighten the text block */
+}
+</style>
+
+<table class="table-dist">
+  <thead>
+    <tr>
+      <th>Dependent&nbsp;Variables:</th>
+      <th colspan="4"><em>Maximum Vegetation&nbsp;EVI</em></th>
+      <th colspan="4"><em>Maximum Croplands&nbsp;EVI</em></th>
+    </tr>
+    <tr>
+      <th>Model:</th>
+      <th>(1)</th><th>(2)</th><th>(3)</th><th>(4)</th>
+      <th>(5)</th><th>(6)</th><th>(7)</th><th>(8)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Linear distance -->
+    <tr class="midrule"><td colspan="9"><em>Linear distance</em></td></tr>
+    <tr>
+      <td>Downstream</td>
+      <td>&minus;0.0050<sup>&ast;&ast;</sup></td><td>&minus;0.0045<sup>&ast;&ast;</sup></td><td>&minus;0.0033</td><td>&minus;0.0034</td>
+      <td>&minus;0.0050<sup>&ast;</sup></td><td>&minus;0.0049<sup>&ast;</sup></td><td>&minus;0.0041</td><td>&minus;0.0042</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>(0.0023)</td><td>(0.0022)</td><td>(0.0022)</td><td>(0.0022)</td>
+      <td>(0.0029)</td><td>(0.0029)</td><td>(0.0029)</td><td>(0.0029)</td>
+    </tr>
+    <tr>
+      <td>Downstream&nbsp;&times;&nbsp;Distance</td>
+      <td>&minus;7.57&times;10<sup>&minus;6</sup></td><td>&minus;3.59&times;10<sup>&minus;5</sup></td><td>&minus;8.32&times;10<sup>&minus;5</sup></td><td>&minus;8.47&times;10<sup>&minus;5</sup></td>
+      <td>1.47&times;10<sup>&minus;5</sup></td><td>&minus;4.19&times;10<sup>&minus;6</sup></td><td>&minus;5.85&times;10<sup>&minus;5</sup></td><td>&minus;5.96&times;10<sup>&minus;5</sup></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>(4.69&times;10<sup>&minus;5</sup>)</td><td>(5.36&times;10<sup>&minus;5</sup>)</td><td>(5.38&times;10<sup>&minus;5</sup>)</td><td>(5.32&times;10<sup>&minus;5</sup>)</td>
+      <td>(5.85&times;10<sup>&minus;5</sup>)</td><td>(6.91&times;10<sup>&minus;5</sup>)</td><td>(6.96&times;10<sup>&minus;5</sup>)</td><td>(6.94&times;10<sup>&minus;5</sup>)</td>
+    </tr>
+    <tr>
+      <td>Distance</td>
+      <td>7.75&times;10<sup>&minus;6</sup></td><td>3.26&times;10<sup>&minus;5</sup></td><td>5.61&times;10<sup>&minus;5</sup></td><td>6.18&times;10<sup>&minus;5</sup></td>
+      <td>2.75&times;10<sup>&minus;5</sup></td><td>4.08&times;10<sup>&minus;5</sup></td><td>6.32&times;10<sup>&minus;5</sup></td><td>5.66&times;10<sup>&minus;5</sup></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>(3.91&times;10<sup>&minus;5</sup>)</td><td>(4.13&times;10<sup>&minus;5</sup>)</td><td>(4.12&times;10<sup>&minus;5</sup>)</td><td>(4.04&times;10<sup>&minus;5</sup>)</td>
+      <td>(4.97&times;10<sup>&minus;5</sup>)</td><td>(5.45&times;10<sup>&minus;5</sup>)</td><td>(5.45&times;10<sup>&minus;5</sup>)</td><td>(5.3&times;10<sup>&minus;5</sup>)</td>
+    </tr>
+    <tr class="midrule"><td><em>Fit statistics</em></td><td colspan="8"></td></tr>
+    <tr>
+      <td>Observations</td>
+      <td>110,576</td><td>110,568</td><td>110,564</td><td>110,524</td>
+      <td>93,036</td><td>93,036</td><td>93,032</td><td>93,000</td>
+    </tr>
+    <tr>
+      <td>R<sup>2</sup></td>
+      <td>0.90282</td><td>0.90452</td><td>0.90762</td><td>0.90783</td>
+      <td>0.81609</td><td>0.81748</td><td>0.82138</td><td>0.82165</td>
+    </tr>
+    <!-- Linear-quadratic distance -->
+    <tr class="midrule"><td colspan="9"><em>Linear–quadratic distance</em></td></tr>
+    <tr>
+      <td>Downstream</td>
+      <td>&minus;0.0056<sup>&ast;&ast;</sup></td><td>&minus;0.0055<sup>&ast;&ast;</sup></td><td>&minus;0.0050<sup>&ast;&ast;</sup></td><td>&minus;0.0052<sup>&ast;&ast;</sup></td>
+      <td>&minus;0.0077<sup>&ast;&ast;</sup></td><td>&minus;0.0076<sup>&ast;&ast;</sup></td><td>&minus;0.0072<sup>&ast;&ast;</sup></td><td>&minus;0.0073<sup>&ast;&ast;</sup></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>(0.0027)</td><td>(0.0026)</td><td>(0.0025)</td><td>(0.0025)</td>
+      <td>(0.0035)</td><td>(0.0036)</td><td>(0.0035)</td><td>(0.0035)</td>
+    </tr>
+
+    <tr>
+      <td>Downstream&nbsp;&times;&nbsp;Distance</td>
+      <td>2.64&times;10<sup>&minus;5</sup></td><td>2.01&times;10<sup>&minus;5</sup></td><td>5.75&times;10<sup>&minus;6</sup></td><td>5.45&times;10<sup>&minus;6</sup></td>
+      <td>0.0002</td><td>0.0001</td><td>0.0001</td><td>0.0001</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>(0.0001)</td><td>(0.0001)</td><td>(0.0001)</td><td>(0.0001)</td>
+      <td>(0.0002)</td><td>(0.0002)</td><td>(0.0002)</td><td>(0.0002)</td>
+    </tr>
+    <tr>
+      <td>Downstream&nbsp;&times;&nbsp;Distance<sup>2</sup></td>
+      <td>&minus;3.04&times;10<sup>&minus;7</sup></td><td>&minus;4.7&times;10<sup>&minus;7</sup></td><td>&minus;7.27&times;10<sup>&minus;7</sup></td><td>&minus;7.35&times;10<sup>&minus;7</sup></td>
+      <td>&minus;1.2&times;10<sup>&minus;6</sup></td><td>&minus;1.17&times;10<sup>&minus;6</sup></td><td>&minus;1.38&times;10<sup>&minus;6</sup></td><td>&minus;1.36&times;10<sup>&minus;6</sup></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>(8.52&times;10<sup>&minus;7</sup>)</td><td>(8&times;10<sup>&minus;7</sup>)</td><td>(8.09&times;10<sup>&minus;7</sup>)</td><td>(7.99&times;10<sup>&minus;7</sup>)</td>
+      <td>(1.2&times;10<sup>&minus;6</sup>)</td><td>(1.2&times;10<sup>&minus;6</sup>)</td><td>(1.18&times;10<sup>&minus;6</sup>)</td><td>(1.18&times;10<sup>&minus;6</sup>)</td>
+    </tr>
+    <tr>
+      <td>Distance</td>
+      <td>3.97&times;10<sup>&minus;5</sup></td><td>3.93&times;10<sup>&minus;5</sup></td><td>3.33&times;10<sup>&minus;5</sup></td><td>3.64&times;10<sup>&minus;5</sup></td>
+      <td>&minus;4.23&times;10<sup>&minus;6</sup></td><td>1.24&times;10<sup>&minus;6</sup></td><td>1.17&times;10<sup>&minus;5</sup></td><td>&minus;1.21&times;10<sup>&minus;6</sup></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>(9.08&times;10<sup>&minus;5</sup>)</td><td>(8.61&times;10<sup>&minus;5</sup>)</td><td>(8.93&times;10<sup>&minus;5</sup>)</td><td>(8.63&times;10<sup>&minus;5</sup>)</td>
+      <td>(0.0001)</td><td>(0.0001)</td><td>(0.0001)</td><td>(0.0001)</td>
+    </tr>
+    <tr>
+      <td>Distance<sup>2</sup></td>
+      <td>&minus;2.43&times;10<sup>&minus;7</sup></td><td>&minus;5.04&times;10<sup>&minus;8</sup></td><td>1.76&times;10<sup>&minus;7</sup></td><td>1.97&times;10<sup>&minus;7</sup></td>
+      <td>2.55&times;10<sup>&minus;7</sup></td><td>3.18&times;10<sup>&minus;7</sup></td><td>4.13&times;10<sup>&minus;7</sup></td><td>4.64&times;10<sup>&minus;7</sup></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>(6.32&times;10<sup>&minus;7</sup>)</td><td>(5.85&times;10<sup>&minus;7</sup>)</td><td>(6.05&times;10<sup>&minus;7</sup>)</td><td>(5.91&times;10<sup>&minus;7</sup>)</td>
+      <td>(9.26&times;10<sup>&minus;7</sup>)</td><td>(9.37&times;10<sup>&minus;7</sup>)</td><td>(9.11&times;10<sup>&minus;7</sup>)</td><td>(9.2&times;10<sup>&minus;7</sup>)</td>
+    </tr>
+    <tr class="midrule"><td><em>Fit statistics</em></td><td colspan="8"></td></tr>
+    <tr>
+      <td>Observations</td>
+      <td>110,576</td><td>110,568</td><td>110,564</td><td>110,524</td>
+      <td>93,036</td><td>93,036</td><td>93,032</td><td>93,000</td>
+    </tr>
+    <tr>
+      <td>R<sup>2</sup></td>
+      <td>0.90283</td><td>0.90453</td><td>0.90762</td><td>0.90784</td>
+      <td>0.81612</td><td>0.81751</td><td>0.82142</td><td>0.82168</td>
+    </tr>
+    <!-- Exponential decay -->
+    <tr class="midrule"><td colspan="9"><em>Exponential decay</em></td></tr>
+    <tr>
+      <td></td>
+      <td>&delta; = 0.005</td><td>&delta; = 0.006</td><td>&delta; = 0.002</td><td>&delta; = 0.002</td>
+      <td>&delta; = 0.035</td><td>&delta; = 0.035</td><td>&delta; = 0.020</td><td>&delta; = 0.010</td>
+    </tr>
+    <tr>
+      <td>exp{&minus;&delta;&times;Distance}&nbsp;&times;&nbsp;Downstream</td>
+      <td>&minus;0.0062<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0062<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0060<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0062<sup>&ast;&ast;&ast;</sup></td>
+      <td>&minus;0.0093<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0091<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0074<sup>&ast;&ast;</sup></td><td>&minus;0.0068<sup>&ast;&ast;</sup></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>(0.0023)</td><td>(0.0023)</td><td>(0.0023)</td><td>(0.0023)</td>
+      <td>(0.0034)</td><td>(0.0033)</td><td>(0.0029)</td><td>(0.0029)</td>
+    </tr>
+    <tr class="midrule"><td><em>Fit statistics</em></td><td colspan="8"></td></tr>
+    <tr>
+      <td>Observations</td>
+      <td>110,576</td><td>110,568</td><td>110,564</td><td>110,524</td>
+      <td>93,036</td><td>93,036</td><td>93,032</td><td>93,000</td>
+    </tr>
+    <tr>
+      <td>R<sup>2</sup></td>
+      <td>0.901147</td><td>0.902842</td><td>0.905958</td><td>0.906169</td>
+      <td>0.812592</td><td>0.813949</td><td>0.817862</td><td>0.818141</td>
+    </tr>
+    <!-- Fixed-effects -->
+    <tr class="midrule"><td><em>Fixed-effects</em></td><td colspan="8"></td></tr>
+    <tr>
+      <td>Year</td>
+      <td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td>
+      <td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td>
+    </tr>
+    <tr>
+      <td>Mine</td>
+      <td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td>
+      <td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td>
+    </tr>
+    <tr class="bottomrule"><td colspan="9"></td></tr>
+    <tr><td colspan="9"><em>Clustered (mine basin) standard-errors in parentheses&nbsp;&nbsp;&nbsp;&nbsp;Significance: &ast;&ast;&ast;: 0.01,&nbsp;&ast;&ast;: 0.05,&nbsp;&ast;: 0.1</em></td></tr>
+  </tbody>
+</table>
+
+
+## [Appendix ·]{.col1l} Varying Sample Definition {#appvardef}
+
+:vspace1
+
+<style>
+.table-rob{border-collapse:collapse;width:100%;}
+.table-rob th,
+.table-rob td{padding:0.1em 0.5em;line-height:1;}
+.table-rob thead tr:first-child th{border-top:2px solid currentColor;}
+.table-rob thead th{border-bottom:2px solid currentColor;}
+.table-rob .midrule td{border-top:1px solid currentColor;}
+.table-rob .bottomrule td{border-top:2px solid currentColor;}
+.table-rob th:not(:first-child),
+.table-rob td:not(:first-child){text-align:center;}
+/* 1. Shrink overall font to 50 % */
+.table-rob{font-size:0.55em;}
+</style>
+
+<table class="table-rob">
+  <thead>
+    <tr>
+      <th>Dependent&nbsp;Variables:</th>
+      <th colspan="5">Maximum&nbsp;EVI</th>
+      <th colspan="5">Maximum&nbsp;Cropland&nbsp;EVI</th>
+    </tr>
+    <tr>
+      <th>Model:</th>
+      <th>(1)</th><th>(2)</th><th>(3)</th><th>(4)</th><th>(5)</th>
+      <th>(6)</th><th>(7)</th><th>(8)</th><th>(9)</th><th>(10)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Variables -->
+    <tr class="midrule"><td><em>Variables</em></td><td colspan="10"></td></tr>
+    <!-- Order 0 -->
+    <tr>
+      <td>Downstream&nbsp;&times;&nbsp;Order&nbsp;=&nbsp;0</td>
+      <td>&minus;0.0059<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0076<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0062<sup>&ast;&ast;&ast;</sup></td>
+      <td>&nbsp;</td><td>&nbsp;</td>
+      <td>&minus;0.0095<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0082<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0094<sup>&ast;&ast;&ast;</sup></td>
+      <td>&nbsp;</td><td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>(0.0013)</td><td>(0.0014)</td><td>(0.0012)</td>
+      <td>&nbsp;</td><td>&nbsp;</td>
+      <td>(0.0020)</td><td>(0.0024)</td><td>(0.0022)</td>
+      <td>&nbsp;</td><td>&nbsp;</td>
+    </tr>
+    <!-- Order 1 -->
+    <tr>
+      <td>Downstream&nbsp;&times;&nbsp;Order&nbsp;=&nbsp;1</td>
+      <td>&minus;0.0057<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0053<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0053<sup>&ast;&ast;&ast;</sup></td>
+      <td>&minus;0.0049<sup>&ast;&ast;</sup></td><td>&minus;0.0051<sup>&ast;&ast;</sup></td>
+      <td>&minus;0.0061<sup>&ast;&ast;</sup></td><td>&minus;0.0049</td><td>&minus;0.0051<sup>&ast;</sup></td>
+      <td>&minus;0.0061<sup>&ast;&ast;</sup></td><td>&minus;0.0069<sup>&ast;</sup></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>(0.0017)</td><td>(0.0020)</td><td>(0.0017)</td>
+      <td>(0.0020)</td><td>(0.0021)</td>
+      <td>(0.0026)</td><td>(0.0032)</td><td>(0.0030)</td>
+      <td>(0.0030)</td><td>(0.0039)</td>
+    </tr>
+    <!-- Order 2 -->
+    <tr>
+      <td>Downstream&nbsp;&times;&nbsp;Order&nbsp;=&nbsp;2</td>
+      <td>&minus;0.0066<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0054<sup>&ast;&ast;</sup></td><td>&nbsp;</td>
+      <td>&minus;0.0056<sup>&ast;&ast;</sup></td><td>&nbsp;</td>
+      <td>&minus;0.0062<sup>&ast;&ast;</sup></td><td>&minus;0.0057</td><td>&nbsp;</td>
+      <td>&minus;0.0062<sup>&ast;</sup></td><td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>(0.0021)</td><td>(0.0026)</td><td>&nbsp;</td>
+      <td>(0.0023)</td><td>&nbsp;</td>
+      <td>(0.0030)</td><td>(0.0037)</td><td>&nbsp;</td>
+      <td>(0.0033)</td><td>&nbsp;</td>
+    </tr>
+    <!-- Fixed-effects -->
+    <tr class="midrule"><td><em>Fixed-effects</em></td><td colspan="10"></td></tr>
+    <tr>
+      <td>Year</td>
+      <td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td>
+      <td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td>
+    </tr>
+    <tr>
+      <td>Mine</td>
+      <td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td>
+      <td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td>
+    </tr>
+    <!-- Fit statistics -->
+    <tr class="midrule"><td><em>Fit statistics</em></td><td colspan="10"></td></tr>
+    <tr>
+      <td>Observations</td>
+      <td>114,496</td><td>61,712</td><td>32,360</td><td>99,320</td><td>9,168</td>
+      <td>94,604</td><td>50,914</td><td>27,589</td><td>81,278</td><td>7,623</td>
+    </tr>
+    <tr>
+      <td>R<sup>2</sup></td>
+      <td>0.92395</td><td>0.91566</td><td>0.93993</td><td>0.92392</td><td>0.93378</td>
+      <td>0.78597</td><td>0.76613</td><td>0.84032</td><td>0.78332</td><td>0.81766</td>
+    </tr>
+    <tr>
+      <td>Within&nbsp;R<sup>2</sup></td>
+      <td>0.05582</td><td>0.05702</td><td>0.05650</td><td>0.05511</td><td>0.07364</td>
+      <td>0.02531</td><td>0.02382</td><td>0.03446</td><td>0.02322</td><td>0.03884</td>
+    </tr>
+    <tr class="bottomrule"><td colspan="11"></td></tr>
+    <tr><td colspan="11"><em>Clustered (Mine) standard-errors in parentheses</em></td></tr>
+    <tr><td colspan="11"><em>Signif.&nbsp;Codes:&nbsp;&ast;&ast;&ast;:&nbsp;0.01,&nbsp;&ast;&ast;:&nbsp;0.05,&nbsp;&ast;:&nbsp;0.1</em></td></tr>
+  </tbody>
+</table>
+
+## [Appendix ·]{.col1l} Research Design {#appresdes .centering}
+
+![](figures/research_design.png)
+
+Illustration of the research design. The comparison of up- and downstream basins enables the identification of mine impacts that are mediated by the river.
+
+
+## [Appendix ·]{.col1l} Varying Outcome / Fixed Effects {#appvarout}
+
+:vspace1
+
+<style>
+.table-yfe{border-collapse:collapse;width:100%;font-size:0.6em;}
+.table-yfe th,.table-yfe td{padding:0.1em 0.4em;line-height:1;}
+.table-yfe thead tr:first-child th{border-top:2px solid currentColor;}
+.table-yfe thead th{border-bottom:2px solid currentColor;}
+.table-yfe .midrule td{border-top:1px solid currentColor;}
+.table-yfe .bottomrule td{border-top:2px solid currentColor;}
+.table-yfe th:not(:first-child),.table-yfe td:not(:first-child){text-align:center;}
+.bold{font-weight:700;}
+</style>
+<table class="table-yfe">
+<thead>
+<tr><th>Dependent&nbsp;Variables:</th><th colspan="3">Maximum&nbsp;EVI</th><th>Mean&nbsp;EVI</th><th colspan="3">Maximum&nbsp;Cropland&nbsp;EVI</th><th>Mean&nbsp;C&nbsp;EVI</th><th>ESA&nbsp;C&nbsp;EVI</th></tr>
+<tr><th>Model:</th><th>(1)</th><th>(2)</th><th>(3)</th><th>(4)</th><th>(5)</th><th>(6)</th><th>(7)</th><th>(8)</th><th>(9)</th></tr>
+</thead>
+<tbody>
+<tr class="midrule"><td><em>Variables</em></td><td colspan="9"></td></tr>
+<tr><td>Downstream&nbsp;&times;&nbsp;Order&nbsp;=&nbsp;0</td><td>&minus;0.0059<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0065<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0079<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0048<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0095<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0104<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0109<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0073<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0048<sup>&ast;</sup></td></tr>
+<tr><td></td><td>(0.0013)</td><td>(0.0013)</td><td>(0.0014)</td><td>(0.0009)</td><td>(0.0020)</td><td>(0.0020)</td><td>(0.0021)</td><td>(0.0013)</td><td>(0.0026)</td></tr>
+<tr><td>Downstream&nbsp;&times;&nbsp;Order&nbsp;=&nbsp;1</td><td>&minus;0.0057<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0060<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0066<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0035<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0061<sup>&ast;&ast;</sup></td><td>&minus;0.0062<sup>&ast;&ast;</sup></td><td>&minus;0.0064<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0043<sup>&ast;&ast;</sup></td><td>&minus;0.0035</td></tr>
+<tr><td></td><td>(0.0017)</td><td>(0.0016)</td><td>(0.0017)</td><td>(0.0011)</td><td>(0.0026)</td><td>(0.0025)</td><td>(0.0025)</td><td>(0.0017)</td><td>(0.0032)</td></tr>
+<tr><td>Downstream&nbsp;&times;&nbsp;Order&nbsp;=&nbsp;2</td><td>&minus;0.0066<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0064<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0067<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0038<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0062<sup>&ast;&ast;</sup></td><td>&minus;0.0058<sup>&ast;&ast;</sup></td><td>&minus;0.0064<sup>&ast;&ast;</sup></td><td>&minus;0.0055<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0015</td></tr>
+<tr><td></td><td>(0.0021)</td><td>(0.0020)</td><td>(0.0020)</td><td>(0.0013)</td><td>(0.0030)</td><td>(0.0029)</td><td>(0.0028)</td><td>(0.0019)</td><td>(0.0035)</td></tr>
+<tr class="midrule"><td><em>Fixed-effects</em></td><td colspan="9"></td></tr>
+<tr><td>Year</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Mine</td><td>Yes</td><td>&nbsp;</td><td>&nbsp;</td><td>Yes</td><td>Yes</td><td>&nbsp;</td><td>&nbsp;</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Pfaffstetter&nbsp;basin&nbsp;level&nbsp;8</td><td>&nbsp;</td><td>Yes</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Yes</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Pfaffstetter&nbsp;basin&nbsp;level&nbsp;6</td><td>&nbsp;</td><td>&nbsp;</td><td>Yes</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Yes</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class="midrule"><td><em>Fit statistics</em></td><td colspan="9"></td></tr>
+<tr><td>Observations</td><td>114,496</td><td>114,496</td><td>114,496</td><td>114,496</td><td>94,604</td><td>94,604</td><td>94,604</td><td>94,604</td><td>67,649</td></tr>
+<tr><td>R<sup>2</sup></td><td>0.92395</td><td>0.91954</td><td>0.90419</td><td>0.95707</td><td>0.78597</td><td>0.77061</td><td>0.74193</td><td>0.88641</td><td>0.80154</td></tr>
+<tr><td>Within&nbsp;R<sup>2</sup></td><td>0.05582</td><td>0.06500</td><td>0.08647</td><td>0.11783</td><td>0.02531</td><td>0.02957</td><td>0.04285</td><td>0.04478</td><td>0.02553</td></tr>
+<tr class="bottomrule"><td colspan="10"></td></tr>
+<tr><td colspan="10"><em>Clustered (Mine) standard-errors in parentheses</em></td></tr>
+<tr><td colspan="10"><em>Signif.&nbsp;Codes:&nbsp;&ast;&ast;&ast;:&nbsp;0.01,&nbsp;&ast;&ast;:&nbsp;0.05,&nbsp;&ast;:&nbsp;0.1</em></td></tr>
+</tbody>
+</table>
+
+
+## [Appendix ·]{.col1l} Placebo Outcomes {#appplacebo}
+
+:vspace0.5
+
+<style>
+.table-placebo{border-collapse:collapse;width:100%;font-size:0.6em;}
+.table-placebo th,.table-placebo td{padding:0.1em 0.4em;line-height:1;}
+.table-placebo thead tr:first-child th{border-top:2px solid currentColor;}
+.table-placebo thead th{border-bottom:2px solid currentColor;}
+.table-placebo .midrule td{border-top:1px solid currentColor;}
+.table-placebo .bottomrule td{border-top:2px solid currentColor;}
+.table-placebo th:not(:first-child),.table-placebo td:not(:first-child){text-align:center;}
+</style>
+<table class="table-placebo">
+<thead>
+<tr><th>Dependent&nbsp;Variables:</th><th>Elevation</th><th>Slope</th><th>Max.&nbsp;Temp</th><th>Precipitation</th><th>Accessibility&nbsp;2015</th><th>Population&nbsp;2015</th></tr>
+<tr><th>Model:</th><th>(1)</th><th>(2)</th><th>(3)</th><th>(4)</th><th>(5)</th><th>(6)</th></tr>
+</thead>
+<tbody>
+<tr class="midrule"><td><em>Variables</em></td><td colspan="6"></td></tr>
+<tr><td>Downstream</td><td>&minus;6.852</td><td>&minus;0.0538</td><td>&minus;0.0137</td><td>0.6025</td><td>&minus;5.427</td><td>2,125.7</td></tr>
+<tr><td></td><td>(8.509)</td><td>(0.0912)</td><td>(0.0567)</td><td>(3.934)</td><td>(5.531)</td><td>(1,589.8)</td></tr>
+<tr><td>Distance&nbsp;&times;&nbsp;Downstream</td><td>&minus;5.008<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0060</td><td>0.0135<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.1942</td><td>0.0839</td><td>&minus;182.9<sup>&ast;&ast;&ast;</sup></td></tr>
+<tr><td></td><td>(0.4814)</td><td>(0.0044)</td><td>(0.0036)</td><td>(0.2860)</td><td>(0.3278)</td><td>(55.80)</td></tr>
+<tr><td>Distance<sup>2</sup>&nbsp;&times;&nbsp;Downstream</td><td>0.0043</td><td>&minus;8.25&times;10<sup>&minus;6</sup></td><td>2.12&times;10<sup>&minus;6</sup></td><td>0.0003</td><td>0.0004</td><td>1.081<sup>&ast;&ast;&ast;</sup></td></tr>
+<tr><td></td><td>(0.0039)</td><td>(4.01&times;10<sup>&minus;5</sup>)</td><td>(3.36&times;10<sup>&minus;5</sup>)</td><td>(0.0020)</td><td>(0.0028)</td><td>(0.3463)</td></tr>
+<tr><td>Distance</td><td>2.326<sup>&ast;&ast;&ast;</sup></td><td>0.0025</td><td>&minus;0.0067<sup>&ast;&ast;</sup></td><td>0.0879</td><td>0.7557<sup>&ast;&ast;&ast;</sup></td><td>&minus;54.72</td></tr>
+<tr><td></td><td>(0.4215)</td><td>(0.0039)</td><td>(0.0032)</td><td>(0.2129)</td><td>(0.2587)</td><td>(45.17)</td></tr>
+<tr><td>Distance<sup>2</sup></td><td>0.0005</td><td>1.12&times;10<sup>&minus;6</sup></td><td>&minus;5.34&times;10<sup>&minus;6</sup></td><td>&minus;0.0005</td><td>&minus;0.0013</td><td>0.3439</td></tr>
+<tr><td></td><td>(0.0033)</td><td>(3.49&times;10<sup>&minus;5</sup>)</td><td>(3.1&times;10<sup>&minus;5</sup>)</td><td>(0.0015)</td><td>(0.0021)</td><td>(0.2724)</td></tr>
+<tr class="midrule"><td><em>Fixed-effects</em></td><td colspan="6"></td></tr>
+<tr><td>Year</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Mine</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr class="midrule"><td><em>Fit statistics</em></td><td colspan="6"></td></tr>
+<tr><td>Observations</td><td>114,616</td><td>114,616</td><td>114,616</td><td>114,616</td><td>114,576</td><td>114,536</td></tr>
+<tr><td>R<sup>2</sup></td><td>0.95627</td><td>0.70192</td><td>0.95579</td><td>0.96187</td><td>0.88768</td><td>0.59121</td></tr>
+<tr><td>Within&nbsp;R<sup>2</sup></td><td>0.41042</td><td>0.01108</td><td>0.07605</td><td>0.00070</td><td>0.04659</td><td>0.00851</td></tr>
+<tr class="bottomrule"><td colspan="7"></td></tr>
+<tr><td colspan="7"><em>Clustered (Mine) standard-errors in parentheses</em></td></tr>
+<tr><td colspan="7"><em>Signif.&nbsp;Codes:&nbsp;&ast;&ast;&ast;:&nbsp;0.01,&nbsp;&ast;&ast;:&nbsp;0.05,&nbsp;&ast;:&nbsp;0.1 [go back to identification](#mainident){.butn} [go back to results](#mainrobust){.butn}</em></td></tr> 
+</tbody>
+</table>
+
+## [Appendix ·]{.col1l} Placebo Outcomes {#appplaout .centering}
+
+![](figures/plot_placebo-order_maxorder10_pooling3_20250221.pdf)
+
+Order estimates when using elevation, slope, temperature, precipitation, accessibility to cities, and population as placebo outcomes. [go back to identification](#mainident){.butn} [go back to results](#mainrobust){.butn}
+
+## [Appendix ·]{.col1l} Matching Exercise {#appmatch .centering}
+
+![](figures/mine-basins_balance-all.pdf)
+
+
+Balance of elevation, slope, temperature, and precipitation before and after matching. (Soilgrids not pictured.) [go back to identification](#mainident){.butn} [go back to results](#mainrobust){.butn}
+
+
+## [Appendix ·]{.col1l} Dist. Spec. w/ Aut. BW Selection (No Controls) {#appbw1}
+
+:vspace1
+
+<style>
+.table-rd{border-collapse:collapse;width:100%;font-size:0.7em;}
+.table-rd th,.table-rd td{padding:0.1em 0.4em;}
+.table-rd thead tr:first-child th{border-top:2px solid currentColor;}
+.table-rd thead th{border-bottom:2px solid currentColor;}
+.table-rd .midrule td{border-top:1px solid currentColor;}
+.table-rd .bottomrule td{border-top:2px solid currentColor;}
+.table-rd th:not(:first-child),.table-rd td:not(:first-child){text-align:center;}
+.bold{font-weight:700;}
+</style>
+<table class="table-rd">
+<thead>
+<tr><th></th><th colspan="2" class="bold">Max&nbsp;EVI</th><th colspan="2" class="bold">Max&nbsp;C&nbsp;EVI</th></tr>
+<tr><th></th><th class="bold">Conv.</th><th class="bold">Bias-Corr.</th><th class="bold">Conv.</th><th class="bold">Bias-Corr.</th></tr>
+</thead>
+<tbody>
+<tr class="midrule"><td colspan="5" class="bold">No&nbsp;Controls</td></tr>
+<tr><td>Conventional</td><td>&minus;0.0050<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0056<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0112<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0116<sup>&ast;&ast;&ast;</sup></td></tr>
+<tr><td></td><td>(0.0015)</td><td>(0.0015)</td><td>(0.0020)</td><td>(0.0025)</td></tr>
+<tr class="midrule"><td>Observations</td><td>37,880</td><td>37,880</td><td>32,813</td><td>32,813</td></tr>
+<tr><td>Bandwidth&nbsp;(Conv)</td><td>20.3</td><td>20.3</td><td>20.7</td><td>20.7</td></tr>
+<tr><td>Bandwidth&nbsp;(Bias)</td><td>46.4</td><td>46.4</td><td>47.4</td><td>47.4</td></tr>
+<tr class="bottomrule"><td colspan="5"></td></tr>
+</tbody>
+</table>
+
+:::{.quitesmall}
+
+**Note:** Table shows results for the estimation of the main specification, where distance in kilometres along the river network is the running variable. Bandwidths are chosen automatically following @cattaneo2019, using a triangular kernel, the mean-squared-error criterion, and bias correction. The upper-panel models include no covariates; the lower-panel models include the full set of controls. Columns (1) and (2) use overall EVI as the outcome, while columns (3) and (4) use cropland-specific EVI. Columns (1) and (3) fit a linear polynomial in distance on each side of the cutoff; columns (2) and (4) fit a quadratic polynomial. All specifications include mine and year fixed effects. Standard errors are clustered at the mine-basin system level.  
+
+**Significance codes:** *** p < 0.01, ** p < 0.05, * p < 0.1 · Clustered (Mine) standard errors in parentheses.
+
+:::
+
+
+
+## [Appendix ·]{.col1l} Dist. Spec. w/ Aut. BW Selection (Full Controls) {#appbw2}
+
+:vspace1
+
+<style>
+.table-rd{border-collapse:collapse;width:100%;font-size:0.7em;}
+.table-rd th,.table-rd td{padding:0.1em 0.4em;}
+.table-rd thead tr:first-child th{border-top:2px solid currentColor;}
+.table-rd thead th{border-bottom:2px solid currentColor;}
+.table-rd .midrule td{border-top:1px solid currentColor;}
+.table-rd .bottomrule td{border-top:2px solid currentColor;}
+.table-rd th:not(:first-child),.table-rd td:not(:first-child){text-align:center;}
+.bold{font-weight:700;}
+</style>
+<table class="table-rd">
+<thead>
+<tr><th></th><th colspan="2" class="bold">Max&nbsp;EVI</th><th colspan="2" class="bold">Max&nbsp;C&nbsp;EVI</th></tr>
+<tr><th></th><th class="bold">Conv.</th><th class="bold">Bias-Corr.</th><th class="bold">Conv.</th><th class="bold">Bias-Corr.</th></tr>
+</thead>
+<tbody>
+<tr class="midrule"><td colspan="5" class="bold">With&nbsp;Full&nbsp;Controls</td></tr>
+<tr><td>Conventional</td><td>&minus;0.0045<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0049<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0100<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0118<sup>&ast;&ast;&ast;</sup></td></tr>
+<tr><td></td><td>(0.0015)</td><td>(0.0015)</td><td>(0.0020)</td><td>(0.0026)</td></tr>
+<tr class="midrule"><td>Observations</td><td>38,200</td><td>38,200</td><td>32,629</td><td>32,629</td></tr>
+<tr><td>Bandwidth&nbsp;(Conv)</td><td>20.6</td><td>20.6</td><td>20.5</td><td>20.5</td></tr>
+<tr><td>Bandwidth&nbsp;(Bias)</td><td>43.4</td><td>43.4</td><td>45.4</td><td>45.4</td></tr>
+<tr class="bottomrule"><td colspan="5"></td></tr>
+</tbody>
+</table>
+
+:::{.quitesmall}
+
+**Note:** Table shows results for the estimation of the main specification, with distance (in kilometres along the river network) as the running variable. Bandwidths are selected automatically following @cattaneo2019, using a triangular kernel, the mean-squared-error criterion, and bias correction. Models in the upper panel include no covariates; models in the lower panel include the full set of controls. Columns&nbsp;(1) and&nbsp;(2) report results for overall EVI, while columns&nbsp;(3) and&nbsp;(4) report results for cropland-specific EVI. Columns&nbsp;(1) and&nbsp;(3) fit a linear polynomial in distance on each side of the cutoff; columns&nbsp;(2) and&nbsp;(4) fit a quadratic polynomial. All specifications include mine and year fixed effects. Standard errors are clustered at the mine-basin system level.
+
+**Significance codes:** *** p < 0.01, ** p < 0.05, * p < 0.1 · Clustered (Mine) standard errors in parentheses.
+
+:::
+
+## [Appendix ·]{.col1l} Permutation – Robustness {#appper .centering}
+
+![](figures/randomized-treatment.pdf)
+
+Estimation results when the treatment status (i.e., whether basins are down- or upstream) is randomized (5,000 runs, balance between statuses is kept). The red crosses indicate estimation results for the main specification. [go back to identification](#mainident){.butn} [go back to results](#mainrobust){.butn}
+
+
+
+## [Appendix ·]{.col1l} Ord. Spec. w/ Aut. BW Selection (Full Controls) {#appbw3}
+
+:vspace1
+
+<style>
+.table-cluster{border-collapse:collapse;width:100%;font-size:0.7em;}
+.table-cluster th,.table-cluster td{padding:0.1em 0.4em;}
+.table-cluster thead tr:first-child th{border-top:2px solid currentColor;}
+.table-cluster thead th{border-bottom:2px solid currentColor;}
+.table-cluster .midrule td{border-top:1px solid currentColor;}
+.table-cluster .bottomrule td{border-top:2px solid currentColor;}
+.table-cluster th:not(:first-child),.table-cluster td:not(:first-child){text-align:center;}
+.bold{font-weight:700;}
+</style>
+<table class="table-cluster">
+<thead>
+<tr><th></th><th colspan="2" class="bold">Max&nbsp;EVI</th><th colspan="2" class="bold">Max&nbsp;C&nbsp;EVI</th></tr>
+<tr><th></th><th class="bold">No&nbsp;Cluster</th><th class="bold">Cluster&nbsp;(Mine&nbsp;Basin)</th><th class="bold">No&nbsp;Cluster</th><th class="bold">Cluster&nbsp;(Mine&nbsp;Basin)</th></tr>
+</thead>
+<tbody>
+<tr class="midrule"><td colspan="5" class="bold">No&nbsp;Controls</td></tr>
+<tr><td>I(order&nbsp;&gt;&nbsp;0)</td><td>&minus;0.0048</td><td>&minus;0.0048</td><td>&minus;0.0090<sup>&ast;&ast;&ast;</sup></td><td>&minus;0.0090<sup>&ast;&ast;</sup></td></tr>
+<tr><td></td><td>(0.0013)</td><td>(0.0019)</td><td>(0.0018)</td><td>(0.0030)</td></tr>
+<tr class="midrule"><td>Observations</td><td>45,613</td><td>45,613</td><td>38,537</td><td>38,537</td></tr>
+<tr><td>Bandwidth</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+<tr class="bottomrule"><td colspan="5"></td></tr>
+</tbody>
+</table>
+
+:::{.quitesmall}
+
+**Note:** Table shows results for the estimation of the main specification, with distance defined by basin order relative to the mine basin as the running variable. Bandwidths are selected automatically following @kolesar2018, using a triangular kernel, the mean-squared-error criterion, and no bias correction. Models in the upper panel include no covariates; models in the lower panel include the full set of controls. Columns&nbsp;(1) and&nbsp;(2) report results for overall EVI, while columns&nbsp;(3) and&nbsp;(4) report results for cropland-specific EVI. Columns&nbsp;(1) and&nbsp;(3) use unclustered standard errors; columns&nbsp;(2) and&nbsp;(4) cluster standard errors at the mine-basin system level.  
+All specifications include mine and year fixed effects.  
+
+**Significance codes:** *** p < 0.01, ** p < 0.05, * p < 0.1
+
+:::
+
+
+
+## [Appendix ·]{.col1l} Validation of Outcome IFPRI {#appifpri}
+
+:vspace1
+
+<style>
+.table-crops{border-collapse:collapse;width:100%;font-size:0.7em;}
+.table-crops th,.table-crops td{padding:0.1em 0.4em;}
+.table-crops thead tr:first-child th{border-top:2px solid currentColor;}
+.table-crops thead th{border-bottom:2px solid currentColor;}
+.table-crops .midrule td{border-top:1px solid currentColor;}
+.table-crops .bottomrule td{border-top:2px solid currentColor;}
+.table-crops th:not(:first-child),.table-crops td:not(:first-child){text-align:center;}
+</style>
+<table class="table-crops">
+<thead>
+<tr><th>Outcome:</th><th>ln(Crops,&nbsp;Value)</th><th>ln(Crops,&nbsp;FY)</th><th>ln(Cereals,&nbsp;Value)</th><th>ln(Cereals,&nbsp;Yield)</th><th>ln(Cereals,&nbsp;FY)</th></tr>
+<tr><th>Model:</th><th>(1)</th><th>(2)</th><th>(3)</th><th>(4)</th><th>(5)</th></tr>
+</thead>
+<tbody>
+<tr class="midrule"><td><em>Variables</em></td><td colspan="5"></td></tr>
+<tr><td>Max.&nbsp;Cropland&nbsp;EVI</td><td>3.398<sup>&ast;&ast;&ast;</sup></td><td>0.9519<sup>&ast;&ast;&ast;</sup></td><td>2.489<sup>&ast;&ast;&ast;</sup></td><td>0.8995<sup>&ast;&ast;&ast;</sup></td><td>0.5589<sup>&ast;&ast;</sup></td></tr>
+<tr><td></td><td>(0.4230)</td><td>(0.1828)</td><td>(0.9150)</td><td>(0.1586)</td><td>(0.2704)</td></tr>
+<tr class="midrule"><td><em>Fixed&nbsp;effects</em></td><td colspan="5"></td></tr>
+<tr><td>Wave</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr class="midrule"><td><em>Fit&nbsp;statistics</em></td><td colspan="5"></td></tr>
+<tr><td>Observations</td><td>44,682</td><td>44,380</td><td>44,682</td><td>44,682</td><td>44,171</td></tr>
+<tr><td>R<sup>2</sup></td><td>0.65336</td><td>0.35656</td><td>0.50120</td><td>0.60944</td><td>0.32956</td></tr>
+<tr><td>Within&nbsp;R<sup>2</sup></td><td>0.08225</td><td>0.00717</td><td>0.02177</td><td>0.02195</td><td>0.00153</td></tr>
+<tr class="bottomrule"><td colspan="6"></td></tr>
+<tr><td colspan="6"><em>Clustered (wave) standard-errors in parentheses&nbsp;&nbsp;Significance:&nbsp;&ast;&ast;&ast;:&nbsp;0.01,&nbsp;&ast;&ast;:&nbsp;0.05,&nbsp;&ast;:&nbsp;0.1</em></td></tr>
+</tbody>
+</table>
+
+[go back](#mainmean){.butn}
+
+## [Appendix ·]{.col1l} Water Pollution Data for South Africa {#apppoll .centering}
+
+![](figures/water_pollution_gemstat.pdf)
+
+[go back](#mainpoll){.butn}
+
+
+
+
+
