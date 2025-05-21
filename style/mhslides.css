@@ -70,6 +70,7 @@ body, .reveal {
     line-height: 1.4;
 }
 
+
 .reveal .slides section table{
     margin-left: auto;
     margin-right: auto;
@@ -710,10 +711,52 @@ div.card{
   color: var(--secondary-color-darkened) !important;
 }
 
+.titlebox3{
+  width: calc(100% - 40px); 
+  max-width: calc(100% - 40px);
+  background-color: var(--tertiary-color-lightened); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
+  margin: auto!important; 
+  margin-top: 10px !important; 
+  font-family: 'Inter', sans-serif;
+  flex-direction: column;
+  white-space: pre-wrap;
+  color: var(--tertiary-color-darkened) !important;
+}
 
+.titlebox4{
+  width: calc(100% - 40px); 
+  max-width: calc(100% - 40px);
+  background-color: var(--quarternary-color-lightened); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
+  margin: auto !important; 
+  margin-top: 10px !important; 
+  font-family: 'Inter', sans-serif;
+  flex-direction: column;
+  white-space: pre-wrap;
+  color: var(--quarternary-color-darkened) !important;
+}
+
+.reveal .slides section .li1 li::marker {   
+  color: var(--primary-color) !important;    
+}
 
 .reveal .slides section .li2 li::marker {   
   color: var(--secondary-color) !important;    
+}
+
+.reveal .slides section .li3 li::marker {   
+  color: var(--tertiary-color) !important;    
+}
+
+.reveal .slides section .li4 li::marker {   
+  color: var(--quarternary-color) !important;    
 }
 
 .reveal .slides section .smc{
@@ -733,7 +776,8 @@ div.card{
 .box1f{
   width: calc(100% - 40px); 
   max-width: calc(100% - 40px);
-  background-color: var(--primary-color-lightened); 
+  background-color: var(--primary-color-lightened);
+  border: 10px solid var(--primary-color-lightened); 
   display: flex; 
   justify-content: center; 
   align-items: center; 
@@ -762,6 +806,105 @@ div.card{
   color: var(--primary-color-darkened) !important;
 }
 
+.box2f{
+  width: calc(100% - 40px); 
+  max-width: calc(100% - 40px);
+  background-color: var(--secondary-color-lightened);
+  border: 10px solid var(--secondary-color-lightened); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
+  margin: auto!important; 
+  margin-top: 10px !important; 
+  font-family: 'Inter', sans-serif;
+  flex-direction: column;
+  white-space: pre-wrap;
+  color: var(--primary-color-darkened) !important;
+}
+
+.box2o{
+  width: calc(100% - 40px); 
+  max-width: calc(100% - 40px);
+  border: 10px solid var(--secondary-color-lightened); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
+  margin: auto!important; 
+  margin-top: 10px !important; 
+  font-family: 'Inter', sans-serif;
+  flex-direction: column;
+  white-space: pre-wrap;
+  color: var(--primary-color-darkened) !important;
+}
+
+.box3f{
+  width: calc(100% - 40px); 
+  max-width: calc(100% - 40px);
+  background-color: var(--tertiary-color-lightened);
+  border: 10px solid var(--tertiary-color-lightened); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
+  margin: auto!important; 
+  margin-top: 10px !important; 
+  font-family: 'Inter', sans-serif;
+  flex-direction: column;
+  white-space: pre-wrap;
+  color: var(--primary-color-darkened) !important;
+}
+
+.box3o{
+  width: calc(100% - 40px); 
+  max-width: calc(100% - 40px);
+  border: 10px solid var(--tertiary-color-lightened); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
+  margin: auto!important; 
+  margin-top: 10px !important; 
+  font-family: 'Inter', sans-serif;
+  flex-direction: column;
+  white-space: pre-wrap;
+  color: var(--primary-color-darkened) !important;
+}
+
+.box4f{
+  width: calc(100% - 40px); 
+  max-width: calc(100% - 40px);
+  background-color: var(--quarternary-color-lightened);
+  border: 10px solid var(--quarternary-color-lightened); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
+  margin: auto!important; 
+  margin-top: 10px !important; 
+  font-family: 'Inter', sans-serif;
+  flex-direction: column;
+  white-space: pre-wrap;
+  color: var(--primary-color-darkened) !important;
+}
+
+.box4o{
+  width: calc(100% - 40px); 
+  max-width: calc(100% - 40px);
+  border: 10px solid var(--quarternary-color-lightened); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
+  margin: auto!important; 
+  margin-top: 10px !important; 
+  font-family: 'Inter', sans-serif;
+  flex-direction: column;
+  white-space: pre-wrap;
+  color: var(--primary-color-darkened) !important;
+}
+
 .col1l{
   color: var(--primary-color-lightened) !important;
 }
@@ -777,6 +920,16 @@ div.card{
 
 .quitespacey li{          /* vertical breathing-room for each bullet        */
   margin:0 0 3em 0 !important;    /* gap below                                      */
+}
+
+
+.nomargins,
+.nomargins * {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;   /* overrides width: calc(100% - 40px) */
+    box-sizing: border-box;
 }
 
 

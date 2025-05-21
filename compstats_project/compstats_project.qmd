@@ -1,0 +1,88 @@
+---
+title: "Title"
+subtitle: "Subtitle"
+author: 
+- "Jonathan Fitter ([jonathan.fitter@wu.ac.at](mailto:jonathan.fitter@wu.ac.at))"
+- "Max Heinze ([mheinze@wu.ac.at](mailto:mheinze@wu.ac.at))"
+institute:
+- "Department of Economics, Vienna University of Economics and Business (WU Vienna)"
+date: "2025-05-27"
+date-format: long
+lang: en
+format: 
+  revealjs:
+    theme: [default, ../style/mhslides_flippedcols.css]
+    width: 1280
+    height: 720
+    margin: 0
+    progress: false
+    overview: false
+    highlight-style: github
+    slideNumber: true
+    html-math-method: mathjax
+    embed-resources: true
+    pdfMaxPagesPerSlide: 1
+    pdfSeparateFragments: false
+    template-partials:
+      - ../style/title-slide.html
+    filters:
+      - ../style/section-header.lua
+      - _filters/pdf-to-svg.lua
+      - _filters/space.lua
+engine: knitr
+bibliography: references.bib
+csl: ../style/apa.csl
+nocite: |
+  @hoffman2014
+---
+
+# Hamiltonian Monte Carlo
+
+## Slide Title
+
+:::{.incremental}
+* This
+* is
+* some
+* text.
+:::
+
+
+# The No-U-Turn-Sampler (NUTS)
+
+## Slide Title
+
+:::{.incremental}
+* This
+* is
+* some
+* text.
+:::
+
+# Empirical Stuff
+
+## Slide Title
+
+:::{.incremental}
+* This
+* is
+* some
+* text.
+:::
+
+
+
+## References 
+
+:::{.centering .titlebox1}
+_This list is **scrollable**._
+:::
+
+::: {#refs}
+:::
+
+
+
+
+
+

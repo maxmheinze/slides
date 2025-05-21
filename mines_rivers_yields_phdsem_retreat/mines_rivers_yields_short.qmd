@@ -30,7 +30,7 @@ format:
     filters:
       - ../style/section-header.lua
       - _filters/pdf-to-svg.lua
-      - _filters/vspace.lua
+      - _filters/space.lua
 engine: knitr
 bibliography: references.bib
 csl: ../style/apa.csl
@@ -69,11 +69,10 @@ csl: ../style/apa.csl
 
 ## How Pollution Travels
 
-:vspace1
 
 ::: {.columns}
 ::: {.column width="65%" .fragment}
-![](figures/intro.pdf){width="100%"}
+![](figures/intro_cropped.gif){width="100%"}
 :::
 ::: {.column width="35%"}
 
@@ -81,7 +80,9 @@ csl: ../style/apa.csl
 
 [If **water pollution** from mines affects vegetation, we should observe reduced vegetation health [**downstream**]{.coldb} of a mine.]{.fragment}
 
-[Using a **remotely-sensed vegetation index**, we find evidence for less healthy vegetation [**downstream**]{.coldb}.]{.fragment}
+:vspace1
+
+[Using a **remotely-sensed vegetation index**, we find evidence for this.]{.fragment}
 :::
 :::
 
@@ -117,7 +118,7 @@ csl: ../style/apa.csl
 
 ## Research Question
 
-::: {.titlebox2 .fragment}
+::: {.titlebox1 .fragment}
 **What is the causal effect of water pollution from mining on agricultural productivity in Africa?**
 :::
 
@@ -178,30 +179,95 @@ We then designate **mine basins** and determine 10 levels each of [**upstream**]
 ## Variables and Observations {#mainvars}
 
 ::: {.columns}
-::: {.column width="50%" .fragment}
-::: {.titlebox1}
+::: {.column width="50%" .li4 .fragment}
+::: {.titlebox4}
 **Outcome**
 :::
 :::{.incremental}
 * We use the [**Enhanced Vegetation Index (EVI)**]{.col4b}, which
   * is **remotely sensed**, and
   * ranges **between –1** (water) **and 1** (dense vegetation).
-* We extract the **annual maximum** on
-  * all areas covered by [**vegetation**]{.col4b}, and
-  * only on [**croplands**]{.col4b}.
+
+:::{.fragment}
+:::{.columns}
+:::{.column width="5%"}
+
+:::
+:::{.column width="45%"}
+:::{.box4o .nomargins}
+annual max. on all areas covered by vegetation
 :::
 :::
-::: {.column width="50%" .li2 .fragment}
-::: {.titlebox2}
+:::{.column width="2%"}
+
+:::
+:::{.column width="45%"}
+:::{.box4o .nomargins}
+annual max. on areas covered by croplands
+:::
+:::
+:::
+:::{.columns}
+:::{.column width="5%"}
+
+:::
+:::{.column width="45%"}
+:::{.box4f .nomargins}
+**🠖 Max. EVI**
+:::
+:::
+:::{.column width="2%"}
+
+:::
+:::{.column width="45%"}
+:::{.box4f .nomargins}
+**🠖 Max. Cropl. EVI**
+:::
+:::
+:::
+:::
+
+:::
+:::
+::: {.column width="50%" .fragment}
+::: {.titlebox1}
 **Observations and Covariates**
 :::
+:::{.columns}
+:::{.column width="2%"}
+
+:::
+:::{.column width="30%"}
+:::{.box1o .nomargins}
+**6,307**
+**upstream**
+basins
+:::
+:::
+:::{.column width="2%"}
+
+:::
+:::{.column width="30%"}
+:::{.box1f .nomargins}
+**1,900**<br>
+**mine**
+basins
+:::
+:::
+:::{.column width="2%"}
+
+:::
+:::{.column width="30%"}
+:::{.box1o .nomargins}
+**6,127**
+**downstream**
+basins
+:::
+:::
+:::
 :::{.incremental}
-* We observe **6,307 upstream** basins, **1,900 mine** basins, and **6,127 downstream** basins over $T=8$ years. [show order × basins](#appnumbers){.butn} 
-* We collate **covariates** on:
-  * topography [[@amatulli2018]]{.smc},
-  * soil type [[@hengl2017]]{.smc},
-  * climate [[@abatzoglou2018]]{.smc}, and
-  * soioeconomic characteristics [[@weiss2018]]{.smc}.
+* Observations span $T=8$ years. [show order × basins](#appnumbers){.butn} 
+* We include **covariates** on topography [[@amatulli2018]]{.smc}, soil type [[@hengl2017]]{.smc}, climate [[@abatzoglou2018]]{.smc}, and soioeconomic characteristics [[@weiss2018]]{.smc}.
 :::
 :::
 :::
@@ -267,13 +333,15 @@ $$
 ## Results
 
 ::::{.columns}
-:::{.column width="40%" .incremental}
+:::{.column width="40%"}
 
-:vspace3
+:vspace4
 
-* Reduction in peak biomass by **1.28–1.35%** relative to the mean on an affected area of **255,000 km²**.
+[Peak vegetation is reduced by **1.28–1.35%** relative to the mean on an affected area of **255,000 km²**.]{.fragment}
 
-* For croplands, the estimates imply a **1.38–1.47% reduction** across **74,000 km²**.
+:vspace1
+
+[For croplands, the estimates imply a **1.38–1.47% reduction** across **74,000 km²**.]{.fragment}
 
 :::
 :::{.column width="60%"}
@@ -447,7 +515,7 @@ $$
 
 . . .
 
-* We re-estimate the main specification using an **exponential distance decay** function, $\mathrm{exp}(-\delta d_{ij})$, where $d_{ij}$ is the distance along the river from a mine.
+We re-estimate the main specification using an **exponential distance decay** function, $\mathrm{exp}(-\delta d_{ij})$, where $d_{ij}$ is the distance along the river from a mine.
 
 :::{.centering .fragment}
 ![](figures/plot_effect_decay_exp_maxorder10-EVI.pdf){width="47%"} ![](figures/plot_effect_decay_exp_maxorder10-EVI-c.pdf){width="47%"}
@@ -1255,7 +1323,7 @@ Balance of elevation, slope, temperature, and precipitation before and after mat
 
 :::{.quitesmall}
 
-**Note:** Table shows results for the estimation of the main specification, where distance in kilometres along the river network is the running variable. Bandwidths are chosen automatically following @cattaneo2019, using a triangular kernel, the mean-squared-error criterion, and bias correction. The upper-panel models include no covariates; the lower-panel models include the full set of controls. Columns (1) and (2) use overall EVI as the outcome, while columns (3) and (4) use cropland-specific EVI. Columns (1) and (3) fit a linear polynomial in distance on each side of the cutoff; columns (2) and (4) fit a quadratic polynomial. All specifications include mine and year fixed effects. Standard errors are clustered at the mine-basin system level.  
+**Note:** Table shows results for the estimation of the main specification, where distance in kilometres along the river network is the running variable. Bandwidths are chosen automatically following @cattaneo2019,using a triangular kernel, the mean-squared-error criterion, and bias correction. The upper-panel models include no covariates; the lower-panel models include the full set of controls. Columns (1) and (2) use overall EVI as the outcome, while columns (3) and (4) use cropland-specific EVI. Columns (1) and (3) fit a linear polynomial in distance on each side of the cutoff; columns (2) and (4) fit a quadratic polynomial. All specifications include mine and year fixed effects. Standard errors are clustered at the mine-basin system level.  
 
 **Significance codes:** *** p < 0.01, ** p < 0.05, * p < 0.1 · Clustered (Mine) standard errors in parentheses.
 
