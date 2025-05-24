@@ -136,20 +136,38 @@ csl: ../style/apa.csl
 ## How to Find Affected Areas {#mainbasins}
 
 ::: {.columns}
-::: {.column width="40%" .fragment}
-![](figures/basins.pdf){height="90%"}
+::: {.column width="40%"}
+::: {.r-stack}
+![](figures/basins_step7.svg){.fragment width="90%" fragment-index=1}
+
+![](figures/basins_step0.svg){.fragment width="90%" fragment-index=2}
+
+![](figures/basins_step1.svg){.fragment width="90%" fragment-index=3}
+
+![](figures/basins_step2.svg){.fragment width="90%" fragment-index=4}
+
+![](figures/basins_step3.svg){.fragment width="90%" fragment-index=5}
+
+![](figures/basins_step4.svg){.fragment width="90%" fragment-index=6}
+
+![](figures/basins_step5.svg){.fragment width="90%" fragment-index=7}
+
+![](figures/basins_step6.svg){.fragment width="90%" fragment-index=8}
+
+![](figures/basins_step7.svg){.fragment width="90%" fragment-index=9}
 :::
-::: {.column width="60%" .fragment}
+:::
+::: {.column width="60%"}
 
 :vspace4
 
-Our **unit of observation** is the **river basin**. @lehner2013 provide a nested basin collection, of which we use the **most granular level**.
+[Our **unit of observation** is the **river basin**. @lehner2013 provide a nested basin collection, of which we use the **most granular level**.]{.fragment fragment-index=1}
 
-If we spill a cup of water anywhere in a basin, it always ends up in the next basin [**downstream**]{.coldb}.
+[If we spill a cup of water anywhere in a basin, it always ends up in the next basin downstream.]{.fragment fragment-index=3}
 
-Water moves from [**upstream**]{.colub} to [**downstream**]{.coldb} of a mine.
+[Water moves from [**upstream**]{.colub} to [**downstream**]{.coldb} of a mine.]{.fragment fragment-index=6}
 
-[show actual basins](#appbasins){.butn} 
+[show actual basins](#appbasins){.butn .fragment fragment-index=6} 
 
 :::
 :::
@@ -167,11 +185,11 @@ Water moves from [**upstream**]{.colub} to [**downstream**]{.coldb} of a mine.
 
 :vspace4
 
-We use **mine locations** from @maus2022, which includes some ASM sites.
+[We use **mine locations** from @maus2022, which includes some ASM sites.]{.fragment fragment-index=2}
 
-We then designate **mine basins** and determine 10 levels each of [**upstream**]{.colub} and [**downstream**]{.coldb} basins.
+[We then designate **mine basins** and determine 10 levels each of [**upstream**]{.colub} and [**downstream**]{.coldb} basins.]{.fragment fragment-index=3}
 :::
-::: {.column width="55%" .flushright}
+::: {.column width="55%" .flushright .fragment fragment-index=1}
 ![](figures/whole_africa_map.pdf){width="90%"}
 :::
 :::
@@ -322,29 +340,39 @@ $$
 
 ## Results Overview
 
-:vspace4
+:::{.box1o style="height:175px;" .fragment}
+We find a **significant reduction** in vegetation health [**downstream**]{.coldb} of mines.
+:::
 
-:::{.incremental .spacey}
-* We find a **significant reduction** in vegetation health [**downstream**]{.coldb} of mines.
-* Impacts are particularly strong in [**fertile regions**]{.col1b} and where [**gold mining**]{.col2b} predominates.
-* These results are **robust** to varying the sample, the outcome measurement, and the level of fixed effects.
+:::{.box1o style="align-items:flex-start;height:175px;" .fragment}
+Impacts are particularly strong in [**fertile regions**]{.col1b} and where [**gold mining**]{.col1b} predominates.
+:::
+
+:::{.box1o style="align-items:flex-start;height:175px;" .fragment}
+These results are [**robust**]{.col2b} to varying the sample, the outcome measurement, and the level of fixed effects.
 :::
 
 ## Results
+
+:::{.centering .fragment}
+![](figures/plot_main-order_maxorder10_pooling3_20250226.pdf){width="80%"}
+:::
+
+## Results as Numbers
 
 ::::{.columns}
 :::{.column width="40%"}
 
 :vspace4
 
-[Peak vegetation is reduced by **1.28–1.35%** relative to the mean on an affected area of **255,000 km²**.]{.fragment}
+[Peak vegetation is reduced by **1.28–1.35%** relative to the mean on an affected area of **255,000 km²**.]{.fragment fragment-index=2}
 
 :vspace1
 
-[For croplands, the estimates imply a **1.38–1.47% reduction** across **74,000 km²**.]{.fragment}
+[For croplands, the estimates imply a **1.38–1.47% reduction** across **74,000 km²**.]{.fragment fragment-index=3}
 
 :::
-:::{.column width="60%"}
+:::{.column width="60%" .fragment fragment-index=1}
 
 :vspace2
 
@@ -459,40 +487,64 @@ $$
 * comparable to **5.4%** of the 1.7 million tons that the **World Food Program WFP** distributes annually.
 :::
 
-## How Far Downstream Do These Effects Persist?
-
-:::{.centering .fragment}
-![](figures/plot_main-order_maxorder10_pooling3_20250226.pdf){width="80%"}
-:::
 
 ## Heterogeneity – Which Areas Are Affected?
 
 :::{.columns}
-:::{.column width="60%" .incremental}
-* [**Commodity Types**]{.col0b} [[@padilla2021]]{.smc}:
-  * Gold mining regions are particularly affected
-* [**Region**]{.col0b}:
-  * greater effect in West Africa
-* [**Characteristics of the mine**]{.col0b} [[@jasansky2023]]{.smc}:
-  * greater effect for larger mines
-* [**Biome**]{.col0b} [[@fao2023]]{.smc}
-  * larger effect for mines located on highly fertile croplands
-  * larger effect in grasslands and forests
+:::{.column width="50%" .incremental}
+
+:vspace2
+
+:::{.fragment fragment-index=1}
+:::{.titlebox1}
+**Commodity Types**
 :::
-:::{.column width="40%"}
-![](figures/commodity_pred.png)
+
+Gold mining regions are particularly affected [[@padilla2021]]{.smc}.
+:::
+
+:vspace2
+
+:::{.fragment fragment-index=2}
+:::{.titlebox1}
+**Region**
+:::
+
+Greater effect in West Africa.
+:::
+
+:::
+:::{.column width="50%"}
+
+:vspace2
+
+:::{.fragment fragment-index=3}
+:::{.titlebox1}
+**Mine characteristics**
+:::
+
+Greater effect for larger mines [[@jasansky2023]]{.smc}.
+:::
+
+:vspace2
+
+:::{.fragment fragment-index=4}
+:::{.titlebox1}
+**Biome**
+:::
+
+Larger effect for mines on fertile croplands, on grasslands, and in forests [[@fao2023]]{.smc}
+:::
 :::
 :::
 
 
 ## Heterogeneity – Which Areas Are Affected?
 
-![](figures/heterogeneity_cropped.png){width="100%"}
+:vspace3
 
-:::{.incremental}
-* Stronger effects in **West Africa** and on **highly fertile croplands**.
-* [**Gold mining**]{.col1b} regions show **75% larger impacts** on croplands.
-:::
+![](figures/heterogeneity_cropped.png){width="100%" .nostretch .fragment}
+
 
 ## Robustness
 
@@ -506,7 +558,7 @@ $$
 * We check the validity of our assumptions by conducting additional exercises. [permutation test](#appper){.butn} [placebo outcomes](#appplacebo){.butn} [matching on covariates](#appmatch){.butn}
 :::
 :::
-:::{.column}
+:::{.column .fragment fragment-index=1}
 ![](figures/robustness_plot.pdf){width="100%"}
 :::
 :::
@@ -554,6 +606,7 @@ We re-estimate the main specification using an **exponential distance decay** fu
 
 * on agricultural productivity,
 * mediated by water pollution.
+
 :::
 :::
 :::{.column width="60%"}
@@ -578,6 +631,7 @@ _This list is **scrollable**._
 :::
 
 ::: {#refs}
+
 :::
 
 # Appendix
@@ -597,6 +651,34 @@ Illustration from @lehner2013
 [go back](#mainbasins){.butn}
 :::
 ::::
+
+## [Appendix ·]{.col1l} Forked Upstream Basins {#appforkedbasins}
+
+::::{.columns}
+:::{.column width="55%"}
+![](figures/detail_map_upstream_unite_wl8.pdf){width="100%"}
+:::
+:::{.column width = "45%"}
+
+Multiple forked upstream (Level 12) basins join into a single mine basin further downstream. The superimposed yellow lines indicate Level 8 basins; these contain varying numbers of sub-basins (due to a level-skipping mechanism), and clearly divide tributary and main basins. The blue lines, which represent river streams, provide additional intuition for the basin topology.
+
+:::
+::::
+
+## [Appendix ·]{.col1l} Mine in Basin {#appmineinbasin .centering}
+
+![](figures/detail_map_unitary_mine.pdf)
+
+## [Appendix ·]{.col1l} Mine Cluster {#appminecluster .centering}
+
+![](figures/detail_map_split_mine.pdf)
+
+## [Appendix ·]{.col1l} Multiple Basin Chains {#appbasinchains .centering}
+
+![](figures/detail_map_flow_join.pdf)
+
+
+
 
 ## [Appendix ·]{.col1l} A Proxy for Agricultural Activity {#appagri}
 
@@ -717,7 +799,35 @@ The number of mine-basins with Y upstream and X downstream basins in the dataset
   </tbody>
 </table>
 
-## [Appendix ·]{.col1l} Full Order Specifiaction Results {#appfullord}
+## [Appendix ·]{.col1l} Distribution of Mines {#appmines .centering}
+
+![](figures/whole_africa_map_mines.pdf)
+
+## [Appendix ·]{.col1l} EVI Map {#appevi .centering}
+
+![](figures/evi_vegetation_map.pdf)
+
+## [Appendix ·]{.col1l} Croplands EVI Map {#appevic .centering}
+
+![](figures/evi_croplands_map.pdf)
+
+## [Appendix ·]{.col1l} Temperature Map {#apptemperature .centering}
+
+![](figures/temperature_map.pdf)
+
+## [Appendix ·]{.col1l} Precipitation Map {#appelprecipitation .centering}
+
+![](figures/precipitation_map.pdf)
+
+## [Appendix ·]{.col1l} Elevation Map {#appelevation .centering}
+
+![](figures/elevation_map.pdf)
+
+## [Appendix ·]{.col1l} Slope Map {#appslope .centering}
+
+![](figures/slope_map.pdf)
+
+## [Appendix ·]{.col1l} Full Order Specifiaction Results {#appfullord .centering}
 
 :vspace0.1
 
@@ -1069,6 +1179,10 @@ The number of mine-basins with Y upstream and X downstream basins in the dataset
   </tbody>
 </table>
 
+## [Appendix ·]{.col1l} Commodity Type Prediction {#appcommodity .centering}
+
+![](figures/commodity_pred.png)
+
 
 ## [Appendix ·]{.col1l} Varying Sample Definition {#appvardef}
 
@@ -1285,10 +1399,16 @@ Order estimates when using elevation, slope, temperature, precipitation, accessi
 
 ## [Appendix ·]{.col1l} Matching Exercise {#appmatch .centering}
 
+![](figures/mine-basins_balance.pdf)
+
+Balance of elevation, slope, temperature, and precipitation before and after matching. (Soilgrids not pictured.) [go back to identification](#mainident){.butn} [go back to results](#mainrobust){.butn}
+
+## [Appendix ·]{.col1l} Matching Exercise {#appmatch2 .centering}
+
 ![](figures/mine-basins_balance-all.pdf)
 
 
-Balance of elevation, slope, temperature, and precipitation before and after matching. (Soilgrids not pictured.) [go back to identification](#mainident){.butn} [go back to results](#mainrobust){.butn}
+Standardized mean difference before and after matching. [go back to identification](#mainident){.butn} [go back to results](#mainrobust){.butn}
 
 
 ## [Appendix ·]{.col1l} Dist. Spec. w/ Aut. BW Selection (No Controls) {#appbw1}
