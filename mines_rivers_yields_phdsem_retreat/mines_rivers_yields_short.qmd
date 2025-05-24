@@ -298,7 +298,7 @@ basins
 We estimate:
 
 $$
-y_{imt} = \colorbox{var(--secondary-color-lightened)}{$\phantom{_i}\boldsymbol{\beta}'$}\:\colorbox{var(--primary-color-lightened)}{$F(x_i)\phantom{'}$}+\boldsymbol{\theta}'W_{it}+\mu_m+\psi_t+\varepsilon_{imt},
+y_{imt} = \colorbox{var(--secondary-color-lightened)}{$\phantom{_i}\boldsymbol{\beta}'$}\:\colorbox{var(--primary-color-lightened)}{$F(x_i)\phantom{'}$}+\boldsymbol{\theta}'\boldsymbol{W}_{it}+\mu_m+\psi_t+\varepsilon_{imt},
 $$
 
 
@@ -539,11 +539,17 @@ Larger effect for mines on fertile croplands, on grasslands, and in forests [[@f
 :::
 
 
-## Heterogeneity – Which Areas Are Affected?
+## Heterogeneity – Which Areas Are Affected? {.centering}
 
-:vspace3
+:vspace1
 
-![](figures/heterogeneity_cropped.png){width="100%" .nostretch .fragment}
+![](figures/heterogeneity_1.svg){width="75%" .nostretch .fragment}
+
+## Heterogeneity – Which Areas Are Affected? {.centering}
+
+:vspace1
+
+![](figures/heterogeneity_2.svg){width="75%" .nostretch .fragment}
 
 
 ## Robustness
