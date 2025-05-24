@@ -8,7 +8,7 @@ author:
 - "Nikolas Kuschnig ([nkuschnig@wu.ac.at](mailto:nkuschnig@wu.ac.at))"
 institute:
 - "Department of Economics, Vienna University of Economics and Business (WU Vienna)"
-date: "2025-05-16"
+date: "2025-05-24"
 date-format: long
 lang: en
 format: 
