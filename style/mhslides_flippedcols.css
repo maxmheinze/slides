@@ -933,6 +933,52 @@ div.card{
 }
 
 
+.w10 svg {
+  width: 10% !important;
+  height: auto !important;
+}
 
+.w20 svg {
+  width: 20% !important;
+  height: auto !important;
+}
 
+.w30 svg {
+  width: 30% !important;
+  height: auto !important;
+}
 
+.w40 svg {
+  width: 40% !important;
+  height: auto !important;
+}
+
+.w50 svg {
+  width: 50% !important;
+  height: auto !important;
+}
+
+.w60 svg {
+  width: 60% !important;
+  height: auto !important;
+}
+
+.w70 svg {
+  width: 70% !important;
+  height: auto !important;
+}
+
+.w80 svg {
+  width: 80% !important;
+  height: auto !important;
+}
+
+.w90 svg {
+  width: 90% !important;
+  height: auto !important;
+}
+
+.w100 svg {
+  width: 100% !important;
+  height: auto !important;
+}

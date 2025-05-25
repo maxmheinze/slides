@@ -1,8 +1,8 @@
 ---
-title: "Title"
-subtitle: "Subtitle"
+title: "The No-U-Turn-Sampler"
+subtitle: "Computational Statistics Project"
 author: 
-- "Jonathan Fitter ([jonathan.fitter@wu.ac.at](mailto:jonathan.fitter@wu.ac.at))"
+- "Jonathan Fitter ([jfitter@wu.ac.at](mailto:jonathan.fitter@wu.ac.at))"
 - "Max Heinze ([mheinze@wu.ac.at](mailto:mheinze@wu.ac.at))"
 institute:
 - "Department of Economics, Vienna University of Economics and Business (WU Vienna)"
@@ -29,12 +29,159 @@ format:
       - ../style/section-header.lua
       - _filters/pdf-to-svg.lua
       - _filters/space.lua
+      - quarto-kroki
+      - _filters/svgfonts.lua
 engine: knitr
 bibliography: references.bib
 csl: ../style/apa.csl
 nocite: |
   @hoffman2014
 ---
+
+# Intro and Recap
+
+## Markov Chain
+
+. . . 
+
+A [**Markov chain**]{.col1} is a stochastic process $\{X_t\}$ indexed by time $t\geq 0$.
+
+:::{.incremental}
+* We call the **set of all values** that $\{X_t\}$ can assume the [**state space**]{.col1} of the Markov Chain.
+* $\{X-t\}$ is called a Markov Chain if it fulfills the [**Markov property**]{.col1} that
+  $$
+  P(X_{t+1}=j\mid X_0=i_0,\dots,X_t=i_t)=P(X_{t+1}=j\mid X_t=i_t),
+  $$
+  i.e., that the conditional distribution of the next state depends only on the current state.
+:::
+
+. . .
+
+[**Markov Chain Monte Carlo (MCMC)**]{.col1} methods make use of Markov chains to sample from a **target distribution**. 
+
+## Markov Chain
+
+::::{.columns}
+:::{.column width="40%" .fragment}
+::: {.w100 .centering}
+```{kroki-tikz}
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usetikzlibrary{automata,positioning,arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}[->,>=Stealth,shorten >=1pt,auto,node distance=3cm,semithick]
+  \node[state] (A) {$A$};
+  \node[state] (B) [right of=A] {$B$};
+  \node[state] (C) [below of=A] {$C$};
+
+  \path
+    (A) edge [loop above] node {0.5} ()
+        edge              node {0.3} (B)
+        edge [bend left]  node {0.2} (C)
+    (B) edge [loop above] node {0.6} ()
+        edge [bend left]  node {0.4} (C)
+    (C) edge [loop below] node {0.7} ()
+        edge [bend left]  node {0.3} (A);
+\end{tikzpicture}
+\end{document}
+```
+:::
+:::
+:::{.column width="60%" .fragment}
+Markov chains are
+
+:::{.incremental}
+* **irreducible**, i.e. every state can eventually be reached from any state;
+* **aperiodic**, i.e. reverting to a state is not only possible after a multiple of a certain number of steps;
+* **positive recurrent**, i.e. for all states, the expected number of transitions to return to that state is finite.
+:::
+
+[For such Markov Chains, [**transition probabilities**]{.col1} converge to a unique stationary distribution on the state space.]{.fragment}
+
+:::
+::::
+
+## Metropolis-Hastings
+
+::::{.columns}
+:::{.column width="40%" .fragment}
+
+:vspace2
+
+::: {.w100 .centering}
+```{kroki-tikz}
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{automata,arrows,positioning}
+\begin{document}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,node distance=3cm]
+  \node[state] (i) {$i$};
+  \node[state] (j) [right=of i] {$j$};
+  \node[state] (k) [below=of i] {$k$};
+  \path
+    (i) edge[bend left] node[above] {$g(j\mid i)\,\alpha(i,j)$} (j)
+        edge[loop above]  node           {$1-\sum_{h\neq i}g(h\mid i)\,\alpha(i,h)$} ()
+    (j) edge[bend left] node[below] {$g(i\mid j)\,\alpha(j,i)$} (i)
+        edge[bend left] node[above] {$g(k\mid j)\,\alpha(j,k)$} (k)
+    (k) edge[bend left] node[below] {$g(i\mid k)\,\alpha(k,i)$} (i)
+        edge[loop below]  node           {$1-\sum_{h\neq k}g(h\mid k)\,\alpha(k,h)$} ();
+\end{tikzpicture}
+\end{document}
+```
+:::
+:::
+:::{.column width="60%" .fragment}
+
+**Metropolis-Hastings** is a class of MCMC methods. 
+
+:::{.incremental}
+*	Propose $Y\sim g(\cdot\mid X_t)$, compute $\alpha(i,j)=\min\Bigl(1,\frac{f(j)\,g(i\mid j)}{f(i)\,g(j\mid i)}\Bigr)$.
+* If $U\le\alpha(i,j)$, move $i\to j$; else stay at $i$.
+* Chain is reversible and has $f$ as its stationary distribution.
+:::
+
+
+
+:::
+::::
+
+## Gibbs Sampler
+
+::::{.columns}
+:::{.column width="40%" .fragment}
+::: {.w100 .centering}
+```{kroki-tikz}
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{automata,arrows,positioning}
+\begin{document}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,node distance=4cm]
+  \node[state] (X) {$x$};
+  \node[state] (Y) [right=of X] {$y$};
+  \path
+    (X) edge[bend left] node[above] {$f(y\mid x)$} (Y)
+    (Y) edge[bend left] node[below] {$f(x\mid y)$} (X);
+\end{tikzpicture}
+\end{document}
+```
+:::
+:::
+:::{.column width="60%" .fragment}
+The **Gibbs sampler** is an example of a Metropolis-Hastings algorithm.
+
+:::{.incremental}
+* Sample $Y\sim f(y\mid x)$, then $X\sim f(x\mid y)$ each iteration.
+* Defines a Markov chain on $(x,y)$ with joint $f(x,y)$ as stationary law.
+* Practical when full-conditionals $f(x_j\mid x_{-j})$ are tractable.
+:::
+
+
+:::
+::::
+
+
 
 # Hamiltonian Monte Carlo
 
