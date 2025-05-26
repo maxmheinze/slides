@@ -493,7 +493,7 @@ The [**No-U-Turn-Sampler**]{.col1} ([**NUTS**]{.col1}) eliminates the need to sp
 ## Three peak density 
 
 :::{.centering}
-![](figures/three_peak_trace_1000.svg){width="120%" .fragment}
+![](figures/three_peak_trace_1000.svg){width="100%" .fragment}
 :::
 
 
