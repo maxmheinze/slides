@@ -1,0 +1,288 @@
+library(mvtnorm)
+
+
+# No-U-Turn sampler
+
+leapfrog <- function(theta, r, grad_log_prob, eps) {
+  r_half   <- r + 0.5 * eps * grad_log_prob(theta)
+  theta_new<- theta + eps * r_half
+  r_new    <- r_half + 0.5 * eps * grad_log_prob(theta_new)
+  list(theta = theta_new, r = r_new)
+}
+
+find_reasonable_epsilon <- function(theta, grad_log_prob, log_prob) {
+  eps <- 1
+  r   <- rnorm(length(theta))
+  lp0 <- log_prob(theta) - 0.5 * sum(r^2)
+  lf  <- leapfrog(theta, r, grad_log_prob, eps)
+  lp1 <- log_prob(lf$theta) - 0.5 * sum(lf$r^2)
+  a   <- exp(lp1 - lp0)
+  dir <- if (a > 0.5) 1 else -1
+  while (a^dir > 2^(-dir)) {
+    eps <- eps * 2^dir
+    lf  <- leapfrog(theta, r, grad_log_prob, eps)
+    lp1 <- log_prob(lf$theta) - 0.5 * sum(lf$r^2)
+    a   <- exp(lp1 - lp0)
+  }
+  eps
+}
+
+build_tree <- function(theta, r, u, v, j, eps, log_prob, grad_log_prob, delta_max = 1000) {
+  if (j == 0) {
+    lf <- leapfrog(theta, r, grad_log_prob, v * eps)
+    lp <- log_prob(lf$theta) - 0.5 * sum(lf$r^2)
+    n  <- as.integer(u <= exp(lp))
+    s  <- as.integer(lp - log(u) > -delta_max)
+    alpha <- min(1, exp(lp - (log_prob(theta) - 0.5*sum(r^2))))
+    list(theta_minus = lf$theta, r_minus = lf$r,
+         theta_plus  = lf$theta, r_plus  = lf$r,
+         theta_prop  = lf$theta, n_prop  = n,
+         s_prop      = s,     alpha    = alpha,
+         n_alpha     = 1)
+  } else {
+    bt1 <- build_tree(theta, r, u, v, j-1, eps, log_prob, grad_log_prob, delta_max)
+    if (bt1$s_prop == 1) {
+      if (v == -1) {
+        bt2 <- build_tree(bt1$theta_minus, bt1$r_minus, u, v, j-1, eps, log_prob, grad_log_prob, delta_max)
+        theta_minus <- bt2$theta_minus; r_minus <- bt2$r_minus
+        theta_plus  <- bt1$theta_plus;  r_plus  <- bt1$r_plus
+      } else {
+        bt2 <- build_tree(bt1$theta_plus, bt1$r_plus, u, v, j-1, eps, log_prob, grad_log_prob, delta_max)
+        theta_minus <- bt1$theta_minus; r_minus <- bt1$r_minus
+        theta_plus  <- bt2$theta_plus;  r_plus  <- bt2$r_plus
+      }
+      den  <- bt1$n_prop + bt2$n_prop
+      if (den > 0) {
+        if (runif(1) < bt2$n_prop / den) {
+          theta_prop <- bt2$theta_prop
+        } else {
+          theta_prop <- bt1$theta_prop
+        }
+      } else {
+        theta_prop <- bt1$theta_prop
+      }
+      r_sum <- bt2$r_plus + bt2$r_minus
+      s_prop <- as.integer(bt1$s_prop == 1 && bt2$s_prop == 1 &&
+                             sum(r_sum * (bt2$theta_plus - bt2$theta_minus)) >= 0)
+      list(theta_minus = theta_minus, r_minus = r_minus,
+           theta_plus  = theta_plus,  r_plus  = r_plus,
+           theta_prop  = theta_prop,
+           n_prop      = bt1$n_prop + bt2$n_prop,
+           s_prop      = s_prop,
+           alpha       = bt1$alpha + bt2$alpha,
+           n_alpha     = bt1$n_alpha + bt2$n_alpha)
+    } else {
+      bt1
+    }
+  }
+}
+
+nuts <- function(log_prob, grad_log_prob, theta0, n_iter, adapt_steps = floor(n_iter/2),
+                 delta = 0.65, max_depth = 10) {
+  d <- length(theta0)
+  samples <- matrix(NA, n_iter, d)
+  theta <- theta0
+  eps   <- find_reasonable_epsilon(theta, grad_log_prob, log_prob)
+  mu    <- log(10 * eps)
+  eps_bar <- 1
+  H_bar   <- 0
+  gamma <- 0.05; t0 <- 10; kappa <- 0.75
+  
+  for (i in 1:n_iter) {
+    r0 <- rnorm(d)
+    joint0 <- log_prob(theta) - 0.5 * sum(r0^2)
+    u <- exp(joint0) * runif(1)
+    theta_minus <- theta; theta_plus <- theta
+    r_minus <- r0;       r_plus   <- r0
+    theta_prop <- theta
+    j <- 0; n_prop <- 1; s_prop <- 1; alpha_sum <- 0; n_alpha_sum <- 0
+    
+    while (s_prop == 1 && j < max_depth) {
+      v <- sample(c(-1,1),1)
+      if (v == -1) {
+        bt <- build_tree(theta_minus, r_minus, u, v, j, eps, log_prob, grad_log_prob)
+        theta_minus <- bt$theta_minus; r_minus <- bt$r_minus
+      } else {
+        bt <- build_tree(theta_plus, r_plus, u, v, j, eps, log_prob, grad_log_prob)
+        theta_plus  <- bt$theta_plus;  r_plus  <- bt$r_plus
+      }
+      if (bt$s_prop == 1 && runif(1) < bt$n_prop / n_prop) {
+        theta_prop <- bt$theta_prop
+      }
+      n_prop    <- n_prop + bt$n_prop
+      s_prop    <- bt$s_prop * as.integer(sum((theta_plus - theta_minus)*r_minus)>=0) *
+        as.integer(sum((theta_plus - theta_minus)*r_plus )>=0)
+      alpha_sum   <- alpha_sum + bt$alpha
+      n_alpha_sum <- n_alpha_sum + bt$n_alpha
+      j <- j + 1
+    }
+    
+    acc_rate <- alpha_sum / n_alpha_sum
+    if (i <= adapt_steps) {
+      H_bar <- (1 - 1/(i + t0)) * H_bar + (delta - acc_rate)/(i + t0)
+      log_eps <- mu - sqrt(i)/gamma * H_bar
+      eta <- i^(-kappa)
+      eps_bar <- exp((1 - eta) * log(eps_bar) + eta * log_eps)
+      eps <- exp(log_eps)
+    } else {
+      eps <- eps_bar
+    }
+    
+    theta <- theta_prop
+    samples[i, ] <- theta
+    cat(sprintf("Iter %d: eps=%.5f, acc=%.3f\n", i, eps, acc_rate))
+    
+  }
+  samples
+}
+
+# Metropolis Hastings sampler
+
+mh_sampler <- function(log_prob, initial_theta, n_samples, proposal_sd=1) {
+  samples <- numeric(n_samples); theta <- initial_theta
+  lp_curr <- log_prob(theta)
+  for (i in 1:n_samples) {
+    prop <- rnorm(1, theta, proposal_sd); lp_prop <- log_prob(prop)
+    if (runif(1) < exp(lp_prop-lp_curr)) { theta <- prop; lp_curr <- lp_prop }
+    samples[i] <- theta
+  }
+  samples
+}
+
+
+# # Multimodal target: 0.5·N(-3,1)+0.5·N(3,1)
+# log_prob <- function(x) {
+#   lp1 <- dnorm(x, -3,1, log=TRUE)+log(0.5)
+#   lp2 <- dnorm(x,  3,1, log=TRUE)+log(0.5)
+#   m <- max(lp1, lp2); m + log(exp(lp1-m)+exp(lp2-m))
+# }
+# grad_log_prob <- function(x) {
+#   lp1 <- dnorm(x,-3,1,log=TRUE); lp2 <- dnorm(x,3,1,log=TRUE)
+#   p1 <- exp(lp1-max(lp1,lp2)); p2 <- exp(lp2-max(lp1,lp2))
+#   w1 <- p1/(p1+p2); w2 <- p2/(p1+p2)
+#   w1 * (-(x+3)) + w2 * (-(x-3))
+# }
+# 
+# 
+# # Run samplers and compare
+# set.seed(123)
+# n_iter <- 2000
+# nuts_samps <- nuts(log_prob, grad_log_prob, theta0=0, n_iter=n_iter)
+# mh_samps   <- mh_sampler(log_prob, initial_theta=0, n_samples=n_iter, proposal_sd=1)
+# 
+# par(mfrow=c(2,2))
+# plot(nuts_samps, type="l", main="NUTS Trace")
+# plot(mh_samps,   type="l", main="MH Trace")
+# hist(nuts_samps, breaks=50, freq=FALSE, xlim=c(-6,6), main="NUTS Density")
+# curve(0.5*dnorm(x,-3,1)+0.5*dnorm(x,3,1), add=TRUE, lwd=2)
+# hist(mh_samps, breaks=50, freq=FALSE, xlim=c(-6,6), main="MH Density")
+# curve(0.5*dnorm(x,-3,1)+0.5*dnorm(x,3,1), add=TRUE, lwd=2)
+# 
+# 
+# 
+# 
+# # Multivariate example: 2D banana‐shaped distribution
+# log_prob_banana <- function(x) {
+#   # x is length‐2 vector
+#   y1 <- x[1] / 1
+#   y2 <- x[2] + 0.03 * (x[1]^2 - 100)
+#   -0.5 * (y1^2 + y2^2)
+# }
+# grad_log_prob_banana <- function(x) {
+#   y1 <- x[1]
+#   y2 <- x[2] + 0.03 * (x[1]^2 - 100)
+#   d1 <- -y1 - 0.06 * x[1] * y2
+#   d2 <- -y2
+#   c(d1, d2)
+# }
+# 
+# # assume `nuts` is the function you defined above
+# set.seed(123)
+# samples2d <- nuts(
+#   log_prob      = log_prob_banana,
+#   grad_log_prob = grad_log_prob_banana,
+#   theta0        = c(0, 0),
+#   n_iter        = 2000,
+#   delta         = 0.65,
+#   max_depth     = 8
+# )
+# 
+# # visualize
+# par(mfrow = c(1,2))
+# plot(samples2d[,1], type="l", main="Trace of x_1")
+# plot(samples2d[,2], type="l", main="Trace of x_2")
+
+
+
+mh_sampler <- function(log_prob, initial_theta, n_samples, proposal_sd = 1) {
+  d       <- length(initial_theta)
+  samples <- matrix(NA, n_samples, d)
+  theta   <- initial_theta
+  lp_curr <- log_prob(theta)
+  for (i in 1:n_samples) {
+    prop    <- theta + rnorm(d, 0, proposal_sd)
+    lp_prop <- log_prob(prop)
+    if (runif(1) < exp(lp_prop - lp_curr)) {
+      theta   <- prop
+      lp_curr <- lp_prop
+    }
+    samples[i,] <- theta
+  }
+  samples
+}
+
+
+
+# Three-peak 2D Gaussian mixture
+weights <- c(0.3, 0.4, 0.3)
+means   <- list(c(-3, -3), c(0, 3), c(3, -1))
+Sigma   <- diag(2); Sigma_inv <- solve(Sigma)
+
+log_prob_2d <- function(x) {
+  lp <- sapply(1:3, function(i)
+    log(weights[i]) + dmvnorm(x, means[[i]], Sigma, log = TRUE)
+  )
+  m <- max(lp); m + log(sum(exp(lp - m)))
+}
+grad_log_prob_2d <- function(x) {
+  lp   <- sapply(1:3, function(i)
+    log(weights[i]) + dmvnorm(x, means[[i]], Sigma, log = TRUE)
+  )
+  m    <- max(lp)
+  w    <- exp(lp - m); w <- w / sum(w)
+  grads <- sapply(1:3, function(i) -Sigma_inv %*% (x - means[[i]]))
+  as.numeric(grads %*% w)
+}
+
+# Run samplers
+set.seed(123)
+n_iter     <- 1000
+nuts_samps <- nuts(log_prob_2d, grad_log_prob_2d, theta0 = c(0,0), n_iter = n_iter)
+mh_samps   <- mh_sampler(log_prob_2d, initial_theta = c(0,0), n_samples = n_iter, proposal_sd = 1)
+
+# True density grid
+grid_pts <- 100
+x1 <- seq(-6, 6, length = grid_pts)
+x2 <- seq(-6, 6, length = grid_pts)
+gr <- expand.grid(x1, x2)
+z  <- matrix(
+  apply(gr, 1, function(xx)
+    sum(sapply(1:3, function(i)
+      weights[i] * dmvnorm(xx, means[[i]], Sigma)
+    ))
+  ),
+  nrow = grid_pts, byrow = TRUE
+)
+
+# Visualization
+par(mfrow = c(2, 3), mar = c(4, 4, 2, 1))
+plot(nuts_samps[,1], type="l", main="NUTS Trace x₁", xlab="iter", ylab="x₁")
+plot(nuts_samps[,2], type="l", main="NUTS Trace x₂", xlab="iter", ylab="x₂")
+plot(nuts_samps, pch=20, cex=0.5, main="NUTS Samples", xlab="x₁", ylab="x₂")
+contour(x1, x2, z, add=TRUE, drawlabels=FALSE, lwd=2)
+plot(mh_samps[,1], type="l", main="MH Trace x₁", xlab="iter", ylab="x₁")
+plot(mh_samps[,2], type="l", main="MH Trace x₂", xlab="iter", ylab="x₂")
+plot(mh_samps, pch=20, cex=0.5, main="MH Samples", xlab="x₁", ylab="x₂")
+contour(x1, x2, z, add=TRUE, drawlabels=FALSE, lwd=2)
+
+

@@ -180,7 +180,7 @@ Imagine a **frictionless puck** on a **non-even surface**. The [**state of this 
 
 :::{.incremental}
 * We simulate the path of the puck starting from a position in this Hamiltonian system with a given kinetic energy
-* Pre-determined step-size and length of path (use of discretizer)
+* Pre-determined step-size and number of steps (use of discretizer)
 * After stopping at the final position along the path, we randomly introduce a new level of kinetic energy
 * we simulate the path,...
 :::

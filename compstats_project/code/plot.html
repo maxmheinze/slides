@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>NUTS vs MH with Highcharts</title>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+</head>
+<body>
+  <div id="trace-x1" style="width:45%; height:300px; display:inline-block;"></div>
+  <div id="trace-x2" style="width:45%; height:300px; display:inline-block;"></div>
+  <div id="scatter" style="width:90%; height:500px; margin-top:20px;"></div>
+
+  <script>
+  fetch('nuts_data.json')
+    .then(r => r.json())
+    .then(data => {
+      const nuts = data.nuts;
+      const mh   = data.mh;
+      const grid = data.grid;
+
+      // --- Trace x1 ---
+      Highcharts.chart('trace-x1', {
+        title: { text: 'Trace of x\u2081 (NUTS)' },
+        xAxis: { title: { text: 'Iteration' } },
+        yAxis: { title: { text: 'x\u2081' } },
+        series: [{
+          name: 'x\u2081',
+          data: nuts.map(pt => pt[0]),
+          type: 'line'
+        }]
+      });
+
+      // --- Trace x2 ---
+      Highcharts.chart('trace-x2', {
+        title: { text: 'Trace of x\u2082 (NUTS)' },
+        xAxis: { title: { text: 'Iteration' } },
+        yAxis: { title: { text: 'x\u2082' } },
+        series: [{
+          name: 'x\u2082',
+          data: nuts.map(pt => pt[1]),
+          type: 'line'
+        }]
+      });
+
+      // --- Scatter + Heatmap ---
+      // build heatmap data: [xIndex, yIndex, value]
+      const hm = [];
+      for (let i=0; i<grid.x.length; i++) {
+        for (let j=0; j<grid.y.length; j++) {
+          hm.push([i, j, grid.z[j][i]]);
+        }
+      }
+
+      Highcharts.chart('scatter', {
+        chart: { zoomType: 'xy' },
+        title: { text: 'NUTS & MH Samples over True Density' },
+        xAxis: {
+          categories: grid.x.map(v=>v.toFixed(2)),
+          title: { text: 'x\u2081' }
+        },
+        yAxis: {
+          categories: grid.y.map(v=>v.toFixed(2)),
+          title: { text: 'x\u2082' }
+        },
+        colorAxis: {
+          min: 0,
+          minColor: '#ffffff',
+          maxColor: Highcharts.getOptions().colors[0]
+        },
+        tooltip: {
+          formatter: function() {
+            if (this.series.type==='heatmap')
+              return `Density: <b>${this.point.value.toExponential(2)}</b><br>
+                      x₁=${grid.x[this.point.x]}, x₂=${grid.y[this.point.y]}`;
+            return false;
+          }
+        },
+        series: [
+          {
+            name: 'True density',
+            borderWidth: 0,
+            data: hm,
+            type: 'heatmap',
+            showInLegend: false
+          },
+          {
+            name: 'NUTS',
+            data: nuts,
+            type: 'scatter',
+            marker: { radius: 3, symbol: 'circle' },
+            color: Highcharts.getOptions().colors[1]
+          },
+          {
+            name: 'MH',
+            data: mh,
+            type: 'scatter',
+            marker: { radius: 3, symbol: 'diamond' },
+            color: Highcharts.getOptions().colors[2]
+          }
+        ]
+      });
+    });
+  </script>
+</body>
+</html>

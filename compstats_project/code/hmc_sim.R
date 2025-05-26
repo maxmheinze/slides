@@ -92,3 +92,25 @@ hmc_result <- hmc_sampler(log_target, grad_log_target, n_iter, init = c(0, 0),
 # Convert to MCMC objects
 mh_mcmc <- mcmc(mh_result$samples)
 hmc_mcmc <- mcmc(hmc_result$samples)
+
+plot_samples <- function(samples, title) {
+  df <- as.data.frame(samples)
+  colnames(df) <- c("x", "y")
+  ggplot(df, aes(x, y)) +
+    geom_point(alpha = 0.3, size = 0.7) +
+    theme_minimal() +
+    ggtitle(title)
+}
+
+plot_samples(mh_result$samples, "Metropolis-Hastings Samples")
+plot_samples(hmc_result$samples, "Hamiltonian Monte Carlo Samples")
+
+
+par(mfrow = c(2, 2))
+plot(mh_mcmc[, 1], main = "MH Trace (x)")
+acf(mh_mcmc[, 1], main = "MH ACF (x)")
+plot(hmc_mcmc[, 1], main = "HMC Trace (x)")
+acf(hmc_mcmc[, 1], main = "HMC ACF (x)")
+
+cat("MH acceptance rate:", mh_result$accept_rate, "\n")
+cat("HMC acceptance rate:", hmc_result$accept_rate, "\n")
