@@ -433,7 +433,41 @@ We use **MCMC methods** usually to sample from **complicated distributions**.
 
 ## Setting L
 
+:vspace1
+
+::::{.columns}
+:::{.column width="50%" .fragment}
+![](figures/algo1.png){width="100%"}
+:::
+:::{.column width="50%"}
+
+[An $L$ that is **too small** will yield to successive steps being very close to each other. The sampler then exhibits a form of **random walk behavior**.]{.fragment}
+
+:vspace1
+
+[An $L$ that is **too large** gives rise to the risk of the trajectory looping back.]{.fragment}
+
+:vspace1
+
+[It is **difficult** to find out what the right $L$ in a given case is. What is usually done is to run the sampler preliminarily and check autocorrelation statistics.]{.fragment}
+
+:::
+::::
+
 ## Eliminating the Need to Set L
+
+. . .
+
+The [**No-U-Turn-Sampler**]{.col1} ([**NUTS**]{.col1}) eliminates the need to specify $L$. [The **basic idea** is that it retains the random-walk suppression features of HMC, but additionally evaluates a criterion telling it when it has run for **_long enough_**.]{.fragment}
+
+:::{.incremental}
+* The simplest way to think of this is to conceive a metric for whether the distance from the original value $\theta$ to the proposed value $\tilde{\theta}$ has increased:
+  $$
+  \frac{\mathrm{d}}{\mathrm{d}t}\frac{(\tilde{\theta}-\theta)\cdot(\tilde{\theta}-\theta)}{2}=(\tilde{\theta}-\theta)\cdot\frac{\mathrm{d}}{\mathrm{d}t}(\tilde{\theta}-\theta)=(\tilde{\theta}-\theta)\cdot\tilde{r},
+  $$
+  where $\tilde{r}$ is the current momentum.
+* However, an algorithm that lets the leapfrog steps run until the above expression becomes negative does not guarantee **time reversibility**.
+:::
 
 ## NUTS
 
