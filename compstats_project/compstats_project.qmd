@@ -20,7 +20,7 @@ format:
     highlight-style: github
     slideNumber: true
     html-math-method: mathjax
-    embed-resources: true
+    embed-resources: false
     pdfMaxPagesPerSlide: 1
     pdfSeparateFragments: false
     template-partials:
@@ -31,7 +31,6 @@ format:
       - _filters/space.lua
       - quarto-kroki
       - _filters/svgfonts.lua
-    allow-unsafe: true  
 engine: knitr
 bibliography: references.bib
 csl: ../style/apa.csl
@@ -197,12 +196,13 @@ In **non-physical** applications,
 * the [**momentum**]{.col4} is an auxiliary variable that facilitates exploration of the target distribution space
 :::
 
-## Hamiltonian Dynamics
+## Hamiltonian Dynamics{.centering}
 
-<iframe src="https://chi-feng.github.io/mcmc-demo/app.html" width="1200" height="600" style="border: none;"></iframe>
+```{=html}
+<iframe src="mcmc-demo/app.html"
+        width="1280" height="600" data-external="1"></iframe>
+```
 
-
-@neal2012
 
 ## Text
 
