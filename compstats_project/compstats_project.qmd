@@ -438,6 +438,10 @@ However, in order to actually **attain the benefits** of HMC, we have to **prope
 
 ## Slide
 
+:::{.centering}
+![](figures/three_peak_100_1000.svg){width="100%" .fragment}
+:::
+
 ## References 
 
 :::{.centering .titlebox1}
