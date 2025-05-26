@@ -1,5 +1,5 @@
 ---
-title: "The No-U-Turn-Sampler"
+title: "Hamiltonian Monte Carlo and the No-U-Turn-Sampler"
 subtitle: "Computational Statistics Project"
 author: 
 - "Jonathan Fitter ([jfitter@wu.ac.at](mailto:jonathan.fitter@wu.ac.at))"
@@ -415,25 +415,17 @@ However, in order to actually **attain the benefits** of HMC, we have to **prope
 
 # The No-U-Turn-Sampler (NUTS)
 
-## Slide Title
+## Why NUTS?
 
-:::{.incremental}
-* This
-* is
-* some
-* text.
-:::
+## Setting L
 
-# Our Implementation
+## Eliminating the Need to Set L
 
-## Slide Title
+## NUTS
 
-:::{.incremental}
-* This
-* is
-* some
-* text.
-:::
+## Adaptively Tuning ε
+
+## Dual-Averaging NUTS
 
 ## Illustration {.centering}
 
@@ -442,6 +434,9 @@ However, in order to actually **attain the benefits** of HMC, we have to **prope
         width="1280" height="600" data-external="1"></iframe>
 ```
 
+# Our Implementation
+
+## Slide
 
 ## References 
 
