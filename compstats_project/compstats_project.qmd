@@ -20,7 +20,7 @@ format:
     highlight-style: github
     slideNumber: true
     html-math-method: mathjax
-    embed-resources: false
+    embed-resources: true
     pdfMaxPagesPerSlide: 1
     pdfSeparateFragments: false
     template-partials:
@@ -36,6 +36,7 @@ bibliography: references.bib
 csl: ../style/apa.csl
 nocite: |
   @hoffman2014
+  @feng2017
 ---
 
 # Intro and Recap
@@ -410,12 +411,25 @@ However, in order to actually **attain the benefits** of HMC, we have to **prope
 
 ```{=html}
 <iframe src="mcmc-demo/app.html"
-        width="1280" height="600"></iframe>
+        width="1280" height="600" data-external="1"></iframe>
 ```
 
 # The No-U-Turn-Sampler (NUTS)
 
 ## Why NUTS?
+
+. . . 
+
+We use **MCMC methods** usually to sample from **complicated distributions**.
+
+:::{.incremental}
+* [**Random-walk Metropolis**]{.col4} may take extremely long to converge to a target distribution.
+* [**Hamiltonian Monte Carlo**]{.col2} suppresses this random walk behavior.
+  * This yields a much lower computational cost. The cost of a sample from a $d$-dimensional target distribution is $O(d^{5/4})$ for HMC, but $O(d^2)$ for random-walk Metropolis.
+  * However, HMC requires the researcher to specify $\varepsilon$ and $L$.
+  * Especially setting $L$ is costly itself, since it frequently requires multiple costly training runs.
+* The [**No-U-Turn-Sampler**]{.col1} ([**NUTS**]{.col1}) eliminates the need to choose $L$, and an extension of it even allows for automatically tuning $\varepsilon$.
+:::
 
 ## Setting L
 
@@ -431,7 +445,7 @@ However, in order to actually **attain the benefits** of HMC, we have to **prope
 
 ```{=html}
 <iframe src="mcmc-demo/app.html"
-        width="1280" height="600"></iframe>
+        width="1280" height="600" data-external="1"></iframe>
 ```
 
 # Our Implementation

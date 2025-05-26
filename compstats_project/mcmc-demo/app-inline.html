@@ -1,0 +1,2742 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> <head> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> <title>MCMC Interactive Gallery</title> <script src="lib/dat.gui.min.js"></script> <script src="lib/conrec.min.js"></script> <script>void 0==CanvasRenderingContext2D.prototype.ellipse&&(CanvasRenderingContext2D.prototype.ellipse=function(t,r,n,e,o,i,a,s){this.save(),this.translate(t,r),this.rotate(o),this.scale(n,e),this.arc(0,0,1,i,a,s),this.restore()}),"function"!=typeof Path2D&&function(){function t(t){if(this.ops_=[],void 0!=t)if("string"==typeof t)try{this.ops_=parser.parse(t)}catch(t){}else{if(!t.hasOwnProperty("ops_"))throw"Error: "+typeof t+"is not a valid argument to Path";this.ops_=t.ops_.slice(0)}}parser=function(){function t(t,r,n,e,o,i){this.message=t,this.expected=r,this.found=n,this.offset=e,this.line=o,this.column=i,this.name="SyntaxError"}function r(r){function n(t){return _r!==t&&(_r>t&&(_r=0,Ar={line:1,column:1,seenCR:!1}),function(t,n,e){var o,i;for(o=n;e>o;o++)i=r.charAt(o),"\n"===i?(t.seenCR||t.line++,t.column=1,t.seenCR=!1):"\r"===i||"\u2028"===i||"\u2029"===i?(t.line++,t.column=1,t.seenCR=!0):(t.column++,t.seenCR=!1)}(Ar,_r,t),_r=t),Ar}function e(t){xr>dr||(dr>xr&&(xr=dr,Pr=[]),Pr.push(t))}function o(){var t,r,n,e,o;for(t=dr,r=[],n=Z();n!==pt;)r.push(n),n=Z();if(r!==pt)if(n=i(),n===pt&&(n=vt),n!==pt){for(e=[],o=Z();o!==pt;)e.push(o),o=Z();e!==pt?(Cr=t,r=gt(n),t=r):(dr=t,t=ht)}else dr=t,t=ht;else dr=t,t=ht;return t}function i(){var t,r,n,e,o;if(t=dr,(r=a())!==pt){for(n=dr,e=[],o=Z();o!==pt;)e.push(o),o=Z();e!==pt?(o=i(),o!==pt?(e=[e,o],n=e):(dr=n,n=ht)):(dr=n,n=ht),n===pt&&(n=vt),n!==pt?(r=[r,n],t=r):(dr=t,t=ht)}else dr=t,t=ht;return t}function a(){var t,r,n,e,o;if(t=dr,(r=c())!==pt){for(n=dr,e=[],o=Z();o!==pt;)e.push(o),o=Z();e!==pt?(o=s(),o!==pt?(e=[e,o],n=e):(dr=n,n=ht)):(dr=n,n=ht),n===pt&&(n=vt),n!==pt?(r=[r,n],t=r):(dr=t,t=ht)}else dr=t,t=ht;return t}function s(){var t,r,n,e,o;if(t=dr,(r=u())!==pt){for(n=dr,e=[],o=Z();o!==pt;)e.push(o),o=Z();e!==pt?(o=s(),o!==pt?(e=[e,o],n=e):(dr=n,n=ht)):(dr=n,n=ht),n===pt&&(n=vt),n!==pt?(r=[r,n],t=r):(dr=t,t=ht)}else dr=t,t=ht;return t}function u(){var t;return t=l(),t===pt&&(t=f())===pt&&(t=v())===pt&&(t=y())===pt&&(t=d())===pt&&(t=A())===pt&&(t=R())===pt&&(t=D())===pt&&(t=m()),t}function c(){var t,n,o,i;if(t=dr,yt.test(r.charAt(dr))?(n=r.charAt(dr),dr++):(n=pt,0===Rr&&e(dt)),n!==pt){for(o=[],i=Z();i!==pt;)o.push(i),i=Z();o!==pt?(i=p(),i!==pt?(Cr=t,n=Ct(n,i),t=n):(dr=t,t=ht)):(dr=t,t=ht)}else dr=t,t=ht;return t}function p(){var t,r,n,e,o;return t=dr,r=k(),r!==pt?(n=dr,e=O(),e===pt&&(e=vt),e!==pt?(o=h(),o!==pt?(e=[e,o],n=e):(dr=n,n=ht)):(dr=n,n=ht),n===pt&&(n=vt),n!==pt?(Cr=t,r=_t(r,n),t=r):(dr=t,t=ht)):(dr=t,t=ht),t}function l(){var t,n;return t=dr,At.test(r.charAt(dr))?(n=r.charAt(dr),dr++):(n=pt,0===Rr&&e(xt)),n!==pt&&(Cr=t,n=Pt()),t=n}function f(){var t,n,o,i;if(t=dr,Rt.test(r.charAt(dr))?(n=r.charAt(dr),dr++):(n=pt,0===Rr&&e(Mt)),n!==pt){for(o=[],i=Z();i!==pt;)o.push(i),i=Z();o!==pt?(i=h(),i!==pt?(Cr=t,n=wt(n,i),t=n):(dr=t,t=ht)):(dr=t,t=ht)}else dr=t,t=ht;return t}function h(){var t,r,n,e,o;return t=dr,r=k(),r!==pt?(n=dr,e=O(),e===pt&&(e=vt),e!==pt?(o=h(),o!==pt?(e=[e,o],n=e):(dr=n,n=ht)):(dr=n,n=ht),n===pt&&(n=vt),n!==pt?(Cr=t,r=_t(r,n),t=r):(dr=t,t=ht)):(dr=t,t=ht),t}function v(){var t,n,o,i;if(t=dr,Dt.test(r.charAt(dr))?(n=r.charAt(dr),dr++):(n=pt,0===Rr&&e(Tt)),n!==pt){for(o=[],i=Z();i!==pt;)o.push(i),i=Z();o!==pt?(i=g(),i!==pt?(Cr=t,n=mt(n,i),t=n):(dr=t,t=ht)):(dr=t,t=ht)}else dr=t,t=ht;return t}function g(){var t,r,n,e,o;return t=dr,r=q(),r!==pt?(n=dr,e=O(),e===pt&&(e=vt),e!==pt?(o=g(),o!==pt?(e=[e,o],n=e):(dr=n,n=ht)):(dr=n,n=ht),n===pt&&(n=vt),n!==pt?(Cr=t,r=_t(r,n),t=r):(dr=t,t=ht)):(dr=t,t=ht),t}function y(){var t,n,o,i;if(t=dr,bt.test(r.charAt(dr))?(n=r.charAt(dr),dr++):(n=pt,0===Rr&&e(Ft)),n!==pt){for(o=[],i=Z();i!==pt;)o.push(i),i=Z();o!==pt?(i=g(),i!==pt?(Cr=t,n=kt(n,i),t=n):(dr=t,t=ht)):(dr=t,t=ht)}else dr=t,t=ht;return t}function d(){var t,n,o,i;if(t=dr,qt.test(r.charAt(dr))?(n=r.charAt(dr),dr++):(n=pt,0===Rr&&e(Et)),n!==pt){for(o=[],i=Z();i!==pt;)o.push(i),i=Z();o!==pt?(i=C(),i!==pt?(Cr=t,n=St(n,i),t=n):(dr=t,t=ht)):(dr=t,t=ht)}else dr=t,t=ht;return t}function C(){var t,r,n,e,o;return t=dr,r=_(),r!==pt?(n=dr,e=O(),e===pt&&(e=vt),e!==pt?(o=C(),o!==pt?(e=[e,o],n=e):(dr=n,n=ht)):(dr=n,n=ht),n===pt&&(n=vt),n!==pt?(Cr=t,r=_t(r,n),t=r):(dr=t,t=ht)):(dr=t,t=ht),t}function _(){var t,r,n,e,o,i;return t=dr,r=k(),r!==pt?(n=O(),n===pt&&(n=vt),n!==pt?(e=k(),e!==pt?(o=O(),o===pt&&(o=vt),o!==pt?(i=k(),i!==pt?(Cr=t,r=It(r,e,i),t=r):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht),t}function A(){var t,n,o,i;if(t=dr,Ot.test(r.charAt(dr))?(n=r.charAt(dr),dr++):(n=pt,0===Rr&&e(zt)),n!==pt){for(o=[],i=Z();i!==pt;)o.push(i),i=Z();o!==pt?(i=x(),i!==pt?(Cr=t,n=jt(n,i),t=n):(dr=t,t=ht)):(dr=t,t=ht)}else dr=t,t=ht;return t}function x(){var t,r,n,e,o;return t=dr,r=P(),r!==pt?(n=dr,e=O(),e===pt&&(e=vt),e!==pt?(o=x(),o!==pt?(e=[e,o],n=e):(dr=n,n=ht)):(dr=n,n=ht),n===pt&&(n=vt),n!==pt?(Cr=t,r=_t(r,n),t=r):(dr=t,t=ht)):(dr=t,t=ht),t}function P(){var t,r,n,e;return t=dr,r=k(),r!==pt?(n=O(),n===pt&&(n=vt),n!==pt?(e=k(),e!==pt?(Cr=t,r=Ht(r,e),t=r):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht),t}function R(){var t,n,o,i;if(t=dr,Qt.test(r.charAt(dr))?(n=r.charAt(dr),dr++):(n=pt,0===Rr&&e(Vt)),n!==pt){for(o=[],i=Z();i!==pt;)o.push(i),i=Z();o!==pt?(i=M(),i!==pt?(Cr=t,n=Lt(n,i),t=n):(dr=t,t=ht)):(dr=t,t=ht)}else dr=t,t=ht;return t}function M(){var t,r,n,e,o;return t=dr,r=w(),r!==pt?(n=dr,e=O(),e===pt&&(e=vt),e!==pt?(o=M(),o!==pt?(e=[e,o],n=e):(dr=n,n=ht)):(dr=n,n=ht),n===pt&&(n=vt),n!==pt?(Cr=t,r=_t(r,n),t=r):(dr=t,t=ht)):(dr=t,t=ht),t}function w(){var t,r,n,e;return t=dr,r=k(),r!==pt?(n=O(),n===pt&&(n=vt),n!==pt?(e=k(),e!==pt?(Cr=t,r=Ht(r,e),t=r):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht),t}function D(){var t,n,o,i;if(t=dr,Zt.test(r.charAt(dr))?(n=r.charAt(dr),dr++):(n=pt,0===Rr&&e(Bt)),n!==pt){for(o=[],i=Z();i!==pt;)o.push(i),i=Z();o!==pt?(i=T(),i!==pt?(Cr=t,n=Ut(n,i),t=n):(dr=t,t=ht)):(dr=t,t=ht)}else dr=t,t=ht;return t}function T(){var t,r,n,e,o;return t=dr,r=k(),r!==pt?(n=dr,e=O(),e===pt&&(e=vt),e!==pt?(o=T(),o!==pt?(e=[e,o],n=e):(dr=n,n=ht)):(dr=n,n=ht),n===pt&&(n=vt),n!==pt?(Cr=t,r=_t(r,n),t=r):(dr=t,t=ht)):(dr=t,t=ht),t}function m(){var t,n,o,i;if(t=dr,Gt.test(r.charAt(dr))?(n=r.charAt(dr),dr++):(n=pt,0===Rr&&e(Jt)),n!==pt){for(o=[],i=Z();i!==pt;)o.push(i),i=Z();o!==pt?(i=b(),i!==pt?(Cr=t,n=Kt(n,i),t=n):(dr=t,t=ht)):(dr=t,t=ht)}else dr=t,t=ht;return t}function b(){var t,r,n,e,o;return t=dr,r=F(),r!==pt?(n=dr,e=O(),e===pt&&(e=vt),e!==pt?(o=b(),o!==pt?(e=[e,o],n=e):(dr=n,n=ht)):(dr=n,n=ht),n===pt&&(n=vt),n!==pt?(Cr=t,r=_t(r,n),t=r):(dr=t,t=ht)):(dr=t,t=ht),t}function F(){var t,r,n,e,o,i,a,s,u,c,p,l;return t=dr,r=E(),r!==pt?(n=O(),n===pt&&(n=vt),n!==pt?(e=E(),e!==pt?(o=O(),o===pt&&(o=vt),o!==pt?(i=S(),i!==pt?(a=O(),a!==pt?(s=I(),s!==pt?(u=O(),u===pt&&(u=vt),u!==pt?(c=I(),c!==pt?(p=O(),p===pt&&(p=vt),p!==pt?(l=k(),l!==pt?(Cr=t,r=Nt(r,e,i,s,c,l),t=r):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht),t}function k(){var t,r,n,e;return t=dr,r=q(),r!==pt?(n=O(),n===pt&&(n=vt),n!==pt?(e=q(),e!==pt?(Cr=t,r=Wt(r,e),t=r):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht),t}function q(){var t,r;return t=dr,r=S(),r!==pt&&(Cr=t,r=Xt(r)),t=r}function E(){var t;return t=j(),t===pt&&(t=L()),t}function S(){var t,r,n;return t=dr,r=V(),r===pt&&(r=vt),r!==pt?(n=j(),n!==pt?(r=[r,n],t=r):(dr=t,t=ht)):(dr=t,t=ht),t===pt&&(t=dr,r=V(),r===pt&&(r=vt),r!==pt?(n=L(),n!==pt?(r=[r,n],t=r):(dr=t,t=ht)):(dr=t,t=ht)),t}function I(){var t;return 48===r.charCodeAt(dr)?(t=Yt,dr++):(t=pt,0===Rr&&e($t)),t===pt&&(49===r.charCodeAt(dr)?(t=tr,dr++):(t=pt,0===Rr&&e(rr))),t}function O(){var t,r,n,e,o;if(t=dr,r=[],(n=Z())!==pt)for(;n!==pt;)r.push(n),n=Z();else r=ht;if(r!==pt)if(n=z(),n===pt&&(n=vt),n!==pt){for(e=[],o=Z();o!==pt;)e.push(o),o=Z();e!==pt?(r=[r,n,e],t=r):(dr=t,t=ht)}else dr=t,t=ht;else dr=t,t=ht;if(t===pt)if(t=dr,(r=z())!==pt){for(n=[],e=Z();e!==pt;)n.push(e),e=Z();n!==pt?(r=[r,n],t=r):(dr=t,t=ht)}else dr=t,t=ht;return t}function z(){var t;return 44===r.charCodeAt(dr)?(t=nr,dr++):(t=pt,0===Rr&&e(er)),t}function j(){var t,r,n;return t=dr,r=H(),r!==pt?(n=Q(),n===pt&&(n=vt),n!==pt?(r=[r,n],t=r):(dr=t,t=ht)):(dr=t,t=ht),t===pt&&(t=dr,r=L(),r!==pt?(n=Q(),n!==pt?(r=[r,n],t=r):(dr=t,t=ht)):(dr=t,t=ht)),t}function H(){var t,n,o,i;return t=dr,n=L(),n===pt&&(n=vt),n!==pt?(46===r.charCodeAt(dr)?(o=or,dr++):(o=pt,0===Rr&&e(ir)),o!==pt?(i=L(),i!==pt?(n=[n,o,i],t=n):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht),t===pt&&(t=dr,n=L(),n!==pt?(46===r.charCodeAt(dr)?(o=or,dr++):(o=pt,0===Rr&&e(ir)),o!==pt?(n=[n,o],t=n):(dr=t,t=ht)):(dr=t,t=ht)),t}function Q(){var t,n,o,i;return t=dr,ar.test(r.charAt(dr))?(n=r.charAt(dr),dr++):(n=pt,0===Rr&&e(sr)),n!==pt?(o=V(),o===pt&&(o=vt),o!==pt?(i=L(),i!==pt?(n=[n,o,i],t=n):(dr=t,t=ht)):(dr=t,t=ht)):(dr=t,t=ht),t}function V(){var t;return 43===r.charCodeAt(dr)?(t=ur,dr++):(t=pt,0===Rr&&e(cr)),t===pt&&(45===r.charCodeAt(dr)?(t=pr,dr++):(t=pt,0===Rr&&e(lr))),t}function L(){var t,n,o;if(t=dr,n=[],fr.test(r.charAt(dr))?(o=r.charAt(dr),dr++):(o=pt,0===Rr&&e(hr)),o!==pt)for(;o!==pt;)n.push(o),fr.test(r.charAt(dr))?(o=r.charAt(dr),dr++):(o=pt,0===Rr&&e(hr));else n=ht;return n!==pt&&(Cr=t,n=vr(n)),t=n}function Z(){var t;return gr.test(r.charAt(dr))?(t=r.charAt(dr),dr++):(t=pt,0===Rr&&e(yr)),t}function B(t,r){return-1==="mlazhvcsqt".indexOf(t)?Mr=r:(Mr[0]+=r[0],Mr[1]+=r[1]),mr=t,Mr.slice(0)}function U(t,r){for(var n=[],e=Mr.slice(0),o=0;o<r.length;o+=2){Mr=e.slice(0);var i=B(t,r.slice(o,o+2));n=n.concat(i),o==r.length-4&&(wr=i.slice(0))}return n}function G(){-1=="CcSsQqTt".indexOf(mr)&&(wr=Mr.slice(0));var t=[0,0];return t[0]=2*Mr[0]-wr[0],t[1]=2*Mr[1]-wr[1],t}function J(t,r){var n=[r,0];return"H"==t&&(n[1]=Mr[1]),B(t,n)}function K(t,r){var n=[0,r];return"V"==t&&(n[0]=Mr[0]),B(t,n)}function N(t,r){var n=[t];if(r&&r.length>1)for(var e=r[1],o=0;o<e.length;o++)n.push(e[o]);return n}function W(t){return Math.sqrt(Math.pow(t[0],2)+Math.pow(t[1],2))}function X(t,r){return t[0]*r[0]+t[1]*r[1]}function Y(t,r){return X(t,r)/(W(t)*W(r))}function $(t,r){var n=1;return t[0]*r[1]-t[1]*r[0]<0&&(n=-1),n*Math.acos(Y(t,r))}function tt(t,r){var n=Math.cos(r),e=Math.sin(r);return[n*t[0]+e*t[1],-1*e*t[0]+n*t[1]]}function rt(t,r){var n=Math.cos(r),e=Math.sin(r);return[n*t[0]-e*t[1],e*t[0]+n*t[1]]}function nt(t,r){return[(t[0]-r[0])/2,(t[1]-r[1])/2]}function et(t,r){return[(t[0]+r[0])/2,(t[1]+r[1])/2]}function ot(t,r){return[t[0]*r[0],t[1]*r[1]]}function it(t,r){return[t*r[0],t*r[1]]}function at(t,r){return[t[0]+r[0],t[1]+r[1]]}function st(t,r,n,e,o,i,a){if(0==r||0==n)return void Dr.push({type:"lineTo",args:a});var e=e*(Math.PI/180);r=Math.abs(r),n=Math.abs(n);var s=tt(nt(t,a),e),u=ot(s,s),c=Math.pow(r,2),p=Math.pow(n,2),l=Math.sqrt(u[0]/c+u[1]/p);l>1&&(r*=l,n*=l,c=Math.pow(r,2),p=Math.pow(n,2));var f=Math.sqrt((c*p-c*u[1]-p*u[0])/(c*u[1]+p*u[0]));o==i&&(f*=-1);var h=it(f,[r*s[1]/n,-n*s[0]/r]),v=at(rt(h,e),et(t,a)),g=[(s[0]-h[0])/r,(s[1]-h[1])/n],y=[(-1*s[0]-h[0])/r,(-1*s[1]-h[1])/n],d=$([1,0],g),C=$(g,y),_=d,A=d+C;Dr.push({type:"save",args:[]},{type:"translate",args:[v[0],v[1]]},{type:"rotate",args:[e]},{type:"scale",args:[r,n]},{type:"arc",args:[0,0,1,_,A,1-i]},{type:"restore",args:[]})}var ut,ct=arguments.length>1?arguments[1]:{},pt={},lt={svg_path:o},ft=o,ht=pt,vt=null,gt=function(t){return Dr},yt=/^[Mm]/,dt={type:"class",value:"[Mm]",description:"[Mm]"},Ct=function(t,r){var n=t;Tr&&(n="M",Tr=!1),Dr.push({type:"moveTo",args:B(n,r[0])});for(var e=1;e<r.length;e++)Dr.push({type:"lineTo",args:B(t,r[e])})},_t=function(t,r){return N(t,r)},At=/^[Zz]/,xt={type:"class",value:"[Zz]",description:"[Zz]"},Pt=function(){Dr.push({type:"closePath",args:[]})},Rt=/^[Ll]/,Mt={type:"class",value:"[Ll]",description:"[Ll]"},wt=function(t,r){for(var n=0;n<r.length;n++)Dr.push({type:"lineTo",args:B(t,r[n])})},Dt=/^[Hh]/,Tt={type:"class",value:"[Hh]",description:"[Hh]"},mt=function(t,r){for(var n=0;n<r.length;n++)Dr.push({type:"lineTo",args:J(t,r[n])})},bt=/^[Vv]/,Ft={type:"class",value:"[Vv]",description:"[Vv]"},kt=function(t,r){for(var n=0;n<r.length;n++)Dr.push({type:"lineTo",args:K(t,r[n])})},qt=/^[Cc]/,Et={type:"class",value:"[Cc]",description:"[Cc]"},St=function(t,r){for(var n=0;n<r.length;n++)Dr.push({type:"bezierCurveTo",args:U(t,r[n])})},It=function(t,r,n){return t.concat(r,n)},Ot=/^[Ss]/,zt={type:"class",value:"[Ss]",description:"[Ss]"},jt=function(t,r){for(var n=0;n<r.length;n++)Dr.push({type:"bezierCurveTo",args:G().concat(U(t,r[n]))})},Ht=function(t,r){return t.concat(r)},Qt=/^[Qq]/,Vt={type:"class",value:"[Qq]",description:"[Qq]"},Lt=function(t,r){for(var n=0;n<r.length;n++)Dr.push({type:"quadraticCurveTo",args:U(t,r[n])})},Zt=/^[Tt]/,Bt={type:"class",value:"[Tt]",description:"[Tt]"},Ut=function(t,r){for(var n=0;n<r.length;n++){var e=G();Dr.push({type:"quadraticCurveTo",args:e.concat(U(t,r[n]))}),wr=e.slice(0)}},Gt=/^[Aa]/,Jt={type:"class",value:"[Aa]",description:"[Aa]"},Kt=function(t,r){for(var n=0;n<r.length;n++){var e=[Mr.slice()],o=[B(t,r[n].slice(-2))];absArgs=e.concat(r[n].slice(0,-2),o),st.apply(this,absArgs)}},Nt=function(t,r,n,e,o,i){return[parseFloat(t),parseFloat(r),parseFloat(n.join("")),parseInt(e),parseInt(o),i[0],i[1]]},Wt=function(t,r){return[t,r]},Xt=function(t){return parseFloat(t.join(""))},Yt="0",$t={type:"literal",value:"0",description:'"0"'},tr="1",rr={type:"literal",value:"1",description:'"1"'},nr=",",er={type:"literal",value:",",description:'","'},or=".",ir={type:"literal",value:".",description:'"."'},ar=/^[eE]/,sr={type:"class",value:"[eE]",description:"[eE]"},ur="+",cr={type:"literal",value:"+",description:'"+"'},pr="-",lr={type:"literal",value:"-",description:'"-"'},fr=/^[0-9]/,hr={type:"class",value:"[0-9]",description:"[0-9]"},vr=function(t){return t.join("")},gr=/^[ \t\n\r]/,yr={type:"class",value:"[ \\t\\n\\r]",description:"[ \\t\\n\\r]"},dr=0,Cr=0,_r=0,Ar={line:1,column:1,seenCR:!1},xr=0,Pr=[],Rr=0;if("startRule"in ct){if(!(ct.startRule in lt))throw new Error("Can't start parsing from rule \""+ct.startRule+'".');ft=lt[ct.startRule]}var Mr=[0,0],wr=[0,0],Dr=[],Tr=!0,mr="";if((ut=ft())!==pt&&dr===r.length)return ut;throw ut!==pt&&dr<r.length&&e({type:"end",description:"end of input"}),function(e,o,i){var a=n(i),s=i<r.length?r.charAt(i):null;return null!==o&&function(t){var r=1;for(t.sort(function(t,r){return t.description<r.description?-1:t.description>r.description?1:0});r<t.length;)t[r-1]===t[r]?t.splice(r,1):r++}(o),new t(null!==e?e:function(t,r){var n,e,o,i=new Array(t.length);for(o=0;o<t.length;o++)i[o]=t[o].description;return n=t.length>1?i.slice(0,-1).join(", ")+" or "+i[t.length-1]:i[0],e=r?'"'+function(t){function r(t){return t.charCodeAt(0).toString(16).toUpperCase()}return t.replace(/\\/g,"\\\\").replace(/"/g,'\\"').replace(/\x08/g,"\\b").replace(/\t/g,"\\t").replace(/\n/g,"\\n").replace(/\f/g,"\\f").replace(/\r/g,"\\r").replace(/[\x00-\x07\x0B\x0E\x0F]/g,function(t){return"\\x0"+r(t)}).replace(/[\x10-\x1F\x80-\xFF]/g,function(t){return"\\x"+r(t)}).replace(/[\u0180-\u0FFF]/g,function(t){return"\\u0"+r(t)}).replace(/[\u1080-\uFFFF]/g,function(t){return"\\u"+r(t)})}(r)+'"':"end of input","Expected "+n+" but "+e+" found."}(o,s),o,s,i,a.line,a.column)}(null,Pr,xr)}return function(t,r){function n(){this.constructor=t}n.prototype=r.prototype,t.prototype=new n}(t,Error),{SyntaxError:t,parse:r}}();for(var r=["closePath","moveTo","lineTo","quadraticCurveTo","bezierCurveTo","rect","arc","arcTo","ellipse","isPointInPath","isPointInStroke"],n=0;n<r.length;n++){var e=r[n];t.prototype[e]=function(t){return function(){this.ops_.push({type:t,args:Array.prototype.slice.call(arguments,0)})}}(e)}t.prototype.addPath=function(t,r){var n=!1;r&&r.hasOwnProperty("a")&&r.hasOwnProperty("b")&&r.hasOwnProperty("c")&&r.hasOwnProperty("d")&&r.hasOwnProperty("e")&&r.hasOwnProperty("f")&&(n=!0,this.ops_.push({type:"save",args:[]}),this.ops_.push({type:"transform",args:[r.a,r.b,r.c,r.d,r.e,r.f]})),this.ops_=this.ops_.concat(t.ops_),n&&this.ops_.push({type:"restore",args:[]})},original_fill=CanvasRenderingContext2D.prototype.fill,original_stroke=CanvasRenderingContext2D.prototype.stroke,original_clip=CanvasRenderingContext2D.prototype.clip,original_is_point_in_path=CanvasRenderingContext2D.prototype.isPointInPath,original_is_point_in_stroke=CanvasRenderingContext2D.prototype.isPointInStroke,CanvasRenderingContext2D.prototype.fill=function(r){if(r instanceof t){this.beginPath();for(var n=0,e=r.ops_.length;e>n;n++){var o=r.ops_[n];CanvasRenderingContext2D.prototype[o.type].apply(this,o.args)}original_fill.apply(this,Array.prototype.slice.call(arguments,1))}else original_fill.apply(this,arguments)},CanvasRenderingContext2D.prototype.stroke=function(r){if(r instanceof t){this.beginPath();for(var n=0,e=r.ops_.length;e>n;n++){var o=r.ops_[n];CanvasRenderingContext2D.prototype[o.type].apply(this,o.args)}original_stroke.call(this)}else original_stroke.call(this)},CanvasRenderingContext2D.prototype.clip=function(r){if(r instanceof t){this.beginPath();for(var n=0,e=r.ops_.length;e>n;n++){var o=r.ops_[n];CanvasRenderingContext2D.prototype[o.type].apply(this,o.args)}original_clip.apply(this,Array.prototype.slice.call(arguments,1))}else original_clip.apply(this,arguments)},CanvasRenderingContext2D.prototype.isPointInPath=function(r){if(r instanceof t){this.beginPath();for(var n=0,e=r.ops_.length;e>n;n++){var o=r.ops_[n];CanvasRenderingContext2D.prototype[o.type].apply(this,o.args)}return original_is_point_in_path.apply(this,Array.prototype.slice.call(arguments,1))}return original_is_point_in_path.apply(this,arguments)},CanvasRenderingContext2D.prototype.isPointInStroke=function(r){if(r instanceof t){this.beginPath();for(var n=0,e=r.ops_.length;e>n;n++){var o=r.ops_[n];CanvasRenderingContext2D.prototype[o.type].apply(this,o.args)}return original_is_point_in_stroke.apply(this,Array.prototype.slice.call(arguments,1))}return original_is_point_in_stroke.apply(this,arguments)},Path2D=t}();</script> <script>/*
+Copyright (c) 2016-2020 Chi Feng
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
+"use strict";
+
+/**
+ * Creates a "matrix" from an existing array-like object with optional dimensions
+ * @param  {ArrayLike} array existing array, can be nested or flat (row-major)
+ * @param  {int}       rows  number of rows
+ * @param  {int}       cols  number of columns
+ * @return {Float64Array}
+ */
+Float64Array.matrix = function (array, rows, cols) {
+
+  if (Array.isArray(array[0])) { // flatten nested arrays
+    rows = array.length;
+    cols = array[0].length;
+    const matrix = new Float64Array(rows * cols);
+    matrix.rows = rows;
+    matrix.cols = cols;
+    for (let i = 0; i < rows; ++i)
+      for (let j = 0; j < cols; ++j)
+        matrix[i * cols + j] = array[i][j];
+    return matrix;
+  } else {
+    const matrix = new Float64Array(array);
+    matrix.rows = rows || array.length
+    matrix.cols = cols || 1;
+    return matrix;
+  }
+};
+
+/**
+ * String representation
+ * @param  {int} precision (optional)
+ * @return {string}
+ */
+Float64Array.prototype.toString = function (precision) {
+  precision = precision || 4;
+  let str = '';
+  for (let i = 0; i < this.rows; ++i) {
+    str += (i == 0) ? '[[ ' : ' [ ';
+    str += this[i * this.cols + 0].toPrecision(precision);
+    for (let j = 1; j < this.cols; ++j)
+      str += ', ' + this[i * this.cols + j].toPrecision(precision);
+    str += (i == this.rows - 1) ? ' ]]' : ' ],\n';
+  }
+  return str;
+};
+
+/**
+ * Returns a copy of a "matrix"
+ * @return {Float64Array}
+ */
+Float64Array.prototype.copy = function () {
+  const copy = new Float64Array(this);
+  copy.rows = this.rows || this.length;
+  copy.cols = this.cols || 1;
+  return copy;
+};
+
+/**
+ * Creates a "matrix" with all entries set to zero
+ * @param  {int} rows number of rows
+ * @param  {int} cols number of columns
+ * @return {Float64Array}
+ */
+Float64Array.zeros = function (rows, cols) {
+  cols = cols || 1;
+  const matrix = new Float64Array(rows * cols);
+  matrix.rows = rows;
+  matrix.cols = cols;
+  return matrix;
+};
+
+/**
+ * Creates a column vector with linearly-spaced elements
+ * @param  {float} min minimum value (inclusive)
+ * @param  {float} max maximum value (inclusive)
+ * @param  {int}   n   number of elements
+ * @return {Float64Array}
+ */
+Float64Array.linspace = function (min, max, n) {
+  const matrix = new Float64Array(n);
+  const dx = (max - min) / (n - 1);
+  for (let i = 0; i < n; ++i)
+    matrix[i] = i * dx + min;
+  return matrix;
+};
+
+/**
+ * Creates an n x n identity "matrix"
+ * @param  {int} n number of rows and columns
+ * @return {Float64Array}
+ */
+Float64Array.eye = function (n) {
+  const matrix = new Float64Array(n * n);
+  matrix.rows = n;
+  matrix.cols = n;
+  for (let i = 0; i < n; ++i)
+    matrix[i * n + i] = 1;
+  return matrix;
+};
+
+/**
+ * Creates a "matrix" filled with ones
+ * @param  {int} rows number of rows
+ * @param  {int} cols number of columns
+ * @return {Float64Array}
+ */
+Float64Array.ones = function (rows, cols) {
+  cols = cols || 1;
+  const matrix = new Float64Array(rows * cols);
+  matrix.rows = rows;
+  matrix.cols = cols;
+  for (let i = 0; i < matrix.length; ++i)
+    matrix[i] = 1;
+  return matrix;
+};
+
+/**
+ * Creates a "matrix" filled with constant
+ * @param  {float} const constant
+ * @param  {int}   rows number of rows
+ * @param  {int}   cols number of columns
+ * @return {Float64Array}
+ */
+Float64Array.constant = function (constant, rows, cols) {
+  cols = cols || 1;
+  const matrix = new Float64Array(rows * cols);
+  matrix.rows = rows;
+  matrix.cols = cols;
+  for (let i = 0; i < matrix.length; ++i)
+    matrix[i] = constant;
+  return matrix;
+};
+
+/**
+ * Build a "matrix" where each element is a function applied to element index
+ * @param  {function} f    takes ([i, [j]]) as arguments
+ * @param  {int}      rows number of rows
+ * @param  {int}      cols number of cols
+ * @return {Float64Array}
+ */
+Float64Array.build = function (f, rows, cols) {
+  cols = cols || 1;
+  const matrix = Float64Array.zeros(rows, cols);
+  for (let i = 0; i < rows; ++i)
+    for (let j = 0; j < cols; ++j)
+      matrix[i * cols + j] = f(i, j);
+  return matrix;
+};
+
+/**
+ * (in place) Each element is replaced by a function applied to the element index
+ * @param  {function} f takes ([i, [j]]) as arguments
+ * @return {Float64Array}
+ */
+Float64Array.prototype.rebuild = function (f) {
+  if (this.cols == 1)
+    for (let i = 0; i < this.rows; ++i)
+      this[i] = f(i, i);
+  else
+    for (let i = 0; i < this.rows; ++i)
+      for (let j = 0; j < this.cols; ++j)
+        this[i * this.cols + j] = f(i, j);
+  return this;
+};
+
+/**
+ * Matrix transpose (copy)
+ * @return {Float64Array}
+ */
+Float64Array.prototype.transpose = function () {
+  const m = this.rows, n = this.cols;
+  const transposed = Float64Array.zeros(n, m);
+  for (let i = 0; i < m; ++i)
+    for (let j = 0; j < n; ++j)
+      transposed[j * m + i] = this[i * n + j];
+  return transposed;
+};
+
+/**
+ * Outer product (form matrix from vector tensor product)
+ * @param  {Float64Array} u vector (column or row)
+ * @param  {Float64Array} v vector (column or row)
+ * @return {Float64Array}
+ */
+Float64Array.outer = function (u, v) {
+  const A = Float64Array.zeros(u.length, v.length);
+  for (let i = 0; i < u.length; ++i)
+    for (let j = 0; j < v.length; ++j)
+      A[i * v.length + j] = u[i] * v[j];
+  return A;
+};
+
+/**
+ * cwise map function onto matrix copy
+ * @param  {function} f arguments (A[i], i)
+ * @return {Float64Array}
+ */
+Float64Array.prototype.map = function (f) {
+  const A = Float64Array.zeros(this.rows, this.cols);
+  for (let i = 0; i < this.length; ++i)
+    A[i] = f(this[i], i);
+  return A;
+}
+
+/**
+ * Add two matrices and return sum
+ * @param  {Float64Array} other
+ * @return {Float64Array}
+ */
+Float64Array.prototype.add = function (other) {
+  if (this.cols != other.cols || this.rows != other.rows) throw 'matrix dimension mismatch';
+  let sum = Float64Array.zeros(this.rows, this.cols);
+  for (let i = 0; i < this.rows; ++i)
+    for (let j = 0; j < this.cols; ++j)
+      sum[i * this.cols + j] = this[i * this.cols + j] + other[i * this.cols + j];
+  return sum;
+};
+
+/**
+ * Increment matrix (in place)
+ * @param  {Float64Array} other
+ * @return {Float64Array}
+ */
+Float64Array.prototype.increment = function (other) {
+  if (this.cols != other.cols || this.rows != other.rows) throw 'matrix dimension mismatch';
+  for (let i = 0; i < this.rows; ++i)
+    for (let j = 0; j < this.cols; ++j)
+      this[i * this.cols + j] += other[i * this.cols + j];
+  return this;
+};
+
+/**
+ * Decrement matrix (in place)
+ * @param  {Float64Array} other
+ * @return {Float64Array}
+ */
+Float64Array.prototype.decrement = function (other) {
+  if (this.cols != other.cols || this.rows != other.rows) throw 'matrix dimension mismatch';
+  for (let i = 0; i < this.rows; ++i)
+    for (let j = 0; j < this.cols; ++j)
+      this[i * this.cols + j] -= other[i * this.cols + j];
+  return this;
+};
+
+/**
+ * Subtract two matrices and return difference
+ * @param  {Float64Array} other
+ * @return {Float64Array}
+ */
+Float64Array.prototype.subtract = function (other) {
+  if (this.cols != other.cols || this.rows != other.rows) throw 'matrix dimension mismatch';
+  const difference = Float64Array.zeros(this.rows, this.cols);
+  for (let i = 0; i < this.rows; ++i)
+    for (let j = 0; j < this.cols; ++j)
+      difference[i * this.cols + j] = this[i * this.cols + j] - other[i * this.cols + j];
+  return difference;
+};
+
+/**
+ * Compute squared euclidian distance
+ * @param  {Float64Array} other
+ * @return {float}       square euclidian distance
+ */
+Float64Array.prototype.dist2 = function (other) {
+  let d2 = 0;
+  for (let i = 0; i < this.length; ++i)
+    d2 += Math.pow(this[i] - other[i], 2);
+  return d2;
+};
+
+/**
+ * Compute euclidian distance
+ * @param  {Float64Array} other
+ * @return {float}       euclidian distance
+ */
+Float64Array.prototype.dist = function (other) {
+  return Math.sqrt(this.dist2(other));
+};
+
+/**
+ * Multiply by scalar and return copy
+ * @param  {Float64Array} scalar
+ * @return {Float64Array}
+ */
+Float64Array.prototype.scale = function (scalar) {
+  const scaled = Float64Array.zeros(this.rows, this.cols);
+  for (let i = 0; i < this.rows; ++i)
+    for (let j = 0; j < this.cols; ++j)
+      scaled[i * this.cols + j] = scalar * this[i * this.cols + j];
+  return scaled;
+};
+
+/**
+ * cwise negate matrix copy
+ * @return {Float64Array}
+ */
+Float64Array.prototype.negate = function () {
+  const A = Float64Array.zeros(this.rows, this.cols);
+  for (let i = 0; i < this.length; ++i)
+    A[i] = -this[i];
+  return A;
+};
+
+/**
+ * Trace of a "matrix," i.e. sum along diagonal
+ * @return {float}
+ */
+Float64Array.prototype.trace = function () {
+  let trace = 0;
+  for (let i = 0; i < Math.min(this.rows, this.cols); ++i)
+    trace += A[i * this.cols + j];
+  return trace;
+};
+
+/**
+ * Element-wise 2-norm (Frobenius-norm for matrices)
+ * @return {float}
+ */
+Float64Array.prototype.norm = function () {
+  let norm = 0;
+  for (let i = 0; i < this.length; ++i)
+    norm += this[i] * this[i];
+  return Math.sqrt(norm);
+};
+
+/**
+ * Element-wise squared norm
+ * @return {float}
+ */
+Float64Array.prototype.norm2 = function () {
+  let norm = 0;
+  for (let i = 0; i < this.length; ++i)
+    norm += this[i] * this[i];
+  return norm;
+};
+
+/**
+ * Sum of all elements
+ * @return {float}
+ */
+Float64Array.prototype.sum = function () {
+  let sum = 0;
+  for (let i = 0; i < this.length; ++i)
+    sum += this[i];
+  return sum;
+};
+
+/**
+ * Get diagonal as a column vector
+ * @return {Float64Array}
+ */
+Float64Array.prototype.diagonal = function () {
+  const diagonal = Float64Array.zeros(Math.min(this.rows, this.cols));
+  for (let i = 0; i < diagonal.length; ++i)
+    diagonal[i] = this[i * this.cols + i];
+  return diagonal;
+};
+
+/**
+ * Create diagonal matrix from a vector
+ * @return {Float64Array} a diagonal matrix
+ */
+Float64Array.prototype.asDiagonal = function () {
+  const D = Float64Array.zeros(this.length, this.length);
+  for (let i = 0; i < this.length; ++i) {
+    D[i * this.length + i] = this[i];
+  }
+  return D;
+};
+
+/**
+ * Get row i as a row vector
+ * @param  {int} i row index
+ * @return {Float64Array}
+ */
+Float64Array.prototype.row = function (i) {
+  const row = Float64Array.zeros(1, this.cols);
+  for (let j = 0; j < this.cols; ++j)
+    row[j] = this[i * this.cols + j];
+  return row;
+};
+
+/**
+ * Get column j as as column vector
+ * @param  {int} j column index
+ * @return {Float64Array}
+ */
+Float64Array.prototype.col = function (j) {
+  const col = Float64Array.zeros(this.rows, 1);
+  for (let i = 0; i < this.rows; ++i)
+    col[i] = this[i * this.cols + j];
+  return col;
+};
+
+Float64Array.prototype.setRow = function (i, row) {
+  for (let j = 0; j < this.cols; ++i)
+    this[i * this.cols + j] = row[i];
+  return this;
+};
+
+Float64Array.prototype.setCol = function (j, col) {
+  for (let i = 0; i < this.rows; ++i)
+    this[i * this.cols + j] = col[i];
+  return this;
+};
+
+/**
+ * Swap rows i and k
+ * @param  {int} i row index
+ * @param  {int} k row index
+ * @return {Float64Array} (for chaining)
+ */
+Float64Array.prototype.swap_rows = function (i, k) {
+  for (let j = 0; j < this.cols; ++j) {
+    const tmp = this[i * this.cols + j];
+    this[i * this.cols + j] = this[k * this.cols + j];
+    this[k * this.cols + j] = tmp;
+  }
+  return this;
+};
+
+/**
+ * Computes determinant using upper triangulation
+ * @return {float} NaN if uninvertible
+ */
+Float64Array.prototype.det = function () {
+  if (this.rows != this.cols) throw 'det() requires square matrix';
+  if (this.rows == 2 && this.cols == 2) {
+    return this[0] * this[3] - this[1] * this[2];
+  }
+  // upper triangularize, then return product of diagonal
+  const U = this.copy();
+  for (let i = 0; i < n; ++i) {
+    let max = 0;
+    for (let row = i; row < n; ++row)
+      if (Math.abs(U[row * n + i]) > Math.abs(U[max * n + i]))
+        max = row;
+    if (max > 0)
+      U.swap_rows(i, max);
+    if (U[i * n + i] == 0) return NaN;
+    for (let row = i + 1; row < n; ++row) {
+      const r = U[row * n + i] / U[i * n + i];
+      if (r == 0) continue;
+      for (let col = i; col < n; ++col);
+      U[row * n + col] -= U[i * n + col] * r;
+    }
+  }
+  let det = 1;
+  for (let i = 0; i < n; ++i)
+    det *= U[i * n + i];
+  return det;
+};
+
+/**
+ * Generalized dot product (sum of element-wise multiplication)
+ * @param  {Float64Array} other another "matrix" of same size
+ * @return {float}
+ */
+Float64Array.prototype.dot = function (other) {
+  let prod = 0;
+  for (let i = 0; i < this.length; ++i)
+    prod += this[i] * other[i];
+  return prod;
+};
+
+/**
+ * Matrix multiplication (naive implementation)
+ * @param  {Float64Array} other
+ * @return {Float64Array}
+ */
+Float64Array.prototype.multiply = function (other) {
+  const A = this, B = other;
+  if (A.cols != B.rows) throw 'multiply() dimension mismatch';
+  const n = A.rows, l = A.cols, m = B.cols;
+  const C = Float64Array.zeros(n, m)
+  // vector-vector product
+  if (m == 1 && n == 1) {
+    C[0] = A.dot(B);
+    return C;
+  }
+  // matrix-vector product
+  if (m == 1) {
+    for (let i = 0; i < n; ++i)
+      for (let j = 0; j < l; ++j)
+        C[i] += A[i * l + j] * B[j];
+    return C;
+  }
+  // vector-matrix product
+  if (n == 1) {
+    for (let j = 0; j < m; ++j) {
+      for (let k = 0; k < l; ++k)
+        C[j] += A[k] * B[k * m + j];
+    }
+    return C;
+  }
+  // matrix-matrix product
+  for (let i = 0; i < n; ++i) {
+    for (let j = 0; j < m; ++j) {
+      var cij = 0;
+      for (let k = 0; k < l; ++k)
+        cij += A[i * l + k] * B[k * m + j];
+      C[i * m + j] = cij;
+    }
+  }
+  return C;
+};
+
+/**
+ * Computes PA = LU decomposition
+ * @return {object} {L, U, P}
+ */
+Float64Array.prototype.lu = function () {
+  if (this.rows != this.cols) throw 'lu() requires square matrix';
+  const n = this.rows;
+  const L = Float64Array.zeros(n, n);
+  const U = Float64Array.zeros(n, n);
+  const P = Float64Array.eye(n, n);
+  for (let j = 0; j < n; ++j) {
+    let max = j;
+    for (let i = j; i < n; ++i)
+      if (Math.abs(this[i * n + j]) > Math.abs(this[max * n + j]))
+        max = i;
+    if (j != max)
+      P.swap_rows(j, max);
+  }
+  const PA = P.multiply(this);
+  for (let j = 0; j < n; ++j) {
+    L[j * n + j] = 1;
+    for (let i = 0; i < j + 1; ++i) {
+      let s = 0;
+      for (let k = 0; k < i; ++k)
+        s += U[k * n + j] * L[i * n + k]
+      U[i * n + j] = PA[i * n + j] - s
+    }
+    for (let i = j; i < n; ++i) {
+      let s = 0;
+      for (let k = 0; k < i; ++k)
+        s += U[k * n + j] * L[i * n + k]
+      L[i * n + j] = (PA[i * n + j] - s) / U[j * n + j];
+    }
+  }
+  return { L: L, U: U, P: P };
+};
+
+/**
+ * Cholesky A = LL^T decomposition (in-place)
+ * @return {[type]} [description]
+ */
+Float64Array.prototype.chol_inplace = function () {
+  if (this.rows != this.cols) throw 'chol_inplace() requires square matrix';
+  const A = this;
+  const m = A.rows, n = A.cols;
+  let i, j, k, s = 0.0;
+  for (i = 0; i < n; ++i) {
+    for (j = 0; j < (i + 1); ++j) {
+      s = 0.0;
+      for (k = 0; k < j; ++k)
+        s += A[i * n + k] * A[j * n + k];
+      if (i != j) A[j * n + i] = 0;
+      if (i == j && A[i * n + i] - s < 0) throw "chol_inplace() matrix not positive definite";
+      A[i * n + j] = (i == j) ? Math.sqrt(A[i * n + i] - s) : ((A[i * n + j] - s) / A[j * n + j]);
+    }
+  }
+  return A;
+};
+
+/**
+ * Cholesky A = LL^T decomposition (returns copy)
+ * @return {Float64Array}
+ */
+Float64Array.prototype.chol = function () {
+  return this.copy().chol_inplace();
+};
+
+/**
+ * Solves Lx = b using foward substitution, updates b
+ * @param  {Float64Array} b rhs
+ * @return {Float64Array}
+ */
+Float64Array.prototype.fsolve_inplace = function (b) {
+  const L = this;
+  const m = L.rows, n = L.cols;
+  for (let i = 0; i < n; ++i) {
+    let s = 0.0;
+    for (let j = 0; j < i; ++j)
+      s += L[i * n + j] * b[j];
+    b[i] = (b[i] - s) / L[i * n + i];
+  }
+  return b;
+};
+
+/**
+ * Solves Lx = b using foward substitution
+ * @param  {Float64Array} b rhs
+ * @return {Float64Array}
+ */
+Float64Array.prototype.fsolve = function (b) {
+  return this.fsolve_inplace(b.copy());
+};
+
+/**
+ * Solves Ux = b using backward substitution, updates b
+ * @param  {Float64Array} b rhs
+ * @param  {object} options {transpose: false}
+ * @return {Float64Array}
+ */
+Float64Array.prototype.bsolve_inplace = function (b, options) {
+  const U = this;
+  const m = U.rows, n = U.cols;
+  options = options || {};
+  const transpose = options.hasOwnProperty('transpose') ? options.transpose : false;
+  for (let i = n - 1; i >= 0; --i) {
+    let s = 0.0;
+    for (let j = i + 1; j < n; ++j)
+      s += (transpose ? U[j * n + i] : U[i * n + j]) * b[j];
+    b[i] = (b[i] - s) / U[i * n + i];
+  }
+  return b;
+};
+
+/**
+ * Solves Ux = b using backward substitution
+ * @param  {Float64Array} b rhs
+ * @param  {object} options {transpose: false}
+ * @return {Float64Array}
+ */
+Float64Array.prototype.bsolve = function (b, options) {
+  return this.bsolve_inplace(b.copy(), options);
+};
+
+/**
+ * Solve Ax = b using PA = LU decomposition
+ * @param  {Float64Array} b rhs
+ * @return {Float64Array} x
+ */
+Float64Array.prototype.lu_solve = function (b) {
+  const res = this.lu(), P = res.P, L = res.L, U = res.U;
+  return U.bsolve(L.fsolve(P.multiply(b)));
+};
+
+/**
+ * Computes the matrix inverse using PA = LU decomposition
+ * @return {Float64Array} A^-1
+ */
+Float64Array.prototype.lu_inverse = function () {
+  const res = this.lu(), P = res.P, L = res.L, U = res.U;
+  const inverse = Float64Array.zeros(this.rows, this.cols);
+  const eye = Float64Array.eye(this.rows, this.cols);
+  for (let j = 0; j < this.cols; ++j) {
+    inverse.setCol(j, U.bsolve(L.fsolve(P.multiply(eye.col(j)))));
+  }
+  return inverse;
+};
+
+/**
+ * Solve Ax = b using A = LL^T decomposition
+ * @param  {Float64Array} b rhs
+ * @return {Float64Array} x
+ */
+Float64Array.prototype.llt_solve = function (b) {
+  const L = this.chol();
+  return L.bsolve(L.fsolve(b), { transpose: true });
+};
+
+/**
+ * Computes the matrix inverse using LL^T decomposition
+ * @return {Float64Array} A^-1
+ */
+Float64Array.prototype.llt_inverse = function () {
+  const L = this.chol();
+  const inverse = Float64Array.zeros(this.rows, this.cols);
+  const eye = Float64Array.eye(this.rows, this.cols);
+  for (let j = 0; j < this.cols; ++j) {
+    inverse.setCol(j, L.bsolve(L.fsolve(eye.col(j)), { transpose: true }));
+  }
+  return inverse;
+};
+
+/**
+ * Solve Ax = b using A = LL^T decomposition (in-place)
+ * @param  {Float64Array} b rhs
+ * @return {Float64Array} x
+ */
+Float64Array.prototype.llt_solve_inplace = function (b) {
+  const L = this.chol_inplace();
+  return L.bsolve_inplace(L.fsolve_inplace(b), { transpose: true });
+};
+
+
+/**
+ * Computes diagonal matrix D of eigenvalues and matrix V whose columns are the corresponding
+ * right eigenvectors so that AV = VD
+ * @param  {object} options tolerance and maxIter
+ * @return {object}         V:V D:D
+ */
+Float64Array.prototype.jacobiRotation = function (options) {
+
+  if (this.cols != this.rows) throw 'matrix must be square';
+
+  if (arguments.length < 1)
+    options = {};
+
+  const maxIter = options.maxIter || 100;
+  const tolerance = options.tolerance || 1e-5;
+
+  const n = this.rows;
+  const D = this.copy();
+  const V = Float64Array.eye(n, n);
+
+  let iter, maxOffDiag, p, q;
+  for (iter = 0; iter < maxIter; ++iter) {
+
+    // find max off diagonal term at (p, q)
+    maxOffDiag = 0;
+    for (let i = 0; i < n - 1; ++i) {
+      for (let j = i + 1; j < n; ++j) {
+        if (Math.abs(D[i * n + j]) > maxOffDiag) {
+          maxOffDiag = Math.abs(D[i * n + j]);
+          p = i; q = j;
+        }
+      }
+    }
+
+    if (maxOffDiag < tolerance)
+      break;
+
+    // Rotates matrix D through theta in pq-plane to set D[p][q] = 0
+    // Rotation stored in matrix V whose columns are eigenvectors of D
+    // d = cot 2 * theta, t = tan theta, c = cos theta, s = sin theta
+    const d = (D[p * n + p] - D[q * n + q]) / (2.0 * D[p * n + q]);
+    const t = Math.sign(d) / (Math.abs(d) + Math.sqrt(d * d + 1));
+    const c = 1.0 / Math.sqrt(t * t + 1);
+    const s = t * c;
+    D[p * n + p] += t * D[p * n + q];
+    D[q * n + q] -= t * D[p * n + q];
+    D[p * n + q] = D[q * n + p] = 0.0;
+    for (let k = 0; k < n; k++) {  // Transform D
+      if (k != p && k != q) {
+        const akp = c * D[k * n + p] + s * D[k * n + q];
+        const akq = -s * D[k * n + p] + c * D[k * n + q];
+        D[k * n + p] = akp;
+        D[p * n + k] = akp;
+        D[k * n + q] = akq;
+        D[q * n + k] = akq;
+      }
+    }
+    for (let k = 0; k < n; k++) {  // Store V
+      const rkp = c * V[k * n + p] + s * V[k * n + q];
+      const rkq = -s * V[k * n + p] + c * V[k * n + q];
+      V[k * n + p] = rkp;
+      V[k * n + q] = rkq;
+    }
+  }
+
+  if (iter == maxIter) {
+    console.log('Reached maxIter: ', maxOffDiag, ' > ', tolerance);
+  }
+
+  return { V: V, D: D, eigenvalues: D.diagonal(), eigenvectors: V };
+
+};
+
+Float64Array.prototype.maxCoeff = function () {
+  let max = this[0];
+  for (let i = 0; i < this.length; ++i) {
+    if (this[i] > max)
+      max = this[i];
+  }
+  return max;
+};
+
+Float64Array.prototype.cwiseProduct = function (other) {
+  const A = this.copy();
+  for (let i = 0; i < this.length; ++i) {
+    A[i] = this[i] * other[i];
+  }
+  return A;
+};
+
+Float64Array.prototype.cwiseQuotient = function (other) {
+  const A = this.copy();
+  for (let i = 0; i < this.length; ++i) {
+    A[i] = this[i] / other[i];
+  }
+  return A;
+};
+
+Float64Array.prototype.cwiseInverse = function () {
+  const A = this.copy();
+  for (let i = 0; i < this.length; ++i) {
+    A[i] = 1.0 / this[i];
+  }
+  return A;
+};
+
+Float64Array.prototype.cwiseSqrt = function () {
+  const A = this.copy();
+  for (let i = 0; i < this.length; ++i) {
+    A[i] = Math.sqrt(this[i]);
+  }
+  return A;
+};
+
+// get sub-block of matrix
+Float64Array.prototype.getBlock = function (top, left, rows, cols) {
+  const B = new Float64Array(rows * cols);
+  B.rows = rows;
+  B.cols = cols;
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      B[i * B.cols + j] = this[(i + top) * this.cols + (j + left)];
+    }
+  }
+  return B;
+}
+
+// set sub-block of matrix to another matrix
+Float64Array.prototype.setBlock = function (top, left, A) {
+  for (let i = 0; i < A.rows; i++) {
+    for (let j = 0; j < A.cols; j++) {
+      this[(i + top) * this.cols + (j + left)] = A[i * A.cols + j];
+    }
+  }
+};
+
+// QR decomposition using Householder reflections.
+Float64Array.prototype.qr = function () {
+  const make_householder = function (a) {
+    const v = a.scale(1 / (a[0] + Math.sign(a[0]) * a.norm()));
+    v[0] = 1;
+    const H = Float64Array.eye(a.length);
+    H.decrement(Float64Array.outer(v, v).scale(2 / v.dot(v)));
+    return H;
+  };
+  const A = this.copy();
+  const m = A.rows;
+  const n = A.cols;
+  const Q = Float64Array.eye(m);
+  const upper = n - ((m == n) ? 1 : 0);
+  for (let i = 0; i < upper; i++) {
+    const a = A.getBlock(i, i, m - i, 1);
+    const H = Float64Array.eye(m);
+    H.setBlock(i, i, make_householder(a));
+    Q = Q.multiply(H);
+    A = H.multiply(A);
+  }
+  return { Q: Q, R: A };
+};
+
+const zeros = Float64Array.zeros;
+const eye = Float64Array.eye;
+const linspace = Float64Array.linspace;
+const matrix = Float64Array.matrix;</script> <script>"use strict";Float64Array.opt=function(e,r,t){var a={method:"bfgs",tolerance:1e-6,step_size:1,max_iter:100,warn_max_iter:!1,line_search_iter:20,line_search_tolerance:1e-4};if(!t.hasOwnProperty("x0"))throw"x0 not set";a.dim=t.x0.length;for(var o in t)a[o]=t[o];if("bfgs"==a.method)return Float64Array.bfgs(e,r,a);throw"unrecognized method"},Float64Array.bfgs=function(e,r,t){var a=(t.dim,0),o=Float64Array.eye(t.dim,t.dim),i=[t.x0.copy()],l=[],n=[],s=[r(i[0])];a++;var c=0;for(c=0;c<t.max_iter&&!(s[c].dot(s[c])<t.tolerance);c++){l.push(o.lu_solve(s[c].negate())),n.push(function(e,o){for(var i,l=0,n=t.step_size,s=0;s<t.line_search_iter;s++){i=(n+l)/2;var c=r(e.add(o.scale(i))).dot(o);if(a++,c>t.line_search_tolerance)n=i;else{if(!(c<-t.line_search_tolerance))break;l=i}}return i}(i[c],l[c])),i.push(i[c].add(l[c].scale(n[c]))),s.push(r(i[c+1])),a++;var _=l[c].scale(n[c]),u=s[c+1].subtract(s[c]),d=Float64Array.outer(u,u).scale(1/u.dot(_)),h=o.multiply(Float64Array.outer(_,_.transpose().multiply(o))).scale(1/_.dot(o.multiply(_)));o.increment(d.subtract(h))}return c==t.max_iter&&t.warn_max_iter&&console.log("max_iter exceeded, gradient is",s[c]),{x:i[i.length-1],trajectory:i,p:l,a:n,geval:a}};</script> <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.3/seedrandom.min.js"></script> <style> html, body{ padding:0;margin:0;width:100%;height:100%;overflow:hidden;}canvas{ position:absolute;}body{ font-family:Arial, sans-serif;}#github{ display:inline-block;position:fixed;bottom:5px;left:5px;}#info{ display:inline-block;position:fixed;top:5px;left:5px;}.dg, .dg li.save-row .button{ text-shadow:none !important;}.dg.main.taller-than-window .close-button{ border-top:1px solid #ddd;}.dg.main .close-button{ background-color:#eee;}.dg.main .close-button:hover{ background-color:#ddd;}.dg{ color:#555;}.dg.main::-webkit-scrollbar{ background:#fafafa;}.dg.main::-webkit-scrollbar-thumb{ background:#bbb;}.dg li:not(.folder){ background:rgba(240, 240, 240, 0.6);border-bottom:1px solid rgba(200, 200, 200, 0.5);}.dg li.title{ background:url(data:image/gif;base64,R0lGODlhBQAFAJEAAP////Pz8////////yH5BAEAAAIALAAAAAAFAAUAAAIIlI+hKgFxoCgAOw==) 6px 10px no-repeat rgba(230, 230, 230, 0.7);}.dg .cr.boolean:hover, .dg .cr.function:hover{ background:#fff;}.dg .c input[type="text"]{ background:#e9e9e9;}.dg .c input[type="text"]:hover{ background:#eee;}.dg .c input[type="text"]:focus{ background:#eee;color:#555;}.dg .c .slider{ background:#e9e9e9;}.dg .c .slider:hover{ background:#eee;}</style> </head> <body> <div id="info"></div> <canvas id="plotCanvas" width="100%" height="100%"></canvas> <script>"use strict";
+
+class MultivariateNormal {
+  constructor(mean, cov) {
+    if (mean.hasOwnProperty("mean")) {
+      const params = mean;
+      this.mean = params.mean;
+      this.dim = this.mean.length;
+      this.constant = -0.5 * Math.log(2.0 * Math.PI) * this.dim;
+      if (params.hasOwnProperty("covL") && !params.hasOwnProperty("cov")) {
+        this.covL = params.covL;
+        this.cov = this.covL.multiply(this.covL.transpose());
+      } else {
+        this.cov = params.cov;
+      }
+      if (params.hasOwnProperty("covL") && params.hasOwnProperty("logDet")) {
+        this.covL = params.covL;
+        this.logDet = params.logDet;
+      } else {
+        this.setCovariance(params.cov);
+      }
+      if (params.hasOwnProperty("invCov")) {
+        this.invCov = params.invCov;
+      }
+    } else {
+      this.mean = mean;
+      this.dim = mean.rows;
+      this.setCovariance(cov);
+    }
+    this.constant = -0.5 * Math.log(2.0 * Math.PI) * this.dim;
+    this.logDet = this.covL.diagonal().map(Math.log).sum();
+  }
+  setCovariance(cov) {
+    this.cov = cov;
+    this.covL = cov.chol();
+    this.logDet = this.covL.diagonal().map(Math.log).sum();
+  }
+  getSample() {
+    const z = Float64Array.build(MultivariateNormal.getNormal, this.dim, 1);
+    return this.mean.add(this.covL.multiply(z));
+  }
+  logDensity(x) {
+    const diff = this.mean.subtract(x);
+    return (
+      this.constant -
+      this.logDet -
+      0.5 * this.covL.bsolve_inplace(this.covL.fsolve_inplace(diff), { transpose: true }).norm2()
+    );
+  }
+  gradLogDensity(x) {
+    const diff = x.subtract(this.mean);
+    // equivalent to this.cov.llt_solve(diff);
+    return this.covL.bsolve_inplace(this.covL.fsolve_inplace(diff), { transpose: true }).scale(-1);
+  }
+  toString() {
+    return (
+      "mean: " +
+      this.mean.transpose().toString() +
+      "\ncov:  \n" +
+      this.cov.toString() +
+      "\ncovL: \n" +
+      this.covL.toString() +
+      "\nlogDet: " +
+      this.logDet
+    );
+  }
+  static getNormal() {
+    let x, y, w;
+    do {
+      x = Math.random() * 2 - 1;
+      y = Math.random() * 2 - 1;
+      w = x * x + y * y;
+    } while (w >= 1.0);
+    return x * Math.sqrt((-2 * Math.log(w)) / w);
+  }
+  static getSample(dim) {
+    const dist = new MultivariateNormal(zeros(dim), eye(dim));
+    return dist.getSample();
+  }
+}</script> <script>"use strict";
+
+const MCMC = {
+  algorithmNames: [],
+  algorithms: {},
+  targetNames: [],
+  targets: {},
+  registerAlgorithm: (name, methods) => {
+    MCMC.algorithmNames.push(name);
+    MCMC.algorithms[name] = methods;
+  },
+  computeMean: (chain) => {
+    const mean = chain[0].copy();
+    for (let i = 1; i < chain.length; ++i) mean.increment(chain[i]);
+    return mean.scale(1.0 / chain.length);
+  },
+  computeAutocorrelation: (chain, lag) => {
+    const mean = MCMC.computeMean(chain);
+    const autocovariance = zeros(lag, 1);
+    for (let k = 0; k <= lag; ++k)
+      for (let i = k; i < chain.length; ++i)
+        autocovariance[k] += chain[i].subtract(mean).dot(chain[i - k].subtract(mean));
+    return autocovariance.scale(1.0 / autocovariance[0]);
+  },
+};
+
+// Banana distribution
+var bananaDist = new MultivariateNormal(
+  matrix([[0], [4]]),
+  matrix([
+    [1, 0.5],
+    [0.5, 1],
+  ])
+);
+MCMC.targetNames.push("banana");
+MCMC.targets["banana"] = {
+  xmin: -6,
+  xmax: 6,
+  logDensity: (x) => {
+    const a = 2,
+      b = 0.2;
+    const y = zeros(2, 1);
+    y[0] = x[0] / a;
+    y[1] = x[1] * a + a * b * (x[0] * x[0] + a * a);
+    return bananaDist.logDensity(y);
+  },
+  gradLogDensity: (x) => {
+    const a = 2,
+      b = 0.2;
+    const y = zeros(2, 1);
+    y[0] = x[0] / a;
+    y[1] = x[1] * a + a * b * (x[0] * x[0] + a * a);
+    const grad = bananaDist.gradLogDensity(y);
+    const gradx0 = grad[0] / a + grad[1] * a * b * 2 * x[0];
+    const gradx1 = grad[1] * a;
+    grad[0] = gradx0;
+    grad[1] = gradx1;
+    return grad;
+  },
+};
+
+// Donut
+MCMC.targetNames.push("donut");
+MCMC.targets["donut"] = {
+  xmin: -6,
+  xmax: 6,
+  radius: 2.6,
+  sigma2: 0.033,
+  logDensity: (x) => {
+    const r = x.norm();
+    return -Math.pow(r - MCMC.targets.donut.radius, 2) / MCMC.targets.donut.sigma2;
+  },
+  gradLogDensity: (x) => {
+    const r = x.norm();
+    if (r == 0) return zeros(2);
+    return matrix([
+      [(x[0] * (MCMC.targets.donut.radius / r - 1) * 2) / MCMC.targets.donut.sigma2],
+      [(x[1] * (MCMC.targets.donut.radius / r - 1) * 2) / MCMC.targets.donut.sigma2],
+    ]);
+  },
+};
+
+// Bivariate normal distribution with no correlation
+MCMC.targetNames.push("standard");
+const dist = new MultivariateNormal(zeros(2, 1), eye(2));
+MCMC.targets["standard"] = {
+  xmin: -6,
+  xmax: 6,
+  logDensity: (x) => {
+    return dist.logDensity(x);
+  },
+  gradLogDensity: (x) => {
+    return dist.gradLogDensity(x);
+  },
+};
+
+// Mixture distribution with three components
+const mixtureComponents = [
+  new MultivariateNormal(matrix([[-1.5], [-1.5]]), eye(2).scale(0.8)),
+  new MultivariateNormal(matrix([[1.5], [1.5]]), eye(2).scale(0.8)),
+  new MultivariateNormal(matrix([[-2], [2]]), eye(2).scale(0.5)),
+];
+MCMC.targetNames.push("multimodal");
+MCMC.targets["multimodal"] = {
+  xmin: -6,
+  xmax: 6,
+  logDensity: (x) => {
+    return Math.log(
+      Math.exp(mixtureComponents[0].logDensity(x)) +
+        Math.exp(mixtureComponents[1].logDensity(x)) +
+        Math.exp(mixtureComponents[2].logDensity(x))
+    );
+  },
+  gradLogDensity: (x) => {
+    const p1 = Math.exp(mixtureComponents[0].logDensity(x));
+    const p2 = Math.exp(mixtureComponents[1].logDensity(x));
+    const p3 = Math.exp(mixtureComponents[2].logDensity(x));
+    return mixtureComponents[0]
+      .gradLogDensity(x)
+      .scale(p1)
+      .add(mixtureComponents[1].gradLogDensity(x).scale(p2))
+      .add(mixtureComponents[2].gradLogDensity(x).scale(p3))
+      .scale(1 / (p1 + p2 + p3));
+  },
+};
+// fillin to get last element of array
+if (!Array.prototype.last) {
+  Array.prototype.last = function () {
+    return this[this.length - 1];
+  };
+}
+
+// "funnel" distribution from Neal, Radford M. 2003. “Slice Sampling.” Annals of Statistics 31 (3): 705–67
+const f = (x, m, s) => -0.5 * Math.log(2.0 * Math.PI) - Math.log(s) - 0.5 * Math.pow((x - m) / s, 2);
+const dfdx = (x, m, s) => -(x - m) / Math.pow(s, 2);
+const dfds = (x, m, s) => (Math.pow(x - m, 2) - Math.pow(s, 2)) / Math.pow(s, 3);
+MCMC.targetNames.push("funnel");
+MCMC.targets["funnel"] = {
+  xmin: -6,
+  xmax: 6,
+  logDensity: (x_) => {
+    const x = [x_[1] - 2, x_[0]];
+    const m0 = 0,
+      s0 = 3;
+    const m1 = 0,
+      s1 = Math.exp(x[0] / 2);
+    return f(x[0], m0, s0) + f(x[1], m1, s1);
+  },
+  gradLogDensity: (x_) => {
+    const x = [x_[1] - 2, x_[0]];
+    const m0 = 0,
+      s0 = 3;
+    const m1 = 0,
+      s1 = Math.exp(x[0] / 2);
+    return matrix([
+      [dfdx(x[1], m1, Math.exp(x[0] / 2))],
+      [dfdx(x[0], m0, s0) + 0.5 * Math.exp(x[0] / 2) * dfds(x[1], m1, Math.exp(x[0] / 2))],
+    ]);
+  },
+};
+
+// Squiggle distribution
+const squiggleDist = new MultivariateNormal(
+  matrix([[0], [0]]),
+  matrix([
+    [2, 0.25],
+    [0.25, 0.5],
+  ])
+);
+MCMC.targetNames.push("squiggle");
+MCMC.targets["squiggle"] = {
+  xmin: -6,
+  xmax: 6,
+  logDensity: (x) => {
+    const y = zeros(2, 1);
+    y[0] = x[0];
+    y[1] = x[1] + Math.sin(5 * x[0]);
+    return squiggleDist.logDensity(y);
+  },
+  gradLogDensity: (x) => {
+    const y = zeros(2, 1);
+    y[0] = x[0];
+    y[1] = x[1] + Math.sin(5 * x[0]);
+    const grad = squiggleDist.gradLogDensity(y);
+    const gradx0 = grad[0] + grad[1] * 5 * Math.cos(5 * x[0]);
+    const gradx1 = grad[1];
+    grad[0] = gradx0;
+    grad[1] = gradx1;
+    return grad;
+  },
+};</script> <script>"use strict";
+
+class Simulation {
+  constructor() {
+    this.mcmc = {
+      initialized: false,
+      hasAlgorithm: false,
+      hasTarget: false,
+      dim: 2,
+    };
+    this.delay = 250;
+    this.tweeningDelay = 0;
+    this.autoplay = true;
+  }
+  setAlgorithm(algorithmName) {
+    console.log("Setting algorithm to " + algorithmName);
+    this.hasAlgorithm = true;
+    this.algorithm = algorithmName;
+    this.mcmc.initialized = false;
+    this.mcmc.description = MCMC.algorithms[algorithmName].description;
+    this.mcmc.init = MCMC.algorithms[algorithmName].init;
+    this.mcmc.reset = MCMC.algorithms[algorithmName].reset;
+    this.mcmc.step = MCMC.algorithms[algorithmName].step;
+    this.mcmc.attachUI = MCMC.algorithms[algorithmName].attachUI;
+    this.mcmc.about = MCMC.algorithms[algorithmName].about;
+    document.getElementById("info").innerHTML = this.mcmc.description;
+    if (this.hasAlgorithm && this.hasTarget) {
+      if (this.mcmc.initialized == false) this.mcmc.init(this.mcmc);
+      this.mcmc.reset(this.mcmc);
+      this.mcmc.initialized = true;
+      this.visualizer.resize();
+    }
+  }
+  setTarget(targetName) {
+    console.log("Setting target to " + targetName, MCMC.targets[targetName]);
+    this.hasTarget = true;
+    this.target = targetName;
+    this.mcmc.logDensity = MCMC.targets[targetName].logDensity;
+    this.mcmc.gradLogDensity = MCMC.targets[targetName].gradLogDensity;
+
+    // update visualizer extents
+    const options = { ...MCMC.targets[targetName] };
+    this.visualizer.xmin = options.xmin;
+    this.visualizer.xmax = options.xmax;
+    this.visualizer.resize();
+
+    // TODO: actually derive Hessians
+    // in the meantime, use finite difference :sadface:
+    var grad = this.mcmc.gradLogDensity,
+      N = this.mcmc.dim;
+    var h = 1e-8;
+    this.mcmc.hessLogDensity = function (x) {
+      var hess = zeros(N, N);
+      var Delta = eye(N, N).scale(h);
+      for (let i = 0; i < N; ++i) {
+        for (let j = 0; j < N; ++j) {
+          hess[i * N + j] =
+            (grad(x.add(Delta.col(j)))[i] - grad(x)[i]) / (2 * h) +
+            (grad(x.add(Delta.col(i)))[j] - grad(x)[j]) / (2 * h);
+        }
+      }
+      return hess;
+    };
+
+    // update contours
+    const xmin = this.visualizer.xmin;
+    const xmax = this.visualizer.xmax;
+    const ymin = this.visualizer.ymin;
+    const ymax = this.visualizer.ymax;
+
+    const nx = 480,
+      ny = 256,
+      nz = 7;
+    this.computeContours(this.mcmc.logDensity, xmin, xmax, ymin, ymax, nx, ny, nz);
+
+    if (this.mcmc.initialized) this.mcmc.reset(this.mcmc);
+    if (this.hasAlgorithm && this.hasTarget) {
+      if (this.mcmc.initialized == false) this.mcmc.init(this.mcmc);
+      this.mcmc.reset(this.mcmc);
+      this.mcmc.initialized = true;
+      this.visualizer.resize();
+    }
+  }
+  computeContours(logDensity, xmin, xmax, ymin, ymax, nx, ny, nz) {
+    // get contours
+    var x = linspace(xmin, xmax, nx);
+    var y = linspace(ymin, ymax, ny);
+    var data = [];
+    var point = zeros(2, 1);
+    var min = 1e10,
+      max = 0;
+    for (let i = 0; i < nx; ++i) {
+      data.push([]);
+      point[0] = x[i];
+      for (let j = 0; j < ny; ++j) {
+        point[1] = y[j];
+        var val = Math.exp(logDensity(point));
+        data[i].push(val);
+        if (val > max) max = val;
+        if (val < min) min = val;
+      }
+    }
+    var z = linspace(min + 0.01 * (max - min), max - 0.02 * (max - min), nz);
+    var c = new Conrec();
+    c.contour(data, 0, nx - 1, 0, ny - 1, x, y, nz, z);
+    var contours = c.contourList();
+    this.mcmc.contours = [];
+    this.mcmc.contourData = data;
+    this.mcmc.contourLevels = z;
+    for (let i = 0; i < contours.length; ++i) {
+      var contour = [];
+      for (let j = 0; j < contours[i].length; ++j) contour.push([contours[i][j].x, contours[i][j].y]);
+      this.mcmc.contours.push(contour);
+    }
+
+    // numerically integrate to get marginal densities
+    this.mcmc.xgrid = x;
+    this.mcmc.ygrid = y;
+    this.mcmc.marginals = [zeros(nx), zeros(ny)];
+    for (let i = 0; i < nx; ++i) {
+      for (let j = 0; j < ny; ++j) this.mcmc.marginals[0][i] += data[i][j];
+      this.mcmc.marginals[0][i];
+    }
+    this.mcmc.marginals[0] = this.mcmc.marginals[0].scale(1.0 / this.mcmc.marginals[0].maxCoeff());
+    for (let j = 0; j < ny; ++j) {
+      for (let i = 0; i < nx; ++i) this.mcmc.marginals[1][j] += data[i][j];
+      this.mcmc.marginals[1][j];
+    }
+    this.mcmc.marginals[1] = this.mcmc.marginals[1].scale(1.0 / this.mcmc.marginals[1].maxCoeff());
+
+    var buffer = document.createElement("canvas");
+    buffer.width = nx;
+    buffer.height = ny;
+    var context = buffer.getContext("2d");
+    var image = context.createImageData(nx, ny);
+    for (let j = 0; j < ny; ++j) {
+      for (let i = 0; i < nx; ++i) {
+        var base = 4 * ((ny - 1 - j) * nx + i);
+        var value = Math.sqrt((data[i][j] - min) / (max - min)) * 255;
+        image.data[base] = 102;
+        image.data[base + 1] = 153;
+        image.data[base + 2] = 187;
+        image.data[base + 3] = value | 0;
+      }
+    }
+    context.putImageData(image, 0, 0);
+    this.mcmc.densityCanvas = buffer;
+  }
+  reset() {
+    this.mcmc.reset(this.mcmc);
+    this.visualizer.resize();
+  }
+  step() {
+    if (this.visualizer.queue.length == 0) this.mcmc.step(this.mcmc, this.visualizer);
+    if (this.visualizer.animateProposal == false) {
+      while (this.visualizer.queue.length > 0) this.visualizer.dequeue();
+    } else {
+      this.visualizer.dequeue();
+    }
+    this.visualizer.render();
+  }
+  animate() {
+    var self = this;
+    if (this.autoplay || this.visualizer.tweening) this.step();
+    if (this.visualizer.tweening) {
+      setTimeout(function () {
+        requestAnimationFrame(function () {
+          self.animate();
+        });
+      }, self.tweeningDelay);
+    } else {
+      setTimeout(function () {
+        requestAnimationFrame(function () {
+          self.animate();
+        });
+      }, self.delay);
+    }
+  }
+}
+var viz, sim, gui;
+
+function getUrlVars() {
+  var vars = [],
+    pair;
+  var pairs = window.location.search.substr(1).split("&");
+  for (let i = 0; i < pairs.length; i++) {
+    pair = pairs[i].split("=");
+    vars.push(pair[0]);
+    vars[pair[0]] = pair[1] && decodeURIComponent(pair[1].replace(/\+/g, " "));
+  }
+  return vars;
+}
+
+window.onload = function () {
+  viz = new Visualizer(
+    document.getElementById("plotCanvas"),
+    document.getElementById("xHistCanvas"),
+    document.getElementById("yHistCanvas")
+  );
+  sim = new Simulation();
+  sim.visualizer = viz;
+  viz.simulation = sim;
+
+  var algorithm = MCMC.algorithmNames[0];
+  var target = MCMC.targetNames[0];
+  var seed = Math.seedrandom();
+
+  function parseBool(value) {
+    return value == "true";
+  }
+
+  if (window.location.search != "") {
+    var queryParams = getUrlVars();
+
+    if ("algorithm" in queryParams && MCMC.algorithmNames.indexOf(queryParams["algorithm"]) > -1) {
+      algorithm = queryParams["algorithm"];
+    }
+    if ("target" in queryParams && MCMC.targetNames.indexOf(queryParams["target"]) > -1) {
+      target = queryParams["target"];
+    }
+    if ("seed" in queryParams) {
+      // reseed
+      seed = Math.seedrandom(queryParams["seed"]);
+      console.log("Setting seed to " + seed);
+    }
+    let config = [
+      ["delay", parseInt, sim, "sim"],
+      ["tweeningDelay", parseInt, sim, "sim"],
+      ["autoplay", parseBool, sim, "sim"],
+      ["animateProposal", parseBool, viz, "viz"],
+      ["showSamples", parseBool, viz, "viz"],
+      ["showHistograms", parseBool, viz, "viz"],
+      ["histBins", parseInt, viz, "viz"],
+    ];
+    for (let i = 0; i < config.length; i++) {
+      let param = config[i][0],
+        parse = config[i][1],
+        obj = config[i][2],
+        objName = config[i][3];
+      if (param in queryParams) {
+        let value = parse(queryParams[param]);
+        console.log("Setting " + objName + "." + param + " to " + value);
+        obj[param] = value;
+      }
+    }
+  }
+
+  sim.setAlgorithm(algorithm);
+  sim.setTarget(target);
+
+  sim.mcmc.init(sim.mcmc);
+  window.onresize = function () {
+    viz.resize();
+  };
+
+  gui = new dat.GUI({ width: 300 });
+
+  var f1 = gui.addFolder("Simulation options");
+  f1.add(sim, "algorithm", MCMC.algorithmNames)
+    .name("Algorithm")
+    .onChange(function (value) {
+      sim.setAlgorithm(value);
+      gui.removeFolder("Algorithm Options");
+      var f = gui.addFolder("Algorithm Options");
+      sim.mcmc.attachUI(sim.mcmc, f);
+      // f.add(sim.mcmc, 'about').name('About...');
+      f.open();
+    });
+  f1.add(sim, "target", MCMC.targetNames)
+    .name("Target distribution")
+    .onChange(function (value) {
+      sim.setTarget(value);
+    });
+  f1.add(sim, "autoplay").name("Autoplay");
+  f1.add(sim, "delay", 0, 1000)
+    .name("Autoplay delay")
+    .onChange(function (value) {
+      if (value == 0) {
+        viz.animateProposal = false;
+      } else {
+        viz.animateProposal = true;
+      }
+    });
+  f1.add(sim, "tweeningDelay", 0, 200).name("Tweening delay");
+  f1.add(sim, "step").name("Step");
+  f1.add(sim, "reset").name("Reset");
+  f1.open();
+
+  var f2 = gui.addFolder("Visualization Options");
+  f2.add(viz, "animateProposal").name("Animate proposal").listen();
+  f2.add(viz, "showTargetDensity").name("Show target");
+  f2.add(viz, "showSamples").name("Show samples");
+  f2.add(viz, "showHistograms").name("Show histogram");
+  f2.add(viz, "histBins", 20, 200)
+    .step(1)
+    .name("Histogram bins")
+    .onChange(function (value) {
+      viz.drawHistograms();
+      viz.render();
+    });
+  f2.open();
+
+  gui.removeFolder("Algorithm Options");
+  var f3 = gui.addFolder("Algorithm Options");
+  sim.mcmc.attachUI(sim.mcmc, f3);
+  f3.add(sim.mcmc, "about").name("About this algorithm");
+  f3.open();
+
+  sim.animate();
+};
+
+dat.GUI.prototype.removeFolder = function (name) {
+  var folder = this.__folders[name];
+  if (!folder) {
+    return;
+  }
+  folder.close();
+  this.__ul.removeChild(folder.domElement.parentNode);
+  delete this.__folders[name];
+  this.onResize();
+};</script> <script>"use strict";
+
+class Visualizer {
+  constructor(canvas, xHistCanvas, yHistCanvas) {
+    this.canvas = canvas;
+    this.xHistCanvas = xHistCanvas;
+    this.yHistCanvas = yHistCanvas;
+
+    this.queue = []; // events for visualization
+
+    this.xmin = -6; // in coordinate-space
+    this.xmax = 6; // ymin, ymax set according to canvas aspect ratio
+    this.xOffset = 0; // world coordinates of the center of the screen
+    this.yOffset = 0; // world coordinates of the center of the screen
+
+    this.showSamples = true;
+    this.showTargetDensity = true;
+    this.animateProposal = true;
+    this.tweening = false;
+    this.showHistograms = true;
+
+    this.arrowSize = 10;
+    this.proposalColor = "#999";
+    this.trajectoryColor = "#333";
+    this.acceptColor = "#4c4";
+    this.rejectColor = "#f00";
+    this.nutsColor = "#09c";
+    this.contourColor = "#69b";
+
+    this.histogramRatio = 0.2;
+    this.histBins = 50;
+    this.histFillStyle = "#69b";
+
+    // offscreen canvases to avoid expensive redraws
+    this.densityCanvas = document.createElement("canvas");
+    this.samplesCanvas = document.createElement("canvas");
+    this.overlayCanvas = document.createElement("canvas");
+    this.xHistCanvas = document.createElement("canvas");
+    this.yHistCanvas = document.createElement("canvas");
+  }
+  resize() {
+    var height = document.body.clientHeight;
+    var width = document.body.clientWidth;
+
+    var histogramSize = Math.min(height, width) * this.histogramRatio;
+
+    // resize canvas to fit window and scale by devicePixelRatio for HiDPI displays
+    this.canvas.width = document.body.clientWidth * window.devicePixelRatio;
+    this.canvas.height = document.body.clientHeight * window.devicePixelRatio;
+    this.canvas.style.zoom = 1 / window.devicePixelRatio;
+
+    this.xHistCanvas.width = this.canvas.width;
+    this.xHistCanvas.height = histogramSize * window.devicePixelRatio;
+    this.yHistCanvas.width = histogramSize * window.devicePixelRatio;
+    this.yHistCanvas.height = this.canvas.height;
+
+    // set ymin, ymax assuming equal aspect ratio
+    this.ymin = (this.xmin * this.canvas.height) / this.canvas.width;
+    this.ymax = (this.xmax * this.canvas.height) / this.canvas.width;
+    // scale and origin (location of 0, 0)
+    this.scale =
+      width > height ? this.canvas.width / (this.xmax - this.xmin) : this.canvas.height / (this.ymax - this.ymin);
+    this.origin = new Float64Array([
+      this.canvas.width / 2,
+      this.canvas.height / 2 + ((this.canvas.height / (this.ymax - this.ymin)) * (this.ymax + this.ymin)) / 2,
+    ]);
+    // resize offscreen canvases
+    this.densityCanvas.width = this.canvas.width;
+    this.densityCanvas.height = this.canvas.height;
+    this.samplesCanvas.width = this.canvas.width;
+    this.samplesCanvas.height = this.canvas.height;
+    this.overlayCanvas.width = this.canvas.width;
+    this.overlayCanvas.height = this.canvas.height;
+
+    this.fontSizePx = (12 * window.devicePixelRatio) | 0;
+    var context = this.canvas.getContext("2d");
+    context.textBaseline = "top";
+    context.font = "" + this.fontSizePx + "px Arial";
+    context = this.overlayCanvas.getContext("2d");
+    context.textBaseline = "top";
+    context.font = "" + this.fontSizePx + "px Arial";
+    this.reset();
+  }
+  reset() {
+    // clear the queue
+    this.queue = [];
+    // stop tweening
+    this.tweening = false;
+    // clear offscreen and onscreen canvases
+    this.densityCanvas.getContext("2d").clearRect(0, 0, this.densityCanvas.width, this.densityCanvas.height);
+    this.samplesCanvas.getContext("2d").clearRect(0, 0, this.samplesCanvas.width, this.samplesCanvas.height);
+    this.overlayCanvas.getContext("2d").clearRect(0, 0, this.overlayCanvas.width, this.overlayCanvas.height);
+    this.canvas.getContext("2d").clearRect(0, 0, this.canvas.width, this.canvas.height);
+    // redraw density contours
+    this.drawDensityContours();
+    // redraw histogram
+    this.drawHistograms();
+    this.render();
+  }
+  render() {
+    var context = this.canvas.getContext("2d");
+    // clear onscreen canvas
+    context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    // default composition operator
+    context.globalCompositeOperation = "source-over";
+    // draw target density canvas
+    if (this.showTargetDensity) {
+      context.drawImage(this.densityCanvas, 0, 0);
+    }
+    context.globalCompositeOperation = "multiply";
+    // draw samples canvas
+    if (this.showSamples) {
+      context.drawImage(this.samplesCanvas, 0, 0);
+    }
+    // draw histogram canvases
+    if (this.showHistograms) {
+      context.drawImage(this.xHistCanvas, 0, this.canvas.height - this.xHistCanvas.height);
+      context.drawImage(this.yHistCanvas, 0, 0);
+    }
+    // draw overlay canvas
+    context.drawImage(this.overlayCanvas, 0, 0);
+  }
+  // transform world-coordinate to pixel coordinate
+  transform(x) {
+    var transformed = new Float64Array(2);
+    transformed[0] = (x[0] - this.xOffset) * this.scale + this.origin[0];
+    transformed[1] = this.origin[1] - this.scale * (x[1] - this.yOffset);
+    return transformed;
+  }
+  drawHistograms(options) {
+    if (!this.simulation.mcmc.initialized) return;
+    var chain = this.simulation.mcmc.chain;
+    var has_weights = this.simulation.mcmc.hasOwnProperty("chain_weights");
+    // this.histBins = Math.min(125, Math.floor(chain.length / 50) + 10);
+    this.xbins = linspace(this.xmin, this.xmax, this.histBins);
+    this.ybins = linspace(this.ymin, this.ymax, this.histBins);
+    this.xhist = new Uint16Array(this.histBins);
+    this.yhist = new Uint16Array(this.histBins);
+    for (var i = 0; i < chain.length; ++i) {
+      var x, y;
+      var weight = 1;
+      var x = chain[i][0];
+      var y = chain[i][1];
+      if (has_weights) {
+        weight = this.simulation.mcmc.chain_weights[i] * chain.length;
+      }
+
+      var xind = ((x - this.xmin) / (this.xmax - this.xmin)) * this.histBins;
+      if (xind > 0 && xind < this.histBins) this.xhist[xind | 0] += weight;
+      var yind = ((y - this.ymin) / (this.ymax - this.ymin)) * this.histBins;
+      if (yind > 0 && yind < this.histBins) this.yhist[yind | 0] += weight;
+    }
+    var xmax = 0,
+      ymax = 0;
+    for (var i = 0; i < this.histBins; ++i) {
+      if (this.xhist[i] > xmax) xmax = this.xhist[i];
+      if (this.yhist[i] > ymax) ymax = this.yhist[i];
+    }
+
+    this.xHistCanvas.getContext("2d").clearRect(0, 0, this.xHistCanvas.width, this.xHistCanvas.height);
+    this.yHistCanvas.getContext("2d").clearRect(0, 0, this.yHistCanvas.width, this.yHistCanvas.height);
+
+    // draw x histogram
+    var context = this.xHistCanvas.getContext("2d");
+    context.globalAlpha = 0.3;
+    context.fillStyle = this.histFillStyle;
+    var dx = (1 / this.histBins) * this.xHistCanvas.width;
+    for (var i = 0; i < this.histBins; ++i) {
+      var x = (i / this.histBins) * this.xHistCanvas.width;
+      var y = (1.0 / xmax) * this.xhist[i] * this.xHistCanvas.height;
+      context.fillRect(x, this.xHistCanvas.height, dx, -y);
+    }
+
+    // draw y histogram
+    var context = this.yHistCanvas.getContext("2d");
+    context.globalAlpha = 0.3;
+    context.fillStyle = this.histFillStyle;
+    var dy = (1 / this.histBins) * this.yHistCanvas.height;
+    for (var i = 0; i < this.histBins; ++i) {
+      var y = (1 - i / this.histBins) * this.yHistCanvas.height;
+      var x = (1.0 / ymax) * this.yhist[i] * this.yHistCanvas.width;
+      context.fillRect(0, y, x, -dy);
+    }
+
+    // draw marginals
+    var context = this.xHistCanvas.getContext("2d");
+    context.strokeStyle = this.histFillStyle;
+    context.lineWidth = 1 * window.devicePixelRatio;
+    var xgrid = this.simulation.mcmc.xgrid;
+    var xmarg = this.simulation.mcmc.marginals[0];
+    context.beginPath();
+    context.moveTo(0, this.xHistCanvas.height);
+    for (var i = 1; i < xgrid.length; ++i) {
+      var x = xgrid[i] * this.scale + this.origin[0];
+      context.lineTo(x, (1 - 0.97 * xmarg[i]) * this.xHistCanvas.height);
+    }
+    context.stroke();
+
+    var context = this.yHistCanvas.getContext("2d");
+    context.strokeStyle = this.histFillStyle;
+    context.lineWidth = 1 * window.devicePixelRatio;
+    var ygrid = this.simulation.mcmc.ygrid;
+    var ymarg = this.simulation.mcmc.marginals[1];
+    context.beginPath();
+    context.moveTo(0, 0);
+    for (var i = 1; i < xgrid.length; ++i) {
+      var y = this.origin[1] - this.scale * ygrid[i];
+      context.lineTo(ymarg[i] * this.yHistCanvas.width * 0.97, y);
+    }
+    context.stroke();
+  }
+  drawCircle(canvas, options) {
+    var context = canvas.getContext("2d");
+    context.lineWidth = options.lw ? options.lw * window.devicePixelRatio : 1 * window.devicePixelRatio;
+    context.strokeStyle = options.color ? options.color : "rgb(0,0,0)";
+    context.globalAlpha = options.alpha ? options.alpha : 1;
+    var center = this.transform(options.center);
+    context.beginPath();
+    if (options.end && options.fill) context.moveTo(center[0], center[1]);
+    context.arc(
+      center[0],
+      center[1],
+      options.radius * this.scale,
+      options.start || 0,
+      options.end || 2 * Math.PI,
+      false
+    );
+    if (options.end && options.fill) context.closePath();
+    if (options.fill) {
+      context.fillStyle = options.fill;
+      context.fill();
+    }
+    if (options.lw > 0) {
+      context.stroke();
+    }
+  }
+  drawPath(canvas, options) {
+    var context = canvas.getContext("2d");
+    context.lineWidth = options.lw ? options.lw * window.devicePixelRatio : 1 * window.devicePixelRatio;
+    context.strokeStyle = options.color ? options.color : "rgb(0,0,0)";
+    context.globalAlpha = options.alpha ? options.alpha : 1;
+    var offset = options.offset ? options.offset : 0;
+    var path = options.path;
+    var start = this.transform(path[0]);
+    var quadratic = options.quadratic ? options.quadratic : false;
+    context.beginPath();
+    context.moveTo(start[0], start[1]);
+    if (quadratic) {
+      for (var i = 1; i < path.length - offset - 1; ++i) {
+        var start = this.transform(path[i - 1]);
+        var mid = this.transform(path[i]);
+        var end = this.transform(path[i + 1]);
+        context.moveTo(start[0], start[1]);
+        context.quadraticCurveTo(mid[0], mid[1], end[0], end[1]);
+      }
+    } else {
+      for (var i = 1; i < path.length - offset; ++i) {
+        var point = this.transform(path[i]);
+        context.lineTo(point[0], point[1]);
+      }
+    }
+    context.stroke();
+    if (options.fill) {
+      context.fillStyle = options.fill;
+      context.fill();
+    }
+  }
+  drawArrow(canvas, options) {
+    var context = canvas.getContext("2d");
+    context.lineWidth = options.lw ? options.lw * window.devicePixelRatio : 1 * window.devicePixelRatio;
+    context.strokeStyle = options.color ? options.color : "rgb(0,0,0)";
+    context.globalAlpha = options.alpha ? options.alpha : 1;
+    var arrowScale = options.arrowScale ? options.arrowScale : 1;
+    var from = this.transform(options.from);
+    var to = this.transform(options.to);
+    context.beginPath();
+    context.moveTo(from[0], from[1]);
+    context.lineTo(to[0], to[1]);
+    var t = Math.atan2(to[1] - from[1], to[0] - from[0]) + Math.PI;
+    var size = arrowScale * this.arrowSize * window.devicePixelRatio;
+    context.moveTo(to[0] + size * Math.cos(t + Math.PI / 8), to[1] + size * Math.sin(t + Math.PI / 8));
+    context.lineTo(to[0], to[1]);
+    context.lineTo(to[0] + size * Math.cos(t - Math.PI / 8), to[1] + size * Math.sin(t - Math.PI / 8));
+    context.stroke();
+  }
+  drawSample(canvas, center) {
+    var context = canvas.getContext("2d");
+    context.globalCompositeOperation = "multiply";
+    this.drawCircle(canvas, {
+      fill: "rgb(216,216,216)",
+      center: center,
+      radius: 0.02,
+      lw: 0,
+    });
+    context.globalCompositeOperation = "source-over";
+  }
+  dequeue() {
+    var event = this.queue.shift();
+
+    var last =
+      this.simulation.mcmc.chain.length > 1
+        ? this.simulation.mcmc.chain[this.simulation.mcmc.chain.length - 2]
+        : this.simulation.mcmc.chain.last();
+
+    if (event.type == "proposal") {
+      // clear overlay canvas
+      var context = this.overlayCanvas.getContext("2d");
+      context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      var drawProposalArrow = true;
+      var drawProposalCov = true;
+
+      // draw proposal direction vector (for DE-MCMC)
+      if (event.hasOwnProperty("inspiration")) {
+        this.drawArrow(this.overlayCanvas, {
+          from: event.inspiration.from,
+          to: event.inspiration.to,
+          color: this.proposalColor,
+          lw: 1,
+        });
+      }
+
+      // draw initial momentum vector (for Hamiltonian MC)
+      if (event.hasOwnProperty("initialMomentum")) {
+        var to = last.add(event.initialMomentum);
+        this.drawArrow(this.overlayCanvas, {
+          from: last,
+          to: to,
+          color: this.proposalColor,
+          lw: 1,
+        });
+      }
+
+      if (event.hasOwnProperty("epsilon")) {
+        context.fillStyle = "#000";
+        context.fillText(
+          "epsilon = " + event.epsilon,
+          5 * window.devicePixelRatio,
+          5 * window.devicePixelRatio + 1.2 * this.fontSizePx
+        );
+        context.fillText(
+          "m / M_adapt = " + this.simulation.mcmc.chain.length + " / " + this.simulation.mcmc.M_adapt,
+          5 * window.devicePixelRatio,
+          5 * window.devicePixelRatio + 2 * 1.2 * this.fontSizePx
+        );
+        if (event.hasOwnProperty("alpha"))
+          context.fillText(
+            "alpha = " + ((event.alpha * 100) | 0) / 100,
+            5 * window.devicePixelRatio,
+            5 * window.devicePixelRatio + 3 * 1.2 * this.fontSizePx
+          );
+      }
+
+      // draw Hamiltonian MC trajectory or queue animation frames if necessary
+      // otherwise, draw arrow from chain.last() to proposal
+      if (event.hasOwnProperty("trajectory")) {
+        if (this.animateProposal) {
+          for (var i = 0; i < event.trajectory.length - 1; ++i)
+            this.queue.splice(i, 0, {
+              type: "trajectory-animation-step",
+              trajectory: event.trajectory,
+              offset: i,
+            });
+          this.queue.push({
+            type: "trajectory-animation-end",
+            trajectory: event.trajectory,
+          });
+        } else {
+          this.drawPath(this.overlayCanvas, {
+            path: event.trajectory,
+            color: this.trajectoryColor,
+            lw: 1,
+          });
+          for (var i = 0; i < event.trajectory.length - 1; ++i) {
+            this.drawCircle(this.overlayCanvas, {
+              fill: this.trajectoryColor,
+              center: event.trajectory[i],
+              radius: 0.02,
+              lw: 0,
+            });
+          }
+          this.drawArrow(this.overlayCanvas, {
+            from: event.trajectory[event.trajectory.length - 2],
+            to: event.trajectory.last(),
+            color: this.trajectoryColor,
+            lw: 1,
+          });
+        }
+        drawProposalArrow = false;
+      }
+      // draw NUTS trajectory
+      if (event.hasOwnProperty("nuts_trajectory")) {
+        drawProposalArrow = false;
+        if (this.animateProposal) {
+          for (var i = 0; i < event.nuts_trajectory.length; ++i)
+            this.queue.splice(i, 0, {
+              type: "nuts-animation-step",
+              trajectory: event.nuts_trajectory,
+              offset: i,
+            });
+          this.queue.push({
+            type: "nuts-animation-end",
+            trajectory: event.nuts_trajectory,
+          });
+        } else {
+          for (var i = 0; i < event.nuts_trajectory.length; ++i) {
+            var color = event.nuts_trajectory[i].type == "accept" ? this.nutsColor : "#f00";
+            this.drawPath(this.overlayCanvas, {
+              path: [event.nuts_trajectory[i].from, event.nuts_trajectory[i].to],
+              color: color,
+              lw: 1,
+            });
+            if (event.nuts_trajectory[i].type == "accept")
+              this.drawCircle(this.overlayCanvas, {
+                fill: this.nutsColor,
+                center: event.nuts_trajectory[i].to,
+                radius: 0.02,
+                lw: 0,
+              });
+          }
+        }
+      }
+      if (event.hasOwnProperty("ns_rejected")) {
+        //console.log("ns_rejected: " + event.ns_rejected)
+        if (this.animateProposal) {
+          for (var i = 0; i < event.ns_rejected.length; ++i)
+            this.queue.splice(i, 0, {
+              type: "ns-trajectory-animation-step",
+              ns_rejected: event.ns_rejected,
+              previous: event.previous,
+              offset: i,
+            });
+          this.queue.push({
+            type: "ns-trajectory-animation-end",
+            ns_rejected: event.ns_rejected,
+            previous: event.previous,
+          });
+        } else {
+          for (var i = 0; i < event.ns_rejected.length; ++i) {
+            this.drawArrow(this.overlayCanvas, {
+              from: event.previous,
+              to: event.ns_rejected[i],
+              color: this.rejectColor,
+              lw: 2,
+            });
+            //this.drawSample(this.samplesCanvas, event.ns_rejected[i]);
+          }
+        }
+        drawProposalArrow = false;
+      }
+      // draw MALA gradient/proposal offset
+      if (event.hasOwnProperty("gradient")) {
+        this.drawArrow(this.overlayCanvas, {
+          from: last,
+          to: last.add(event.gradient),
+          color: this.nutsColor,
+          lw: 1,
+        });
+        this.drawArrow(this.overlayCanvas, {
+          from: last.add(event.gradient),
+          to: event.proposal,
+          color: this.proposalColor,
+          lw: 1.5,
+        });
+        if (event.hasOwnProperty("proposalCov")) {
+          drawProposalCov = false;
+          this.drawProposalContour(this.overlayCanvas, last.add(event.gradient), event.proposalCov);
+        }
+      }
+      // draw proposal covariance
+      if (event.hasOwnProperty("proposalCov") && drawProposalCov) {
+        var center = event.hasOwnProperty("proposalMean") ? event.proposalMean : last;
+        this.drawProposalContour(this.overlayCanvas, center, event.proposalCov);
+        if (event.hasOwnProperty("proposalMean")) {
+          drawProposalArrow = false;
+          this.drawPath(this.overlayCanvas, {
+            path: [last, center],
+            color: this.proposalColor,
+            lw: 1,
+          });
+          this.drawArrow(this.overlayCanvas, {
+            from: center,
+            to: event.proposal,
+            color: this.proposalColor,
+            lw: 1,
+          });
+        }
+      }
+
+      // draw proposal covariance
+      if (event.hasOwnProperty("revProposalCov") && drawProposalCov) {
+        var center = event.hasOwnProperty("revProposalMean") ? event.revProposalMean : last;
+        this.drawProposalContour(this.overlayCanvas, center, event.revProposalCov);
+        if (event.hasOwnProperty("revProposalMean")) {
+          drawProposalArrow = false;
+          this.drawPath(this.overlayCanvas, {
+            path: [event.proposal, event.revProposalMean],
+            color: "#00f",
+            lw: 1,
+          });
+          this.drawArrow(this.overlayCanvas, {
+            from: center,
+            to: last,
+            color: "#00f",
+            lw: 1,
+          });
+        }
+      }
+
+      // draw proposal arrow
+      if (drawProposalArrow) {
+        this.drawArrow(this.overlayCanvas, {
+          from: last,
+          to: event.proposal,
+          color: this.proposalColor,
+          lw: 1,
+        });
+      }
+    }
+
+    if (event.type == "trajectory-animation-step") {
+      this.tweening = true; // start skiping delay for calling requestAnimationFrame
+      var context = this.overlayCanvas.getContext("2d");
+      var path = [event.trajectory[event.offset], event.trajectory[event.offset + 1]];
+      this.drawPath(this.overlayCanvas, {
+        path: path,
+        color: this.trajectoryColor,
+        lw: 1,
+      });
+      // this.drawArrow(this.overlayCanvas, {from: event.trajectory[event.offset], to: event.trajectory[event.offset + 1], color: this.trajectoryColor, lw: 0.5, arrowScale: 0.8, alpha: 0.8 });
+      this.drawCircle(this.overlayCanvas, {
+        fill: this.trajectoryColor,
+        center: event.trajectory[event.offset + 1],
+        radius: 0.02,
+        lw: 0,
+      });
+    }
+
+    if (event.type == "trajectory-animation-end") {
+      this.tweening = false; // stop skipping delay for calling requestAnimationFrame
+    }
+
+    if (event.type == "ns-trajectory-animation-step") {
+      this.tweening = true; // start skiping delay for calling requestAnimationFrame
+      this.drawArrow(this.overlayCanvas, {
+        from: event.previous,
+        to: event.ns_rejected[event.offset],
+        color: this.rejectColor,
+        lw: 2,
+      });
+      //this.drawSample(this.samplesCanvas, event.ns_rejected[event.offset]);
+    }
+
+    if (event.type == "ns-trajectory-animation-end") {
+      this.tweening = false; // stop skipping delay for calling requestAnimationFrame
+    }
+
+    if (event.type == "nuts-animation-step") {
+      this.tweening = true; // start skiping delay for calling requestAnimationFrame
+      var context = this.overlayCanvas.getContext("2d");
+      var type = event.trajectory[event.offset].type;
+      if (type == "accept" || type == "reject") {
+        var path = [event.trajectory[event.offset].from, event.trajectory[event.offset].to];
+        var color = event.trajectory[event.offset].type == "accept" ? this.nutsColor : "#f00";
+        this.drawPath(this.overlayCanvas, {
+          path: path,
+          color: color,
+          lw: type == "accept" ? 1 : 0.5,
+        });
+        this.drawCircle(this.overlayCanvas, {
+          color: color,
+          center: event.trajectory[event.offset].to,
+          radius: 0.02,
+          lw: 0.5,
+        });
+      } else if (type == "left" || type == "right") {
+        this.nutsColor = type == "right" ? "#09c" : "#66f";
+        var path = [event.trajectory[event.offset + 1].from, event.trajectory[event.offset + 1].to];
+        var color = event.trajectory[event.offset + 1].type == "accept" ? this.nutsColor : "#f00";
+        var from = type == "left" ? path[1] : path[0];
+        var to = type == "left" ? path[0] : path[1];
+        // this.drawArrow(this.overlayCanvas, {from: from, to: to, color: color, lw: 1, arrowScale: 0.7});
+        this.drawCircle(this.overlayCanvas, {
+          fill: color,
+          center: event.trajectory[event.offset + 1].from,
+          radius: 0.025,
+          lw: 0,
+        });
+      }
+    }
+
+    if (event.type == "svgd-step") {
+      // clear overlay canvas
+      var context = this.overlayCanvas.getContext("2d");
+      context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      for (var i = 0; i < event.x.length; i++) {
+        this.drawCircle(this.overlayCanvas, {
+          fill: "#000",
+          center: event.x[i],
+          radius: 0.02,
+          lw: 0,
+        });
+      }
+      // draw svgd particles and gradient vectors
+      for (var i = 0; i < event.x.length; i++) {
+        var norm = event.gradx[i].norm();
+        var scale = 0.25 / norm;
+        var to = event.x[i].add(event.gradx[i].scale(scale));
+        var alpha = Math.min(10 * norm, 1).toFixed(2);
+        color = "rgba(0,0,0," + alpha + ")";
+        this.drawArrow(this.overlayCanvas, {
+          from: event.x[i],
+          to: to,
+          color: color,
+          lw: 1,
+        });
+      }
+      this.drawHistograms();
+    }
+
+    if (event.type == "nuts-animation-end") {
+      this.tweening = false;
+    }
+
+    if (event.type == "accept") {
+      this.drawArrow(this.overlayCanvas, {
+        from: last,
+        to: event.proposal,
+        color: this.acceptColor,
+        lw: 2,
+      });
+      this.drawSample(this.samplesCanvas, event.proposal);
+      this.drawHistograms();
+    }
+
+    if (event.type == "reject") {
+      this.drawArrow(this.overlayCanvas, {
+        from: last,
+        to: event.proposal,
+        color: this.rejectColor,
+        lw: 2,
+      });
+      this.drawSample(this.samplesCanvas, last);
+      this.drawHistograms();
+    }
+
+    if (event.type == "text") {
+      var context = this.overlayCanvas.getContext("2d");
+    }
+
+    if (event.type == "radfriends-region") {
+      var context = this.overlayCanvas.getContext("2d");
+      context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      for (var i = 0; i < event.x.length; i++) {
+        this.drawCircle(this.overlayCanvas, {
+          fill: "#cfc",
+          color: "#afa",
+          center: event.x[i],
+          radius: event.r,
+          lw: 1,
+        });
+      }
+      for (var i = 0; i < event.x.length; i++) {
+        this.drawCircle(this.overlayCanvas, {
+          fill: "#00f",
+          center: event.x[i],
+          radius: 0.02,
+          lw: 1,
+        });
+      }
+    }
+    if (event.type == "ns-dead-point") {
+      this.drawArrow(this.overlayCanvas, {
+        from: event.deadpoint,
+        to: event.proposal,
+        color: this.acceptColor,
+        lw: 2,
+      });
+      this.drawSample(this.samplesCanvas, event.proposal);
+
+      //var context = this.overlayCanvas.getContext('2d');
+      //context.globalCompositeOperation = 'multiply';
+      for (var i = 0; i < event.rejected.length; ++i) {
+        this.drawCircle(this.overlayCanvas, {
+          fill: this.rejectColor,
+          color: this.rejectColor,
+          center: event.rejected[i],
+          radius: 0.02,
+          lw: 3,
+        });
+        //this.drawArrow(this.overlayCanvas, { from: event.previous, to: event.rejected[i], color: this.rejectColor, lw: 2 });
+        //this.drawSample(this.samplesCanvas, event.ns_rejected[i]);
+      }
+      this.drawCircle(this.overlayCanvas, {
+        fill: this.acceptColor,
+        color: this.acceptColor,
+        center: event.proposal,
+        radius: 0.02,
+        lw: 3,
+      });
+      //context.globalCompositeOperation = 'source-over';
+      this.drawHistograms();
+    }
+  }
+  drawProposalContour(canvas, last, cov) {
+    var context = canvas.getContext("2d");
+    context.lineWidth = 1 * window.devicePixelRatio;
+    context.globalAlpha = 1;
+
+    // get principle components using eigenvalue decomposition
+    var eigs = cov.jacobiRotation({ maxIter: 100, tolerance: 1e-5 });
+    for (var i = 0; i < 2; ++i) eigs.V.setCol(i, eigs.V.col(i).scale(Math.sqrt(eigs.D[i * 2 + i])));
+    var eigs = [eigs.V.col(0), eigs.V.col(1)];
+
+    // get major and minor axes and rotation
+    var a = eigs[0].norm();
+    var b = eigs[1].norm();
+    var angle = Math.atan2(-eigs[0][1], eigs[0][0]);
+    var center = this.transform(last);
+    context.beginPath();
+    context.strokeStyle = "#ddd";
+    context.ellipse(center[0], center[1], 2 * a * this.scale, 2 * b * this.scale, angle, 0, 2 * Math.PI, false);
+    context.stroke();
+
+    context.beginPath();
+    context.strokeStyle = "#999";
+    context.ellipse(center[0], center[1], a * this.scale, b * this.scale, angle, 0, 2 * Math.PI, false);
+    context.stroke();
+
+    // draw principle axes
+    // this.drawArrow(canvas, { from: last, to: last.add(eigs[0]), color: 'rgba(192,192,192,' +  this.alpha + ')', lw: 1 });
+    // this.drawArrow(canvas, { from: last, to: last.add(eigs[1]), color: 'rgba(192,192,192,' +  this.alpha + ')', lw: 1 });
+  }
+  drawDensityContours() {
+    if (!this.simulation.mcmc.initialized) return;
+
+    for (var i = 0; i < this.simulation.mcmc.contours.length; ++i) {
+      var alpha = (0.5 * (i + 1)) / this.simulation.mcmc.contours.length;
+      this.drawPath(this.densityCanvas, {
+        path: this.simulation.mcmc.contours[i],
+        color: this.contourColor,
+        alpha: alpha,
+        lw: 1,
+      });
+    }
+
+    var image = this.simulation.mcmc.densityCanvas;
+    var xgrid = this.simulation.mcmc.xgrid;
+    var ygrid = this.simulation.mcmc.ygrid;
+    var nx = xgrid.length;
+    var ny = ygrid.length;
+    // need to get bounds in (nx, ny) space
+    var sx = (((this.xmin - xgrid[0]) / (xgrid[nx - 1] - xgrid[0])) * nx) | 0;
+    var sy = (((this.ymin - ygrid[0]) / (ygrid[ny - 1] - ygrid[0])) * ny) | 0;
+    var sWidth = (((this.xmax - this.xmin) / (xgrid[nx - 1] - xgrid[0])) * nx) | 0;
+    var sHeight = (((this.ymax - this.ymin) / (ygrid[ny - 1] - ygrid[0])) * ny) | 0;
+
+    var context = this.densityCanvas.getContext("2d");
+    context.globalAlpha = 0.5;
+    context.drawImage(image, sx, sy, sWidth, sHeight, 0, 0, this.densityCanvas.width, this.densityCanvas.height);
+  }
+  // http://stackoverflow.com/questions/17242144/javascript-convert-hsb-hsv-color-to-rgb-accurately
+  static HSVtoRGB(h, s, v) {
+    var r, g, b, i, f, p, q, t;
+    if (arguments.length === 1) {
+      (s = h.s), (v = h.v), (h = h.h);
+    }
+    i = Math.floor(h * 6);
+    f = h * 6 - i;
+    p = v * (1 - s);
+    q = v * (1 - f * s);
+    t = v * (1 - (1 - f) * s);
+    switch (i % 6) {
+      case 0:
+        (r = v), (g = t), (b = p);
+        break;
+      case 1:
+        (r = q), (g = v), (b = p);
+        break;
+      case 2:
+        (r = p), (g = v), (b = t);
+        break;
+      case 3:
+        (r = p), (g = q), (b = v);
+        break;
+      case 4:
+        (r = t), (g = p), (b = v);
+        break;
+      case 5:
+        (r = v), (g = p), (b = q);
+        break;
+    }
+    return {
+      r: Math.round(r * 255),
+      g: Math.round(g * 255),
+      b: Math.round(b * 255),
+    };
+  }
+}</script> <script>"use strict";
+
+MCMC.registerAlgorithm("HamiltonianMC", {
+  description: "Hamiltonian Monte Carlo",
+
+  about: () => {
+    window.open("https://en.wikipedia.org/wiki/Hybrid_Monte_Carlo");
+  },
+
+  init: (self) => {
+    self.leapfrogSteps = 37;
+    self.dt = 0.1;
+  },
+
+  reset: (self) => {
+    self.chain = [MultivariateNormal.getSample(self.dim)];
+  },
+
+  attachUI: (self, folder) => {
+    folder.add(self, "leapfrogSteps", 5, 100).step(1).name("Leapfrog Steps");
+    folder.add(self, "dt", 0.05, 0.5).step(0.025).name("Leapfrog &Delta;t");
+    folder.open();
+  },
+
+  step: (self, visualizer) => {
+    const q0 = self.chain.last();
+    const p0 = MultivariateNormal.getSample(self.dim);
+
+    // use leapfrog integration to find proposal
+    const q = q0.copy();
+    const p = p0.copy();
+    const trajectory = [q.copy()];
+    for (let i = 0; i < self.leapfrogSteps; i++) {
+      p.increment(self.gradLogDensity(q).scale(self.dt / 2));
+      q.increment(p.scale(self.dt));
+      p.increment(self.gradLogDensity(q).scale(self.dt / 2));
+      trajectory.push(q.copy());
+    }
+
+    // add integrated trajectory to visualizer animation queue
+    visualizer.queue.push({
+      type: "proposal",
+      proposal: q,
+      trajectory: trajectory,
+      initialMomentum: p0,
+    });
+
+    // calculate acceptance ratio
+    const H0 = -self.logDensity(q0) + p0.norm2() / 2;
+    const H = -self.logDensity(q) + p.norm2() / 2;
+    const logAcceptRatio = -H + H0;
+
+    // accept or reject proposal
+    if (Math.random() < Math.exp(logAcceptRatio)) {
+      self.chain.push(q.copy());
+      visualizer.queue.push({ type: "accept", proposal: q });
+    } else {
+      self.chain.push(q0.copy());
+      visualizer.queue.push({ type: "reject", proposal: q });
+    }
+  },
+});</script> <script>"use strict";
+
+MCMC.registerAlgorithm("RandomWalkMH", {
+  description: "Random walk Metropolis-Hastings",
+
+  about: () => {
+    window.open("https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm");
+  },
+
+  init: (self) => {
+    self.sigma = 1;
+  },
+
+  reset: (self) => {
+    self.chain = [MultivariateNormal.getSample(self.dim)];
+  },
+
+  attachUI: (self, folder) => {
+    folder.add(self, "sigma", 0.05, 2).step(0.05).name("Proposal &sigma;");
+    folder.open();
+  },
+
+  step: (self, visualizer) => {
+    const proposalDist = new MultivariateNormal(self.chain.last(), eye(self.dim).scale(self.sigma * self.sigma));
+    const proposal = proposalDist.getSample();
+    const logAcceptRatio = self.logDensity(proposal) - self.logDensity(self.chain.last());
+    visualizer.queue.push({
+      type: "proposal",
+      proposal: proposal,
+      proposalCov: proposalDist.cov,
+    });
+    if (Math.random() < Math.exp(logAcceptRatio)) {
+      self.chain.push(proposal);
+      visualizer.queue.push({ type: "accept", proposal: proposal });
+    } else {
+      self.chain.push(self.chain.last());
+      visualizer.queue.push({ type: "reject", proposal: proposal });
+    }
+  },
+});</script> <script>"use strict";
+
+MCMC.registerAlgorithm("DE-MCMC-Z", {
+  description: "Differential Evolution Metropolis (Z)",
+
+  about: () => {
+    window.open("https://link.springer.com/article/10.1007/s11222-008-9104-9");
+  },
+
+  init: (self) => {
+    self.lambda = 2.38 / Math.sqrt(self.dim);
+    self.scaling = 0.1;
+  },
+
+  reset: (self) => {
+    self.chain = [MultivariateNormal.getSample(self.dim)];
+  },
+
+  attachUI: (self, folder) => {
+    folder.add(self, "lambda", 0.1, 3).step(0.1).name("Lambda &lambda;");
+    folder.add(self, "scaling", 0.001, 0.2).step(0.01).name("Scaling &epsilon;");
+    folder.open();
+  },
+
+  step: (self, visualizer) => {
+    var N = self.chain.length;
+    var iz1 = Math.floor(Math.random() * N);
+    var iz2 = Math.floor(Math.random() * N);
+    if (N > 1) {
+      while (iz2 == iz1) {
+        iz2 = Math.floor(Math.random() * N);
+      }
+    }
+    var q0 = self.chain.last();
+    var z1 = self.chain[iz1];
+    var z2 = self.chain[iz2];
+
+    var epsilonDist = new MultivariateNormal(zeros(self.dim, 1), eye(self.dim).scale(self.scaling * self.scaling));
+    var epsilon = epsilonDist.getSample();
+    var vec = z2.subtract(z1);
+    var proposal = q0.add(vec.scale(self.lambda)).add(epsilon);
+
+    const logAcceptRatio = self.logDensity(proposal) - self.logDensity(self.chain.last());
+    visualizer.queue.push({
+      type: "proposal",
+      proposal: proposal,
+      inspiration: {
+        from: z1,
+        to: z2,
+      },
+    });
+    if (Math.random() < Math.exp(logAcceptRatio)) {
+      self.chain.push(proposal);
+      visualizer.queue.push({ type: "accept", proposal: proposal });
+    } else {
+      self.chain.push(q0);
+      visualizer.queue.push({ type: "reject", proposal: proposal });
+    }
+  },
+});</script> <script>"use strict";
+
+MCMC.registerAlgorithm("AdaptiveMH", {
+  description: "Adaptive Metropolis-Hastings",
+
+  about: () => {
+    window.open("http://projecteuclid.org/euclid.bj/1080222083");
+  },
+
+  init: (self) => {
+    self.sigma = 1;
+    self.adaptStride = 10;
+    self.adaptProbability = 0.9;
+  },
+
+  reset: (self) => {
+    self.mhDist = new MultivariateNormal(zeros(self.dim, 1), eye(self.dim));
+    self.amDist = new MultivariateNormal(zeros(self.dim, 1), eye(self.dim));
+    self.chainScatter = eye(self.dim, self.dim).scale(1e-6);
+    self.chainSum = zeros(self.dim, 1);
+    self.chain = [MultivariateNormal.getSample(self.dim)];
+  },
+
+  attachUI: (self, folder) => {
+    folder.add(self, "adaptProbability", 0, 1).step(0.05).name("Adapt Probability");
+    folder.open();
+  },
+
+  step: (self, visualizer) => {
+    const lastIndex = self.chain.length - 1;
+    // update proposal covariance using rank-1 covariance update
+    if (self.chain.length % self.adaptStride == 0) {
+      for (let i = 0; i < self.adaptStride; ++i) {
+        self.chainScatter.increment(Float64Array.outer(self.chain[lastIndex - i], self.chain[lastIndex - i]));
+        self.chainSum.increment(self.chain[lastIndex - i]);
+        const covariance = self.chainScatter
+          .subtract(Float64Array.outer(self.chainSum, self.chainSum).scale(1.0 / self.chain.length))
+          .scale(1.0 / self.chain.length);
+        self.amDist.setCovariance(covariance.scale((2.38 * 2.38) / self.dim));
+      }
+    }
+    const proposalDist = Math.random() < self.adaptProbability ? self.amDist : self.mhDist;
+    const proposal = self.chain.last().add(proposalDist.getSample());
+    const logAcceptRatio = self.logDensity(proposal) - self.logDensity(self.chain.last());
+    visualizer.queue.push({
+      type: "proposal",
+      proposal: proposal,
+      proposalCov: proposalDist.cov,
+    });
+    if (Math.random() < Math.exp(logAcceptRatio)) {
+      self.chain.push(proposal);
+      visualizer.queue.push({ type: "accept", proposal: proposal });
+    } else {
+      self.chain.push(self.chain.last());
+      visualizer.queue.push({ type: "reject", proposal: proposal });
+    }
+  },
+});</script> <script>"use strict";MCMC.registerAlgorithm("MALA",{description:"Metropolis-adjusted Langevin algorithm",about:function(){window.open("http://projecteuclid.org/euclid.bj/1178291835")},init:function(a){a.sigma=.5},reset:function(a){a.chain=[MultivariateNormal.getSample(a.dim)]},attachUI:function(a,i){i.add(a,"sigma",.1,1).step(.05).name("Proposal &sigma;"),i.open()},step:function(a,i){var t=a.gradLogDensity(a.chain.last()),s=new MultivariateNormal(zeros(a.dim),eye(a.dim).scale(a.sigma*a.sigma)),e=s.getSample(),o=a.chain.last().add(e).add(t.scale(a.sigma*a.sigma/2)),n=function(i,t){return-t.subtract(i).subtract(a.gradLogDensity(i).scale(a.sigma*a.sigma/2)).norm2()/(2*a.sigma*a.sigma)-a.dim/2*Math.log(2*Math.PI*a.sigma*a.sigma)},c=a.logDensity(o)+n(o,a.chain.last()),p=a.logDensity(a.chain.last())+n(a.chain.last(),o),r=c-p;i.queue.push({type:"proposal",proposal:o.copy(),proposalCov:s.cov.copy(),gradient:t.scale(a.sigma*a.sigma/2)}),Math.random()<Math.exp(r)?(a.chain.push(o),i.queue.push({type:"accept",proposal:o.copy()})):(a.chain.push(a.chain.last()),i.queue.push({type:"reject",proposal:o.copy()}))}});</script> <script>"use strict";MCMC.registerAlgorithm("NaiveNUTS",{description:"Naive No-U-Turn Sampler",about:function(){window.open("http://arxiv.org/abs/1111.4246")},init:function(t){t.dt=.1,t.Delta_max=1e3},reset:function(t){t.chain=[MultivariateNormal.getSample(t.dim)]},attachUI:function(t,p){p.add(t,"dt",.025,.6).step(.025).name("Leapfrog &Delta;t"),p.open()},step:function(t,p){function e(p,r,i,s,o){var n=p.copy();r.copy();if(p=p.copy(),r=r.copy(),0==o){r.increment(t.gradLogDensity(p).scale(s*t.dt/2)),p.increment(r.scale(s*t.dt)),r.increment(t.gradLogDensity(p).scale(s*t.dt/2));var u=[];i<Math.exp(t.logDensity(p)-r.norm2()/2)?(u.push([p.copy(),r.copy()]),a.push({type:"accept",from:n.copy(),to:p.copy()})):a.push({type:"reject",from:n.copy(),to:p.copy()});var c=i<Math.exp(t.Delta_max+t.logDensity(p)-r.norm2()/2)?1:0;return{q_plus:p,p_plus:r,q_minus:p,p_minus:r,C_prime:u,s_prime:c}}var m,l,_=e(p,r,i,s,o-1),h=_.q_minus,y=_.p_minus,u=_.C_prime,c=_.s_prime,d=_.q_plus,f=_.p_plus;if(-1==s){var _=e(h,y,i,s,o-1);h=_.q_minus,y=_.p_minus,m=_.C_prime,l=_.s_prime}else{var _=e(d,f,i,s,o-1);d=_.q_plus,f=_.p_plus,m=_.C_prime,l=_.s_prime}c=c*l*(d.subtract(h).dot(y)>=0?1:0)*(d.subtract(h).dot(f)>=0?1:0);for(var g=0;g<m.length;++g)u.push(m[g]);return{q_plus:d,p_plus:f,q_minus:h,p_minus:y,C_prime:u,s_prime:c}}for(var a=[],r=MultivariateNormal.getSample(t.dim),i=Math.random()*Math.exp(t.logDensity(t.chain.last())-r.norm2()/2),s=t.chain.last().copy(),o=t.chain.last().copy(),n=r.copy(),u=r.copy(),c=0,m=[[t.chain.last().copy(),r.copy(),0]],l=1;1==l;){var _,h,y=Math.sign(Math.random()-.5);if(-1==y){a.push({type:"left"});var d=e(s,n,i,y,c);s=d.q_minus,n=d.p_minus,_=d.C_prime,h=d.s_prime}else{a.push({type:"right"});var d=e(o,u,i,y,c);o=d.q_plus,u=d.p_plus,_=d.C_prime,h=d.s_prime}if(1==h)for(var f=0;f<_.length;++f)m.push([_[f][0],_[f][1],c]);l=h*(o.subtract(s).dot(n)>=0?1:0)*(o.subtract(s).dot(u)>=0?1:0),c+=1}var g=Math.floor(Math.random()*m.length),v=m[g][0];m[g][1];t.chain.push(v.copy()),p.queue.push({type:"proposal",proposal:v,nuts_trajectory:a,initialMomentum:r}),p.queue.push({type:"accept",proposal:v})}});</script> <script>"use strict";MCMC.registerAlgorithm("EfficientNUTS",{description:"Efficient No-U-Turn Sampler",about:function(){window.open("http://arxiv.org/abs/1111.4246")},init:function(t){t.dt=.1,t.Delta_max=1e3},reset:function(t){t.chain=[MultivariateNormal.getSample(t.dim)]},attachUI:function(t,a){a.add(t,"dt",.025,.6).step(.025).name("Leapfrog &Delta;t"),a.open()},step:function(t,a){function e(a,n,o,r,i){var a=a.copy(),c=a.copy();if(0==i){n.increment(t.gradLogDensity(a).scale(r*t.dt/2)),a.increment(n.scale(r*t.dt)),n.increment(t.gradLogDensity(a).scale(r*t.dt/2));var _=o<Math.exp(t.logDensity(a)-n.norm2()/2)?1:0,s=o<Math.exp(t.Delta_max+t.logDensity(a)-n.norm2()/2)?1:0;return p.push({type:1==_?"accept":"reject",from:c.copy(),to:a.copy()}),{q_p:a,p_p:n,q_m:a,p_m:n,q_:a,n_:_,s_:s}}var m=e(a,n,o,r,i-1),l=m.q_m,u=m.p_m,d=m.q_p,h=m.p_p,y=m.q_,_=m.n_,s=m.s_;if(1==s){var q,f,g;if(-1==r){var m=e(l,u,o,r,i-1);l=m.q_m,u=m.p_m,g=m.q_,q=m.n_,f=m.s_}else{var m=e(d,h,o,r,i-1);d=m.q_p,h=m.p_p,g=m.q_,q=m.n_,f=m.s_}Math.random()<q/(_+q)&&(y=g),s=s*f*(d.subtract(l).dot(u)>=0?1:0)*(d.subtract(l).dot(h)>=0?1:0),_+=q}return{q_p:d,p_p:h,q_m:l,p_m:u,q_:y,n_:_,s_:s}}for(var p=[],n=MultivariateNormal.getSample(t.dim),o=Math.random()*Math.exp(t.logDensity(t.chain.last())-n.norm2()/2),r=t.chain.last().copy(),i=t.chain.last().copy(),c=t.chain.last().copy(),_=n.copy(),s=n.copy(),m=0,l=1,u=1;1==u;){var d,h,y,q=Math.sign(Math.random()-.5);if(-1==q){var f=e(i,_,o,q,m);i=f.q_m,_=f.p_m,d=f.q_,h=f.n_,y=f.s_}else{var f=e(c,s,o,q,m);c=f.q_p,s=f.p_p,d=f.q_,h=f.n_,y=f.s_}1==y&&Math.random()<h/l&&(r=d.copy()),u=y*(c.subtract(i).dot(_)>=0?1:0)*(c.subtract(i).dot(s)>=0?1:0),l+=h,m+=1}t.chain.push(r.copy()),a.queue.push({type:"proposal",proposal:r,nuts_trajectory:p,initialMomentum:n}),a.queue.push({type:"accept",proposal:r})}});</script> <script>"use strict";
+
+MCMC.registerAlgorithm("DualAveragingHMC", {
+  description: "Hamiltonian Monte Carlo with Dual Averaging",
+
+  about: () => {
+    window.open("https://en.wikipedia.org/wiki/Hybrid_Monte_Carlo");
+  },
+
+  init: (self) => {
+    self.lambda = 1.6;
+    self.delta = 0.65;
+    self.M_adapt = 100;
+
+    //viz.animateProposal = false;
+
+    self.joint = (theta, r) => {
+      return Math.exp(self.logDensity(theta) - r.norm2() / 2);
+    };
+
+    self.leapFrog = (theta, r, epsilon) => {
+      const r_ = r.add(self.gradLogDensity(theta).scale(epsilon / 2));
+      const theta_ = theta.add(r_.scale(epsilon));
+      r_.increment(self.gradLogDensity(theta_).scale(epsilon / 2));
+      return { theta: theta_, r: r_ };
+    };
+
+    self.findReasonableEpsilon = (theta) => {
+      let epsilon = 0.1;
+      const r = MultivariateNormal.getSample(self.dim);
+      let result = self.leapFrog(theta, r, epsilon);
+      const a = 2 * (self.joint(result.theta, result.r) / self.joint(theta, r) > 0.5 ? 1 : 0) - 1;
+      while (Math.pow(self.joint(result.theta, result.r) / self.joint(theta, r), a) > Math.pow(2.0, -a)) {
+        epsilon = Math.pow(2, a) * epsilon;
+        result = self.leapFrog(result.theta, result.r, epsilon);
+      }
+      return Math.max(1e-3, epsilon);
+    };
+  },
+
+  reset: (self) => {
+    self.chain = [MultivariateNormal.getSample(self.dim)];
+    self.epsilon = [self.findReasonableEpsilon(self.chain.last())];
+    self.mu = Math.log(10 * self.epsilon[0]);
+    self.epsilon_bar = [1.0];
+    self.H_bar = [1.0];
+
+    self.gamma = 0.2;
+    self.t0 = 10;
+    self.kappa = 0.75;
+
+    self.accepted = 0;
+  },
+
+  attachUI: (self, folder) => {
+    folder
+      .add(self, "lambda", 0.1, 2)
+      .step(0.1)
+      .name("&lambda; = &epsilon;L")
+      .onChange((value) => {
+        sim.reset();
+      });
+    folder
+      .add(self, "delta", 0.1, 1)
+      .step(0.05)
+      .name("&delta;")
+      .onChange((value) => {
+        sim.reset();
+      });
+    folder.open();
+  },
+
+  step: (self, visualizer) => {
+    const r0 = MultivariateNormal.getSample(self.dim);
+    let theta = self.chain.last().copy();
+    let r = r0.copy();
+    let Lm = Math.max(1, Math.round(self.lambda / self.epsilon.last()));
+    if (Lm > 100) {
+      console.log("Lm > 100", Lm);
+      Lm = 100;
+    }
+    const trajectory = [theta.copy()];
+    for (let i = 0; i < Lm; ++i) {
+      const result = self.leapFrog(theta, r, self.epsilon.last());
+      theta = result.theta;
+      r = result.r;
+      trajectory.push(theta.copy());
+    }
+    const epsilon = ((self.epsilon.last() * 1000) | 0) / 1000;
+    visualizer.queue.push({
+      type: "proposal",
+      proposal: theta,
+      trajectory: trajectory,
+      initialMomentum: r0,
+      epsilon: epsilon,
+      alpha: self.delta - self.H_bar.last(),
+    });
+    const alpha = Math.min(1, self.joint(theta, r) / self.joint(self.chain.last(), r0));
+    if (Math.random() < alpha) {
+      self.chain.push(theta);
+      visualizer.queue.push({ type: "accept", proposal: theta });
+      self.accepted++;
+    } else {
+      self.chain.push(self.chain.last().copy());
+      visualizer.queue.push({ type: "reject", proposal: theta });
+    }
+    const m = self.chain.length;
+    if (m <= self.M_adapt) {
+      self.H_bar.push((1 - 1 / (m + self.t0)) * self.H_bar.last() + (1 / (m + self.t0)) * (self.delta - alpha));
+      const log_epsilon = self.mu - (Math.sqrt(m) / self.gamma) * self.H_bar.last();
+      self.epsilon.push(Math.exp(log_epsilon));
+      self.epsilon_bar.push(
+        Math.exp(
+          Math.pow(m, -self.kappa) * log_epsilon + (1 - Math.pow(m, -self.kappa)) * Math.log(self.epsilon_bar.last())
+        )
+      );
+    } else {
+      self.epsilon.push(self.epsilon_bar.last());
+    }
+  },
+});</script> <script>"use strict";MCMC.registerAlgorithm("DualAveragingNUTS",{description:"No-U-Turn Sampler with Dual Averaging",about:function(){window.open("http://arxiv.org/abs/1111.4246")},init:function(a){a.Delta_max=1e3,a.delta=.65,a.M_adapt=200,a.dt=0,a.joint=function(t,n){return Math.exp(a.logDensity(t)-n.norm2()/2)},a.leapFrog=function(t,n,e){var p=n.add(a.gradLogDensity(t).scale(e/2)),o=t.add(p.scale(e));return p.increment(a.gradLogDensity(o).scale(e/2)),{theta:o,r:p}},a.findReasonableEpsilon=function(t){for(var n=.1,e=MultivariateNormal.getSample(a.dim),p=a.leapFrog(t,e,n),o=2*(a.joint(p.theta,p.r)/a.joint(t,e)>.5?1:0)-1;Math.pow(a.joint(p.theta,p.r)/a.joint(t,e),o)>Math.pow(2,-o);)n=Math.pow(2,o)*n,p=a.leapFrog(p.theta,p.r,n);return Math.max(.1,n)}},reset:function(a){a.chain=[MultivariateNormal.getSample(a.dim)],a.epsilon=[a.findReasonableEpsilon(a.chain.last())],a.mu=Math.log(10*a.epsilon[0]),a.epsilon_bar=[1],a.H_bar=[1],a.gamma=.2,a.t0=10,a.kappa=.75},attachUI:function(a,t){t.add(a,"delta",.2,1).step(.05).name("&delta;").onChange(function(a){sim.reset()}),t.open()},step:function(a,t){function n(t,e,p,r,l,i,s,_){var t=t.copy(),s=t.copy();if(0==l){e.increment(a.gradLogDensity(t).scale(r*i/2)),t.increment(e.scale(r*i)),e.increment(a.gradLogDensity(t).scale(r*i/2));var h=p<Math.exp(a.logDensity(t)-e.norm2()/2)?1:0,c=p<Math.exp(a.Delta_max+a.logDensity(t)-e.norm2()/2)?1:0;o.push({type:1==h?"accept":"reject",from:s.copy(),to:t.copy()});return{q_p:t,p_p:e,q_m:t,p_m:e,q_:t,n_:h,s_:c,alpha_:Math.min(1,Math.exp(a.logDensity(t)-e.norm2()/2-a.logDensity(s)+_.norm2()/2)),n_alpha_:1}}var m=n(t,e,p,r,l-1,i,s,_),u=m.q_m,g=m.p_m,d=m.q_p,M=m.p_p,y=m.q_,h=m.n_,c=m.s_,v=m.alpha_,f=m.n_alpha_;if(1==c){var q,b,D,x,w;if(-1==r){var m=n(u,g,p,r,l-1,i,s,_);u=m.q_m,g=m.p_m,D=m.q_,q=m.n_,b=m.s_,x=m.alpha_,w=m.n_alpha_}else{var m=n(d,M,p,r,l-1,i,s,_);d=m.q_p,M=m.p_p,D=m.q_,q=m.n_,b=m.s_,x=m.alpha_,w=m.n_alpha_}Math.random()<q/(h+q)&&(y=D),v+=x,f+=w,c=c*b*(d.subtract(u).dot(g)>=0?1:0)*(d.subtract(u).dot(M)>=0?1:0),h+=q}return{q_p:d,p_p:M,q_m:u,p_m:g,q_:y,n_:h,s_:c,alpha_:v,n_alpha_:f}}for(var e,p,o=[],r=MultivariateNormal.getSample(a.dim),l=Math.random()*Math.exp(a.logDensity(a.chain.last())-r.norm2()/2),i=a.chain.last().copy(),s=a.chain.last().copy(),_=a.chain.last().copy(),h=r.copy(),c=r.copy(),m=0,u=1,g=1;1==g;){var d,M,y,v=Math.sign(Math.random()-.5);if(-1==v){var f=n(s,h,l,v,m,a.epsilon.last(),a.chain.last(),r);s=f.q_m,h=f.p_m,d=f.q_,M=f.n_,y=f.s_,e=f.alpha_,p=f.n_alpha_}else{var f=n(_,c,l,v,m,a.epsilon.last(),a.chain.last(),r);_=f.q_p,c=f.p_p,d=f.q_,M=f.n_,y=f.s_,e=f.alpha_,p=f.n_alpha_}1==y&&Math.random()<M/u&&(i=d.copy()),g=y*(_.subtract(s).dot(h)>=0?1:0)*(_.subtract(s).dot(c)>=0?1:0),u+=M,m+=1}var q=(1e3*a.epsilon.last()|0)/1e3;t.queue.push({type:"proposal",proposal:i,nuts_trajectory:o,initialMomentum:r,epsilon:q,alpha:a.delta-a.H_bar.last()}),a.chain.push(i.copy());var b=a.chain.length;if(b<=a.M_adapt){a.H_bar.push((1-1/(b+a.t0))*a.H_bar.last()+1/(b+a.t0)*(a.delta-e/p));var D=a.mu-Math.sqrt(b)/a.gamma*a.H_bar.last();D=Math.max(D,-4.5),a.epsilon.push(Math.exp(D)),a.epsilon_bar.push(Math.exp(Math.pow(b,-a.kappa)*D+(1-Math.pow(b,-a.kappa))*Math.log(a.epsilon_bar.last())))}else a.epsilon.push(a.epsilon_bar.last());t.queue.push({type:"accept",proposal:i})}});</script> <script>"use strict";MCMC.registerAlgorithm("H2MC",{description:"Hessian-Hamiltonian Monte Carlo",about:function(){window.open("https://people.csail.mit.edu/tzumao/h2mc/")},init:function(a){a.sigma=1,a.L=Math.PI/2,a.epsilon=1e-8,a.computeGaussian=function(e,t,o){a.posScaleFactor=Math.pow(.5*(Math.exp(a.L)-Math.exp(-a.L)),2),a.posOffsetFactor=.5*(Math.exp(a.L)+Math.exp(-a.L)-1),a.negScaleFactor=Math.sin(a.L)*Math.sin(a.L),a.negOffsetFactor=-(Math.cos(a.L)-1);var s=a.dim,i=Float64Array.constant(a.sigma,s),n=i.maxCoeff(),p=i.cwiseProduct(i),r=p.cwiseInverse();if(o.norm()<.5/(n*n))return new MultivariateNormal({offset:zeros(s),mean:e,covL:i.asDiagonal(),invCov:r,logDet:r.map(Math.log).sum()});for(var l=o.jacobiRotation({maxIter:10,tolerance:a.epsilon}),c=l.eigenvectors,u=l.eigenvalues,m=zeros(s,1),h=zeros(s,1),g=zeros(s,1),f=0;f<s;f++)m[f]=Math.abs(u[f])>a.epsilon?1/Math.abs(u[f]):0;h=m.asDiagonal().multiply(c.transpose().multiply(t));for(var f=0;f<s;f++){var M=1,v=0;Math.abs(u[f])>a.epsilon?(v=h[f],M=u[f]>0?a.posScaleFactor:a.negScaleFactor,v*=u[f]>0?a.posOffsetFactor:a.negOffsetFactor):(M=a.L*a.L,v=.5*h[f]*a.L*a.L),m[f]*=M,m[f]=m[f]>a.epsilon?1/m[f]:0,h[f]=v}g=m.add(r);var L={invCov:c.multiply(g.asDiagonal().multiply(c.transpose())),offset:c.multiply(m.cwiseQuotient(g).asDiagonal().multiply(h)),covL:c.multiply(g.cwiseInverse().cwiseSqrt().asDiagonal()),logDet:g.map(Math.log).sum()};return L.mean=e.add(L.offset),new MultivariateNormal(L)}},reset:function(a){a.chain=[MultivariateNormal.getSample(a.dim)]},attachUI:function(a,e){e.add(a,"sigma",.1,5).step(.1).name("&sigma;"),e.add(a,"L",.1,6.28).step(.1).name("L"),e.open()},step:function(a,e){var t=a.chain.last(),o=a.computeGaussian(t,a.gradLogDensity(t),a.hessLogDensity(t)),s=o.getSample();e.queue.push({type:"proposal",proposal:s,proposalMean:o.mean,proposalCov:o.cov}),Math.random()<Math.exp(a.logDensity(s)-a.logDensity(t))?(a.chain.push(s.copy()),e.queue.push({type:"accept",proposal:s})):(a.chain.push(t.copy()),e.queue.push({type:"reject",proposal:s}))}});</script> <script>"use strict";MCMC.registerAlgorithm("GibbsSampling",{description:"Gibbs Sampling",about:function(){window.open("https://en.wikipedia.org/wiki/Gibbs_sampling")},init:function(t){},reset:function(t){t.chain=[MultivariateNormal.getSample(t.dim)]},attachUI:function(t,i){i.open()},step:function(t,i){for(var a=t.chain.last(),n=[a.copy()],o=0;o<2;o++)a=function(t,i,a){for(var i=i.copy(),n=linspace(-6-12*Math.random()/256,6+12*Math.random()/256,256),o=[],p=0,e=0;e<256;e++){i[a]=n[e];var r=Math.exp(t(i));o.push(r),p+=r}for(var s=p*Math.random(),u=0,e=0;u<s;)u+=o[e++];return i[a]=n[e-1],i}(t.logDensity,a,o),n.push(a);i.queue.push({type:"proposal",proposal:a,trajectory:n}),i.queue.push({type:"accept",proposal:a}),t.chain.push(a)}});</script> <script>"use strict";
+
+MCMC.registerAlgorithm("SVGD", {
+  description: "Stein Variational Gradient Descent",
+
+  about: function () {
+    window.open("http://www.cs.dartmouth.edu/~dartml/project.html?p=vgd");
+  },
+
+  init: function (self) {
+    self.chain = [];
+    self.n = 200; // number of particlese
+    self.epsilon = 0.01; // step size
+    self.h = 0.15; // bandwidth
+    self.use_median = true;
+    self.use_adagrad = true;
+    self.alpha = 0.9;
+    self.fudge_factor = 1e-2;
+    self.iter = 0;
+    self.reset(self);
+  },
+
+  reset: function (self) {
+    // initialize chain with samples from standard normal
+    self.chain = [];
+    self.gradx = [];
+    self.historical_grad = [];
+    self.gradLogDensities = [];
+    self.iter = 0;
+    for (let i = 0; i < self.n; i++) {
+      self.chain.push(MultivariateNormal.getSample(self.dim));
+      self.gradx.push(Float64Array.zeros(self.dim, 1));
+      self.historical_grad.push(Float64Array.zeros(self.dim, 1));
+      self.gradLogDensities.push(0);
+    }
+  },
+
+  attachUI: function (self, folder) {
+    folder.add(self, "use_median").name("Median heuristic").listen();
+    folder
+      .add(self, "h", 0.05, 2)
+      .step(0.05)
+      .name("bandwidth")
+      .listen()
+      .onChange(function (value) {
+        self.use_median = false;
+      });
+    folder.add(self, "use_adagrad").name("Adagrad");
+    folder.add(self, "epsilon", 0.001, 0.1).step(0.001).name("stepsize");
+    // folder.add(self, 'alpha', 0.01, 1.0).step(0.01).name('alpha');
+    // folder.add(self, 'fudge_factor', 0.0001, 0.05).step(0.0001).name('fudge_factor');
+    folder.add(self, "n", 10, 400).step(1).name("numParticles");
+    folder.open();
+  },
+
+  step: function (self, visualizer) {
+    // resize samples appropriately
+    if (self.n > self.chain.length) {
+      for (let i = 0; i < self.n - self.chain.length; i++) {
+        self.chain.push(MultivariateNormal.getSample(self.dim));
+        self.gradx.push(Float64Array.zeros(self.dim, 1));
+        self.historical_grad.push(Float64Array.zeros(self.dim, 1));
+        self.gradLogDensities.push(0);
+      }
+    } else if (self.n < self.chain.length) {
+      self.chain = self.chain.slice(0, self.n);
+      self.gradx = self.gradx.slice(0, self.n);
+      self.historical_grad = self.historical_grad.slice(0, self.n);
+      self.gradLogDensities = self.gradLogDensities.slice(0, self.n);
+    }
+
+    var n = self.chain.length;
+
+    // precompute log densities
+    for (let i = 0; i < n; i++) {
+      self.gradLogDensities[i] = self.gradLogDensity(self.chain[i]);
+      for (let k = 0; k < self.dim; k++) {
+        self.gradx[i][k] = 0;
+      }
+    }
+
+    // pairwise distances trick
+    var dist2 = new Float64Array(n * n);
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < i; j++) {
+        var delta = 0;
+        for (let k = 0; k < self.dim; k++) delta += Math.pow(self.chain[i][k] - self.chain[j][k], 2);
+        dist2[i * n + j] = delta;
+        dist2[j * n + i] = delta;
+      }
+    }
+
+    if (self.use_median) {
+      var dist2copy = new Float64Array(dist2);
+      dist2copy.sort();
+      var median = dist2copy[Math.floor(dist2copy.length / 2)];
+      self.h = median / Math.log(n);
+    }
+
+    // compute gradient
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+        var rbf = Math.exp(-dist2[i * n + j] / self.h);
+        for (let k = 0; k < self.dim; k++) {
+          var grad_rbf = ((self.chain[i][k] - self.chain[j][k]) * 2 * rbf) / self.h;
+          self.gradx[i][k] += self.gradLogDensities[j][k] * rbf + grad_rbf;
+        }
+      }
+      for (let k = 0; k < self.dim; k++) {
+        self.gradx[i][k] /= n;
+      }
+    }
+
+    // adagrad
+    if (self.use_adagrad) {
+      for (let i = 0; i < n; i++)
+        for (let k = 0; k < self.dim; k++)
+          self.historical_grad[i][k] =
+            self.alpha * self.historical_grad[i][k] + (1 - self.alpha) * Math.pow(self.gradx[i][k], 2);
+      for (let i = 0; i < n; i++)
+        for (let k = 0; k < self.dim; k++)
+          self.gradx[i][k] /= self.fudge_factor + Math.sqrt(self.historical_grad[i][k]);
+    }
+
+    for (let i = 0; i < n; i++) {
+      for (let k = 0; k < self.dim; k++) {
+        self.gradx[i][k] *= self.epsilon;
+      }
+    }
+
+    visualizer.queue.push({
+      type: "svgd-step",
+      x: self.chain,
+      gradx: self.gradx,
+      h: self.h,
+    });
+
+    // update particles
+    for (let i = 0; i < n; i++) {
+      self.chain[i].increment(self.gradx[i]);
+    }
+
+    self.iter++;
+  },
+});</script> <script>"use strict";function point(t,r,i){this.L=t,this.coords=r,this.phys_coords=i}function random_uniform(){return Math.random()}function random_normal(t,r){return new MultivariateNormal(t,r*r).getSample()}function random_int(t,r){return Math.floor(Math.random()*(r-t+1))+t}function logaddexp(t,r){return r>t?Math.log(1+Math.exp(t-r))+r:Math.log(1+Math.exp(r-t))+t}function compute_distance(t,r){for(var i=0,e=t.length,s=0;s<e;s++)i+=(t[s]-r[s])*(t[s]-r[s]);return i}function compute_distance_lt(t,r,i){for(var e=0,s=t.length,o=0;o<s;o++)if((e+=(t[o]-r[o])*(t[o]-r[o]))>i)return!1;return!0}function nearest_rdistance_guess(t,r){for(var i=0,e=r.length,s=0;s<e;s++){for(var o=1e300,n=r[s],a=0;a<e;a++)if(a!=s){var h=compute_distance(r[a].coords,n.coords);(0==a||h<o)&&(o=h)}i=Math.max(o,i)}return i}function getRandomInt(t,r){return t=Math.ceil(t),r=Math.floor(r),Math.floor(Math.random()*(r-t))+t}function nearest_rdistance_guess(t,r){for(var i=0,e=r.length,s=0;s<20;s++){for(var o=[],n=[],a=0;a<e;a++){var h=getRandomInt(0,e);-1==o.indexOf(h)&&o.push(h)}for(var a=0;a<e;a++)-1==o.indexOf(a)&&n.push(a);for(var a=0;a<n.length;a++){for(var d=n[a],c=o[0],l=compute_distance(r[d].coords,r[c].coords),h=1;h<o.length;h++)c=o[h],l=Math.min(l,compute_distance(r[d].coords,r[c].coords));i=Math.max(l,i)}}return i}function random_normal_vector(t){var r=new MultivariateNormal(zeros(t,1),eye(t,t)).getSample();return r.scale(1/r.norm())}function radfriends_drawer(t,r,i){function e(){for(var r=[],i=[],e=0;e<t;e++)r[e]=0,i[e]=1;this.region_low=r,this.region_high=i}function s(r,i){for(var e=0;e<t;e++){if(r.coords[e]<this.region_low[e])return!1;if(r.coords[e]>this.region_high[e])return!1}if(!(this.maxsqdistance>0))return console.log("friends not used because maxsqdistance is "+this.maxsqdistance),!0;for(var e=0,s=i.length;e<s;e++)if(compute_distance_lt(i[e].coords,r.coords,this.maxsqdistance))return!0;return!1}function o(t,r){if(!(this.maxsqdistance>0))return console.log("friends not used because maxsqdistance is "+this.maxsqdistance),1;for(var i=0,e=0;e<r.length;e++)compute_distance_lt(r[e].coords,t.coords,this.maxsqdistance)&&(i+=1);return i}function n(r,i){for(var e=0,s=i.length;;){for(var o=0;o<t;o++)r.coords[o]=random_uniform()*(this.region_high[o]-this.region_low[o])+this.region_low[o],r.phys_coords[o]=r.coords[o];if(e+=1,0==s)return console.log("generate_direct(): No friends available for checking!"),e;if(this.is_inside(r,i))return e;if(e>1e3)return e}}function a(r,i){for(var e=0,s=i.length;;){e+=1;for(var o=i[random_int(0,s-1)],n=random_normal_vector(t),a=Math.sqrt(this.maxsqdistance)*Math.pow(random_uniform(),1/t),h=0;h<t;h++)r.coords[h]=o.coords[h]+n[h]*a,r.phys_coords[h]=r.coords[h];if(e+=1,this.is_inside(r,i)){if(random_uniform()<1/this.count_inside(r,i))return e}}}function h(e,s){this.niter+=1;var o=e.L,n=s.length,a=nearest_rdistance_guess(t,s);this.maxsqdistance>0&&!(a<this.maxsqdistance)||(this.maxsqdistance=a);for(var h=0;h<t;h++){for(var d=1,c=0,l=0;l<n;l++){var g=s[l];d=Math.min(d,g.coords[h]),c=Math.max(c,g.coords[h])}this.region_low[h]=Math.max(0,d-Math.sqrt(this.maxsqdistance)),this.region_high[h]=Math.min(1,c+Math.sqrt(this.maxsqdistance))}var u=0;if(0==this.phase)for(;;){var _=this.generate_direct(e,s);if(u+=1,e.phys_coords=r(e.coords),e.L=i(e.phys_coords),e.L>=o)return e;if(this.rejected.push(e.phys_coords.copy()),_>=20){this.phase=1;break}}for(;;){u+=1;var _=this.generate_from_friends(e,s);if(e.phys_coords=r(e.coords),e.L=i(e.phys_coords),e.L>=o)return e;this.rejected.push(e.phys_coords.copy())}}this.likelihood=i,this.transform=r,this.ndim=t;this.niter=0,this.init_region=e;this.maxsqdistance=NaN;this.phase=1,this.init_region(),this.rejected=[],this.is_inside=s,this.count_inside=o,this.generate_direct=n,this.generate_from_friends=a,this.next=h}function generate_fullspace(t){for(var r=new point(1e300,[],[]),i=0;i<t;i++)r.coords[i]=random_uniform(),r.phys_coords[i]=r.coords[i];return r}function sort_L(t){t.sort(function(t,r){return t.L<r.L?-1:t.L>r.L?1:0})}function get_posterior_weights(t){for(var r=[],i=t[0][0]+t[0][1].L,e=0;e<t.length;e++)i=Math.max(i,t[e][0]+t[e][1].L);for(var e=0;e<t.length;e++)r[e]=Math.exp(t[e][0]+t[e][1].L-i);return r}function posterior_samples(t,r){for(var i=get_posterior_weights(t),e=0,s=0;s<t.length;s++)e+=i[s];for(var o=[],n=0;n<r;n++){for(var a=random_uniform()*e,h=0,s=0;s<t.length&&(h+=i[s],!(a<=h));)s+=1;o[n]=t[s][1].phys_coords}return o}function nested_sampler(t,r,i,e,s){function o(){for(var r=0;r<i;r++){var o=generate_fullspace(t);o.phys_coords=e(o.coords),o.L=s(o.phys_coords),this.Lmax=0==r?o.L:Math.max(this.Lmax,o.L),this.live_points[r]=o,this.latest_point=o}sort_L(this.live_points)}function n(){var t=this.live_points[0],i=new point(t.L,t.coords.slice(),t.phys_coords.slice()),e=r.next(i,this.live_points);return this.live_points[0]=i,this.latest_point=i,sort_L(this.live_points),this.ndraws+=e,t}function a(t,r,e,s){for(var o=i,n=t,a=this.live_points[this.live_points.length-1].L,h=0,d=0,c=0,l=0;l<o;l++){var g=Math.exp(this.live_points[l].L-a);l>0&&(h+=g),l==o-1&&(h+=g),l<o-1&&(d+=g),0==l&&(d+=g),c+=g}var u=logaddexp(e,n+Math.log(c)+a),_=logaddexp(e,n+Math.log(h)+a),p=logaddexp(e,n+Math.log(d)+a),f=Math.max(_-u,u-p);this.remainderZ=n+Math.log(c)+a,this.remainderZerr=f;for(var s=[],l=0;l<o;l++)s[l]=[t,this.live_points[l]];return s}this.nlive_points=i,this.transform=e,this.likelihood=s,this.ndim=t,this.Lmax=NaN,this.remainderZ=NaN,this.ndraws=0,this.drawer=r,this.live_points=[],this.latest_point=NaN,this.generate_live_points=o,this.generate_live_points(),this.next=n,this.integrate_remainder=a}function integrator(t,r,i,e,s,o,n){function a(){this.logwidth=Math.log(1-Math.exp(-1/s))+this.logVolremaining,this.logVolremaining-=1/s,l[this.iter]=[this.logwidth,this.current],this.iter+=1,this.logZerr=Math.sqrt(this.H/s),c.integrate_remainder(this.logwidth,this.logVolremaining,this.logZ);this.logZerr,c.remainderZerr;if(Math.exp(c.remainderZ-this.logZ)<o)return console.log("Nested sampling integrator has walked through the most of the posterior and reached convergence."),0;if(n>0&&this.iter>n)return console.log("Nested sampling integrator has reached the number of iterations limit."),0;this.current=c.next(),this.wi=this.logwidth+this.current.L;var t=logaddexp(this.logZ,this.wi);return this.H=Math.exp(this.wi-t)*this.current.L+Math.exp(this.logZ-t)*(this.H+this.logZ)-t,this.logZ=t,this.iter%50==0&&console.log("integrator["+this.iter+"]: current ln Z = "+this.logZ+" +- "+this.logZerr+" +- "+c.remainderZerr),1}function h(){for(var t=c.integrate_remainder(this.logwidth,this.logVolremaining,this.logZ),r=this.logZ,i=this.H,e=0;e<t.length;e++){var o=t[e][1].L,n=this.logwidth+o,a=logaddexp(r,n);i=Math.exp(n-a)*o+Math.exp(r-a)*(i+r)-a,r=a}var h=Math.sqrt(i/s)+c.remainderZerr;return[logaddexp(r,c.remainderZ),h,l.concat(t)]}var d=new radfriends_drawer(t,r,i),c=new nested_sampler(t,d,s,r,i);this.current=c.next(),this.sampler=c,this.drawer=d,this.logVolremaining=0,this.logwidth=Math.log(1-Math.exp(-1/s)),this.iter=0;var l=[];this.weights=l,this.results=[],this.wi=this.logwidth+this.current.L,this.logZ=this.wi,this.H=this.current.L-this.logZ,this.logZerr=NaN,console.log("integrator[initial]: ln Z = "+this.logZ+" "+this.H+" "+this.wi+" "+this.current.L),this.progress=a,this.getResults=h}function transform(t){for(var r=zeros(t.length,1),i=0;i<r.length;i++)r[i]=10*t[i]-5;return r}MCMC.registerAlgorithm("RadFriends-NS",{description:"Nested Sampling with RadFriends",about:function(){window.open("https://arxiv.org/abs/1407.5459")},init:function(t){t.live_points=[],t.nlive_points=40,t.iter=0,t.wait_iter=0,t.reset(t),t.wait_iter=0},reset:function(t){t.iter=0,t.wait_iter=0,t.chain=[],t.integrator=new integrator(t.dim,transform,t.logDensity,null,t.nlive_points,.01,0)},attachUI:function(t,r){r.add(t,"nlive_points",10,400).step(1).name("numLivePoints"),r.open()},step:function(t,r){for(var i=(t.integrator.sampler.live_points[0].phys_coords.slice(),t.integrator.current.phys_coords.slice()),e=t.integrator.progress(),s=[],o=10*Math.sqrt(t.integrator.drawer.maxsqdistance),n=0;n<t.integrator.sampler.live_points.length;n++)s.push(t.integrator.sampler.live_points[n].phys_coords.slice());if(r.queue.push({type:"radfriends-region",x:s,r:o}),0==e)return 0==t.wait_iter&&window.alert("Done!"),void t.wait_iter++;console.log("rejected "+t.integrator.drawer.rejected.length+" points"),r.queue.push({type:"ns-dead-point",proposal:t.integrator.sampler.latest_point.phys_coords,deadpoint:i,rejected:t.integrator.drawer.rejected}),t.integrator.drawer.rejected=[];for(var a=t.integrator.getResults(),h=a[2],d=get_posterior_weights(h),c=[],n=0;n<h.length;n++)c.push(h[n][1].phys_coords);t.chain=c,t.chain_weights=d}});</script> </body> </html> 
