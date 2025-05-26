@@ -188,6 +188,10 @@ In **non-physical** applications,
 
 ## Hamiltonian Dynamics
 
+```{=html}
+<iframe src="https://chi-feng.github.io/mcmc-demo/app.html" width="1200" height="600" style="border: none;"></iframe>
+```
+
 @neal2012
 
 ## Text
