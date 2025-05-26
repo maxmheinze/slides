@@ -155,62 +155,15 @@ Markov chains are
 ## Origins in Physics
 
 ::::{.columns}
-:::{.column width="50%" .fragment}
+:::{.column width="50%" .fragment .centering}
 
 :vspace3
 
-::: {.w100 .centering}
-```{kroki-tikz}
-\documentclass{standalone}
-\usepackage{tikz}
-\usepackage{pgfplots}
-\pgfplotsset{
-  compat=newest,
-  colormap={whitepurple}{
-    color(0cm)=(white)
-    color(1cm)=(purple)
-  }
-}
-\begin{document}
-\begin{tikzpicture}
-  \begin{axis}[
-    width=10cm,
-    view={60}{30},
-    domain=0:5, y domain=0:5,
-    samples=40, samples y=40,
-    colormap name=whitepurple,
-    colorbar,
-    xlabel={$x$}, ylabel={$y$}, zlabel={$z$},
-    xmin=0, xmax=5, ymin=0, ymax=5
-  ]
-    % paraboloid
-    \addplot3[surf] {2 - (x-2)^2 - (y-2)^2};
-    % cylinder side (height = 1.0)
-    \addplot3[
-      surf, shader=flat, fill=darkgray, draw=black,
-      parametric,
-      domain=0:360, domain y=0:1,
-      samples=36, samples y=2,
-      trig format=deg
-    ]
-    ({2+0.3*cos(x)},{2+0.3*sin(x)},{y});
-    % top face at z = 1.0
-    \addplot3[
-      surf, shader=flat, fill=darkgray, draw=black,
-      parametric,
-      domain=0:360, domain y=0:1,
-      samples=36, samples y=2,
-      trig format=deg
-    ]
-    ({2+0.3*y*cos(x)},{2+0.3*y*sin(x)},{1.0});
-\end{tikzpicture}
-\end{document}
-```
-:::
+![](figures/puck.svg){width=100%}
 :::
 :::{.column width="50%" .fragment}
 
-Text
+Imagine a **frictionless puck** on a **non-even surface**
 
 :::{.incremental}
 *	Text
