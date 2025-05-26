@@ -196,7 +196,7 @@ In **non-physical** applications,
 * the [**momentum**]{.col4} is an auxiliary variable that facilitates exploration of the target distribution space
 :::
 
-## Hamiltonian Dynamics{.centering}
+## Illustration {.centering}
 
 ```{=html}
 <iframe src="mcmc-demo/app.html"
@@ -204,7 +204,163 @@ In **non-physical** applications,
 ```
 
 
-## Text
+## Hamiltonian Dynamics
+
+The system is described by a so-called [**Hamiltonian equation**]{.col1}, $H(q_p)$. Its partial derivatives, the **equations of motion**, determine how $\boldsymbol{q}$ and $\boldsymbol{p}$ change over time:
+
+$$
+\begin{aligned}
+\frac{\mathrm{d}q_i}{\mathrm{d}t}&=\frac{\partial H}{\partial p_i},\\
+\frac{\mathrm{d}p_i}{\mathrm{d}t}&=-\frac{\partial H}{\partial q_i},\\
+\end{aligned}
+$$
+
+for $i = 1, \dots, d$, and $d$ being the length of the vectors $\boldsymbol{q}$ and $\boldsymbol{p}$.
+
+## Potential and Kinetic Energy {auto-animate="true"}
+
+. . .
+
+For **Hamiltonian Monte Carlo**, we usually use the following kind of Hamiltonian functions:
+
+$$
+H(\boldsymbol{q},\boldsymbol{p}) = \textcolor{var(--secondary-color)}{U(\boldsymbol{q})} + \textcolor{var(--tertiary-color)}{K(\boldsymbol{p})},
+$$
+
+. . .
+
+where the [**potential energy** $U(\boldsymbol{q})$]{.col2} is defined as minus the log probability density of the distribution for $\boldsymbol{q}$ that we wish to sample, plus a constant;
+
+. . .
+
+and the [**kinetic energy** $K(\boldsymbol{q})$]{.col3} is given by
+
+$$
+\textcolor{var(--tertiary-color)}{K(\boldsymbol{p})} = \boldsymbol{p}'\boldsymbol{M}^{-1}\boldsymbol{p}/2,
+$$
+
+where $\boldsymbol{M}$ is a symmetric, p.s.d., and often diagonal mass matrix.
+
+## Hamiltonian Dynamics {auto-animate="true"}
+
+For **Hamiltonian Monte Carlo**, we usually use the following kind of Hamiltonian functions:
+
+$$
+H(\boldsymbol{q},\boldsymbol{p}) = \textcolor{var(--secondary-color)}{U(\boldsymbol{q})} + \textcolor{var(--tertiary-color)}{K(\boldsymbol{p})},
+$$
+
+Using this specification, the **Hamiltonian functions** can be written as:
+
+$$
+\begin{aligned}
+\frac{\mathrm{d}q_i}{\mathrm{d}t}&=[\boldsymbol{M}^{-1}\boldsymbol{p}]_i,\\
+\frac{\mathrm{d}p_i}{\mathrm{d}t}&=-\frac{\partial U}{\partial q_i}.\\
+\end{aligned}
+$$
+
+
+
+## Properties
+
+. . .
+
+Hamiltonian dynamics fulfill a set of **properties** that make them suitable for use in MCMC updating:
+
+:::{.incremental}
+* [**Reversibility.**]{.col1} The mapping from the state at time $t$ to the state at time $t+s$ is one-to-one and hence has an inverse. This means that Markov chain transitions are reversible.
+* [**Conservation of the Hamiltonian.**]{.col1} With dynamics as specified, the Hamiltonian $H$ itself is kept invariant. For Metropolis updates, the acceptance probability is one if $H$ is kept invariant (only approximatively achievable).
+* [**Volume preservation.**]{.col1} Hamiltonian dynamics preserves volume in $(\boldsymbol{q},\boldsymbol{p})$ space, meaning that we do npt need to account for a change in volume in the acceptance probability for Metropolis updates.
+:::
+
+. . .
+
+[**Reversibility**]{.col1} and [**preservation of volume**]{.col1} can be maintained even when the Hamiltonian is approximated.
+
+
+
+## Discretization
+
+. . .
+
+For implementation, we need to **discretize** the Hamiltonian equations using a small step size $\varepsilon$: time is then discrete with $t = 0, \varepsilon, 2\varepsilon, 3\varepsilon, \dots$
+
+. . .
+
+The simplest way to approximate the solution is **Euler's method**:
+
+:::{.quitesmall}
+$$
+p_i(t+\varepsilon) = p_i(t) - \varepsilon \frac{\partial U}{\partial q_i}(q(t)),\qquad q_i(t+\varepsilon) = q_i(t)+\varepsilon\frac{p_i(t)}{m_i}
+$$
+:::
+
+. . .
+
+We can obtain better results by slightly [**modifying Euler's method**]{.col1}:
+
+:::{.quitesmall}
+$$
+p_i(t+\varepsilon) = p_i(t) - \varepsilon \frac{\partial U}{\partial q_i}(q(t)),\qquad q_i(t+\varepsilon) = q_i(t)+\varepsilon\frac{\textcolor{var(--primary-color)}{p_i(t+\varepsilon)}}{m_i}
+$$
+:::
+
+. . .
+
+For even better results, we can use the [**Leapfrog method**]{.col2}:
+
+:::{.quitesmall}
+$$
+\begin{aligned}
+&\textcolor{var(--secondary-color)}{p_i(t+\varepsilon/2)} = p_i(t) - \textcolor{var(--secondary-color)}{(\varepsilon/2)} \frac{\partial U}{\partial q_i}(q(t)),\qquad\qquad q_i(t+\varepsilon) = q_i(t)+\varepsilon\frac{\textcolor{var(--secondary-color)}{p_i(t+\varepsilon/2)}}{m_i},\\
+&\textcolor{var(--secondary-color)}{p_i(t+\varepsilon) = p_i(t+\varepsilon/2) - (\varepsilon/2) \frac{\partial U}{\partial q_i}(q(t+e))}
+\end{aligned}
+$$
+:::
+
+## Discretization {.nostretch}
+
+::::{.columns}
+:::{.column width="50%" .fragment .centering}
+![](figures/discrete.png){width=100%}
+:::
+:::{.column width="50%" .fragment}
+
+:vspace5 
+
+In this example, $H(q,p)=q^2/2+p^2+2$. The initial state was $q=0,p=1$. We can see that the leapfrog method preserves volume exactly.
+:::
+::::
+
+
+## Hamiltonian Monte Carlo
+
+. . .
+
+Using **Hamiltonian dynamics** to sample from a distribution requires translating the density to a [**potential energy**]{.col2} function (using the concept of a canonical distribution from statistical mechanics) and introducing [**momentum**]{.col1} variables.
+
+. . .
+
+We can use HMC to sample only from **continuous** distributions on $\mathbb{R}^d$ for which the **density** function can be evaluated and the **partial derivatives of its log** can be computed.
+
+## The Two Steps of HMC
+
+. . . 
+
+Each **iteration** has **two steps**:
+
+:::{.incremental}
+(1) In the [**first step**]{.col1}, new values for the **momentum variables** are drawn from their Gaussian distribution.
+(2) In the [**second step**]{.col1}, a **Metropolis** update is performed using Hamiltonian dynamics as explained before. We get a proposed new state $(\boldsymbol{q}^*,\boldsymbol{p}^*)$. This state is accepted as the next state of the Markov chain with probability [$\mathrm{min}\Big(1,\quad \mathrm{exp}(-H(\boldsymbol{q}^*,\boldsymbol{p}^*)+H(\boldsymbol{q},\boldsymbol{p}))\Big)\quad =\quad \mathrm{min}\Big(1,\quad \mathrm{exp} \big(-U(\boldsymbol{q}^*)+U(\boldsymbol{q})-K(\boldsymbol{p}^*)+K(\boldsymbol{p})\big)\Big).$]{.quitesmall}
+  If the proposed state is not accepted, the next state is set equal to the current state.
+:::
+
+. . .
+
+Only in the very first step of the chain does the **probability density** for $(\boldsymbol{q},\boldsymbol{p})$ change from one step to the next. Also, the algorithm leaves the canonical distribution invariant.
+
+## Benefits of HMC
+
+## Tuning HMC
 
 ## Slide Title
 
