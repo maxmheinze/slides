@@ -155,20 +155,21 @@ Markov chains are
 ## Origins in Physics
 
 ::::{.columns}
-:::{.column width="50%" .fragment .centering}
+:::{.column width="45%" .fragment .centering}
 
 :vspace3
 
 ![](figures/puck.svg){width=100%}
 :::
-:::{.column width="50%" .fragment}
+:::{.column width="55%" .fragment}
 
-Imagine a **frictionless puck** on a **non-even surface**
+Imagine a **frictionless puck** on a **non-even surface**. The [**state of this system**]{.col1} is given by
 
 :::{.incremental}
-*	Text
-* Text
-* Text
+*	$\boldsymbol{q}$, the [**position**]{.col1} of the puck;
+* $\boldsymbol{p}$, the [**momentum**]{.col1} of the puck, given by $\mathrm{mass}\times\mathrm{velocity}$.
+* If the puck encounters a **rising slope**, momentum will decrease; if it encounters a **falling slope**, momentum will increase.
+* The higher the surface at a position, the higher the puck's **potential energy**, and the lower its **kinetic energy**.
 :::
 
 
