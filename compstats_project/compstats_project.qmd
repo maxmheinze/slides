@@ -435,24 +435,11 @@ We use **MCMC methods** usually to sample from **complicated distributions**.
 
 :vspace1
 
-::::{.columns}
-:::{.column width="50%" .fragment}
-![](figures/algo1.png){width="100%"}
+:::{.incremental .spacey}
+* An $L$ that is **too small** will yield to successive steps being very close to each other. The sampler then exhibits a form of **random walk behavior**.
+* An $L$ that is **too large** gives rise to the risk of the trajectory looping back.
+* It is **difficult** to find out what the right $L$ in a given case is. What is usually done is to run the sampler preliminarily and check autocorrelation statistics.
 :::
-:::{.column width="50%"}
-
-[An $L$ that is **too small** will yield to successive steps being very close to each other. The sampler then exhibits a form of **random walk behavior**.]{.fragment}
-
-:vspace1
-
-[An $L$ that is **too large** gives rise to the risk of the trajectory looping back.]{.fragment}
-
-:vspace1
-
-[It is **difficult** to find out what the right $L$ in a given case is. What is usually done is to run the sampler preliminarily and check autocorrelation statistics.]{.fragment}
-
-:::
-::::
 
 ## Eliminating the Need to Set L
 
@@ -469,11 +456,64 @@ The [**No-U-Turn-Sampler**]{.col1} ([**NUTS**]{.col1}) eliminates the need to sp
 * However, an algorithm that lets the leapfrog steps run until the above expression becomes negative does not guarantee **time reversibility**.
 :::
 
-## NUTS
+## Eliminating the Need to Set L
+
+:::{.incremental}
+* [**NUTS**]{.col1} overcomes the issue by simulating both forward and backward in time, thus building a balanced binary tree via repeated doubling.
+* The process is halted when the tree would **double back on itself**, i.e., the proposal would make an **U-turn**.
+:::
+
+::::{.columns .fragment}
+:::{.column width="60%"}
+
+:vspace1.5
+
+![](figures/doubling.png){width="100%"}
+:::
+:::{.column width="40%" .quitesmall .col0}
+Example of building a binary tree via repeated doubling. Each doubling proceeds by choosing a direction (forwards or backwards in time) uniformly at random, then simulating Hamiltonian dynamics for $2^j$ leapfrog steps in that direction, where $j$ is the number of previous doublings. The figures at top show a trajectory in two dimensions as it evolves over four doublings, and the figures below show the evolution of the binary tree. In this example, the directions chosen were forward (light orange node), backward (yellow nodes), backward (blue nodes), and forward (green nodes).
+:::
+::::
+
+## Sampling with NUTS
+. . .
+
+Roughly speaking, we follow these steps:
+
+:::{.incremental}
+1. Sample momentum $r\sim\mathcal N(0,I)$.  
+2. Draw the slice variable $u\sim\mathrm{Uniform}([0,\mathrm{exp}(\mathcal{L}(\theta^t)-\frac{1}{2}r\cdot r)$.  
+3. Sample $\mathcal{B}$ and $\mathcal{C}$ from their conditiopnal distribution $p(\mathcal{B},\mathcal{C}\mid\theta^t,r,u,\varepsilon)$; where $\mathcal{B}$ collects every state visited by leapfrog integration during an iteration, and $\mathcal{C}\subseteq \mathcal{B}$ are the states eligible as the next state.  
+4. Sample $\theta^{t+1},r\sim T(\theta^t,r,\mathcal{C})$, where $T(\theta',r'\mid\theta,r,\mathcal{C})$ is a transition kernel that leaves the uniform distribution over $\mathcal{C}$ invariant.   
+:::
+
+## When to Stop Sampling with NUTS
+
+. . .
+
+We then stop expanding the tree when
+
+:::{.incremental}
+1. The error in the simulation becomes extremely large, i.e., $\mathcal{L}(\theta)-\frac{1}{2}r\cdot r-\mathrm{log}(u)<-\Delta_{\mathrm{max}}$; or
+2. one end of the simulated trajectory makes an U-turn, i.e., continuing with the simulation in any direction would make the left- and rightmost nodes of any subtree, $\theta^-$ and $\theta^+$, move closer together.
+:::
+
 
 ## Adaptively Tuning ε
 
-## Dual-Averaging NUTS
+. . .
+
+In addition to letting NUTS choose $L$, we can automatically determine $\varepsilon$.
+
+:::{.incremental}
+* Using [**Robbins-Monro**]{.col1}:
+  * Use a statistic $H_t$ that describes some aspect of the behavior of an MCMC algorithm at $t\geq 1$, such as the Metropolis acceptance probability.
+  * We compare that statistic to a target and adjust the step size by a function of that target, letting adjustments decay with increasing $t$.
+* Using [**Dual averaging**]{.col1}:
+  * Robbins-Monro gives large weight to early iterations. However, we would want parameters to adapt quickly as the sampler later moves to the stationary regime.
+  * Dual averaging techniques decay more slowly and keep a running average of past errors, giving less influence to very early iterations.
+:::
+
 
 ## Illustration {.centering}
 
@@ -484,13 +524,13 @@ The [**No-U-Turn-Sampler**]{.col1} ([**NUTS**]{.col1}) eliminates the need to sp
 
 # Our Implementation
 
-## Three peak density
+## Three Peak Density
 
 :::{.centering}
 ![](figures/three_peak_100_1000.svg){width="100%" .fragment}
 :::
 
-## Three peak density 
+## Three Peak Density 
 
 :::{.centering}
 ![](figures/three_peak_trace_1000.svg){width="100%" .fragment}
@@ -498,13 +538,15 @@ The [**No-U-Turn-Sampler**]{.col1} ([**NUTS**]{.col1}) eliminates the need to sp
 
 
 
-## Three peak density
+## Three Peak Density
 
 :::{.centering}
 ![](figures/three_peak_acf.svg){width="100%" .fragment}
 :::
 
+## Additional Slides
 
+Slide content to be included in the final version of the slide set.
 
 ## References 
 
