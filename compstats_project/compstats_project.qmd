@@ -31,6 +31,7 @@ format:
       - _filters/space.lua
       - quarto-kroki
       - _filters/svgfonts.lua
+    allow-unsafe: true  
 engine: knitr
 bibliography: references.bib
 csl: ../style/apa.csl
@@ -167,15 +168,24 @@ Imagine a **frictionless puck** on a **non-even surface**. The [**state of this 
 
 :::{.incremental}
 *	$\boldsymbol{q}$, the [**position**]{.col1} of the puck;
-* $\boldsymbol{p}$, the [**momentum**]{.col2} of the puck, given by $\mathrm{mass}\times\mathrm{velocity}$.
+* $\boldsymbol{p}$, the [**momentum**]{.col4} of the puck, given by $\mathrm{mass}\times\mathrm{velocity}$.
 * If the puck encounters a **rising slope**, momentum will decrease; if it encounters a **falling slope**, momentum will increase.
 * The higher the surface at a position, the higher the puck's **potential energy**, and the lower its **kinetic energy**.
 :::
 
 
-
 :::
 ::::
+
+## Origins in Physics
+
+:::{.incremental}
+* We simulate the path of the puck starting from a position in this Hamiltonian system with a given kinetic energy
+* Pre-determined step-size and length of path (use of discretizer)
+* After stopping at the final position along the path, we randomly introduce a new level of kinetic energy
+* we simulate the path,...
+:::
+
 
 ## From Physics to Statistics
 
@@ -183,14 +193,14 @@ In **non-physical** applications,
 
 :::{.incremental}
 * the [**position**]{.col1} $\boldsymbol{q}$ corresponds to the [**variables of interest**]{.col1}
-* the [**momentum**]{.col2} $\boldsymbol{p}$ corresponds to the [**negative log of the probability density**]{.col2} for these variables.
+* the [**potential energy**]{.col2} $\boldsymbol{p}$ corresponds to the [**negative log of the probability density**]{.col2} for these variables.
+* the [**momentum**]{.col4} is an auxiliary variable that facilitates exploration of the target distribution space
 :::
 
 ## Hamiltonian Dynamics
 
-```{=html}
 <iframe src="https://chi-feng.github.io/mcmc-demo/app.html" width="1200" height="600" style="border: none;"></iframe>
-```
+
 
 @neal2012
 
