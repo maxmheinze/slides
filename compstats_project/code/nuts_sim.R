@@ -286,3 +286,138 @@ plot(mh_samps, pch=20, cex=0.5, main="MH Samples", xlab="x₁", ylab="x₂")
 contour(x1, x2, z, add=TRUE, drawlabels=FALSE, lwd=2)
 
 
+
+library(mvtnorm)
+library(jsonlite)
+
+# --- 2D three-peak mixture definitions ---
+weights <- c(0.3,0.4,0.3)
+means   <- list(c(-3,-3), c(0,3), c(3,-1))
+Sigma   <- diag(2); Sigma_inv <- solve(Sigma)
+
+log_prob_2d <- function(x) {
+  lp <- sapply(1:3, function(i)
+    log(weights[i]) + dmvnorm(x, means[[i]], Sigma, log = TRUE))
+  m <- max(lp); m + log(sum(exp(lp-m)))
+}
+grad_log_prob_2d <- function(x) {
+  lp   <- sapply(1:3, function(i)
+    log(weights[i]) + dmvnorm(x, means[[i]], Sigma, log = TRUE))
+  m    <- max(lp)
+  w    <- exp(lp - m); w <- w/sum(w)
+  grads <- sapply(1:3, function(i) -Sigma_inv %*% (x - means[[i]]))
+  as.numeric(grads %*% w)
+}
+
+# --- your NUTS & MH definitions (assume `nuts()` and `mh_sampler()` already in scope) ---
+
+set.seed(42)
+n_iter     <- 2000
+nuts_samps <- nuts(log_prob_2d, grad_log_prob_2d, theta0=c(0,0), n_iter=n_iter)
+mh_samps   <- mh_sampler(log_prob_2d, initial_theta=c(0,0), n_samples=n_iter, proposal_sd=1)
+
+
+
+
+
+
+
+
+
+library(ggplot2)
+library(mvtnorm)
+
+# Mixture parameters
+weights <- c(0.3, 0.4, 0.3)
+means   <- list(c(-3,  3), c(0,  3), c(3, -1))
+Sigma   <- diag(2)
+
+# Build grid for heatmap
+grid_pts <- 100
+x <- seq(-6, 6, length.out = grid_pts)
+y <- seq(-6, 6, length.out = grid_pts)
+heat_df <- expand.grid(x = x, y = y)
+heat_df$z <- apply(heat_df, 1, function(r) {
+  xi <- r["x"]; yj <- r["y"]
+  sum(sapply(1:3, function(i)
+    weights[i] * dmvnorm(c(xi, yj), mean = means[[i]], sigma = Sigma)
+  ))
+})
+
+# Run samplers (assumes nuts() and mh_sampler() are defined)
+set.seed(123)
+n_iter     <- 100
+nuts_samps <- nuts(log_prob_2d, grad_log_prob_2d, theta0 = c(0,0), n_iter = n_iter)
+mh_samps   <- mh_sampler(log_prob_2d, initial_theta = c(0,0), n_samples = n_iter, proposal_sd = 1)
+
+# Prepare sample data frames
+nuts_df <- data.frame(x = nuts_samps[,1], y = nuts_samps[,2], sampler = "NUTS")
+mh_df   <- data.frame(x = mh_samps[,1],   y = mh_samps[,2],   sampler = "MH")
+samps_df <- rbind(nuts_df, mh_df)
+
+# Plot
+ggplot() +
+  geom_raster(data = heat_df, aes(x = x, y = y, fill = z), interpolate = TRUE) +
+  scale_fill_viridis_c(option = "magma", name = "Density") +
+  geom_point(data = samps_df, aes(x = x, y = y, shape = sampler, color = sampler),
+             size = 1.2, alpha = 0.6) +
+  coord_fixed(xlim = c(-6,6), ylim = c(-6,6)) +
+  labs(
+    title = "NUTS vs MH Samples over 3-Peak Mixture Density [(-3,3),(0,3),(3,-1)]",
+    subtitle = paste("Total iterations:", n_iter),
+    x = expression(x[1]), y = expression(x[2])
+  ) +
+  theme_minimal()
+
+
+
+
+
+# Banana‐shaped 2D density
+b  <- 0.03
+c0 <- 1000
+log_prob_banana <- function(x) {
+  y1 <- x[1]
+  y2 <- x[2] + b*(x[1]^2 - c0)
+  -0.5*(y1^2 + y2^2)
+}
+grad_log_prob_banana <- function(x) {
+  y1 <- x[1]
+  y2 <- x[2] + b*(x[1]^2 - c0)
+  d1 <- -y1 - 2*b*x[1]*y2
+  d2 <- -y2
+  c(d1, d2)
+}
+
+# assume nuts() and mh_sampler() are defined as before
+set.seed(42)
+n_iter     <- 2000
+nuts_samps <- nuts(log_prob_banana, grad_log_prob_banana, theta0 = c(0,0), n_iter = n_iter)
+mh_samps   <- mh_sampler(log_prob_banana, initial_theta = c(0,0), n_samples = n_iter, proposal_sd = 1)
+
+# build heatmap grid
+grid_pts <- 100
+x <- seq(-6, 6, length.out = grid_pts)
+y <- seq(-6, 6, length.out = grid_pts)
+heat_df <- expand.grid(x = x, y = y)
+heat_df$z <- exp(apply(heat_df, 1, function(r) log_prob_banana(c(r["x"], r["y"]))))
+
+# prepare samples with sampler label
+nuts_df <- data.frame(x = nuts_samps[,1], y = nuts_samps[,2], sampler = "NUTS")
+mh_df   <- data.frame(x = mh_samps[,1],   y = mh_samps[,2],   sampler = "MH")
+samps_df <- rbind(nuts_df, mh_df)
+
+# plot heatmap + samples colored by sampler only
+ggplot() +
+  geom_raster(data = heat_df, aes(x = x, y = y, fill = z), interpolate = TRUE) +
+  scale_fill_viridis_c(option = "magma", name = "Density") +
+  geom_point(data = samps_df,
+             aes(x = x, y = y, color = sampler, shape = sampler),
+             size = 1.2, alpha = 0.7) +
+  coord_fixed(xlim = c(-6,6), ylim = c(-6,6)) +
+  labs(
+    title = "NUTS vs MH Samples on Banana‐shaped Density",
+    x     = expression(x[1]),
+    y     = expression(x[2])
+  ) +
+  theme_minimal()
