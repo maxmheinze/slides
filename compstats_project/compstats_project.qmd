@@ -1,5 +1,5 @@
 ---
-title: "The No-U-Turn-Sampler"
+title: "Hamiltonian Monte Carlo and the No-U-Turn-Sampler"
 subtitle: "Computational Statistics Project"
 author: 
 - "Jonathan Fitter ([jfitter@wu.ac.at](mailto:jonathan.fitter@wu.ac.at))"
@@ -176,6 +176,8 @@ Imagine a **frictionless puck** on a **non-even surface**. The [**state of this 
 :::
 ::::
 
+<!---
+
 ## Origins in Physics
 
 :::{.incremental}
@@ -185,28 +187,35 @@ Imagine a **frictionless puck** on a **non-even surface**. The [**state of this 
 * we simulate the path,...
 :::
 
+-->
+
 
 ## From Physics to Statistics
 
+. . .
+
+:vspace1
+
 In **non-physical** applications, 
 
-:::{.incremental}
-* the [**position**]{.col1} $\boldsymbol{q}$ corresponds to the [**variables of interest**]{.col1}
-* the [**potential energy**]{.col2} $\boldsymbol{p}$ corresponds to the [**negative log of the probability density**]{.col2} for these variables.
-* the [**momentum**]{.col4} is an auxiliary variable that facilitates exploration of the target distribution space
+:vspace1.5
+
+:::{.incremental .spacey}
+* the [**position**]{.col1} $\boldsymbol{q}$ corresponds to the [**variables of interest**]{.col1},
+* the [**potential energy**]{.col2} $\boldsymbol{p}$ corresponds to the [**negative log of the probability density**]{.col2} for these variables, and
+* the [**momentum**]{.col4} is an auxiliary variable that facilitates exploration of the target distribution space.
 :::
-
-## Illustration {.centering}
-
-```{=html}
-<iframe src="mcmc-demo/app.html"
-        width="1280" height="600" data-external="1"></iframe>
-```
 
 
 ## Hamiltonian Dynamics
 
+. . .
+
 The system is described by a so-called [**Hamiltonian equation**]{.col1}, $H(q_p)$. Its partial derivatives, the **equations of motion**, determine how $\boldsymbol{q}$ and $\boldsymbol{p}$ change over time:
+
+. . .
+
+:vspace1.5
 
 $$
 \begin{aligned}
@@ -214,6 +223,8 @@ $$
 \frac{\mathrm{d}p_i}{\mathrm{d}t}&=-\frac{\partial H}{\partial q_i},\\
 \end{aligned}
 $$
+
+:vspace1.5
 
 for $i = 1, \dots, d$, and $d$ being the length of the vectors $\boldsymbol{q}$ and $\boldsymbol{p}$.
 
@@ -336,11 +347,17 @@ In this example, $H(q,p)=q^2/2+p^2+2$. The initial state was $q=0,p=1$. We can s
 
 . . .
 
-Using **Hamiltonian dynamics** to sample from a distribution requires translating the density to a [**potential energy**]{.col2} function (using the concept of a canonical distribution from statistical mechanics) and introducing [**momentum**]{.col1} variables.
+Using **Hamiltonian dynamics** to sample from a distribution requires translating the density to a [**potential energy**]{.col2} function and introducing [**momentum**]{.col1} variables. We can use the concept of a canonical distribution from statistical mechanics. Given an energy function $E(x)$ for a state $x$, the canonical distribution over states has density $P(x)=(1/Z)\mathrm{exp}(-E(x)/T)$, where $T$ is temperature and $Z$ is a normalizing constant. Using the Hamiltonian $H(\boldsymbol{q},\boldsymbol{p})=U(\boldsymbol{q})+K(\boldsymbol{p})$ as an energy function, we get
+
+$$
+P(\boldsymbol{q},\boldsymbol{p}) = \frac{1}{Z}\mathrm{exp}(-U(\boldsymbol{q})/T)\mathrm{exp}(-K(\boldsymbol{p})/T).
+$$
 
 . . .
 
-We can use HMC to sample only from **continuous** distributions on $\mathbb{R}^d$ for which the **density** function can be evaluated and the **partial derivatives of its log** can be computed.
+We can see that $\boldsymbol{q}$ and $\boldsymbol{p}$ are independent, and both have canonical distributions. The former will be used to represent our variables of interest, and the latter for momentum.
+
+
 
 ## The Two Steps of HMC
 
@@ -360,41 +377,66 @@ Only in the very first step of the chain does the **probability density** for $(
 
 ## Benefits of HMC
 
-## Tuning HMC
+. . .
 
-## Slide Title
+We can use HMC to sample only from **continuous** distributions on $\mathbb{R}^d$ for which the **density** function can be evaluated and the **partial derivatives of its log** can be computed.
 
-:::{.incremental}
-* This
-* is
-* some
-* text.
+. . .
+
+It allows us to [**sample more efficiently**]{.col1} from such distributions **than simpler methods** such as random-walk Metropolis.
+
+:::{.centering}
+![](figures/benefits.png){width="57%" .fragment}
 :::
 
+## Tuning HMC
+
+. . .
+
+However, in order to actually **attain the benefits** of HMC, we have to **properly tune** the [**step size** $\varepsilon$]{.col2} and the [**trajectory length** $L$]{.col4}, i.e., the number of leapfrog steps. [Tuning an [**HMC algorithm**]{.col1} is also more difficult than tuning a **simple Metropolis** method.]{.fragment}
+
+
+:::{.incremental .li2}
+* If the [**step size** $\varepsilon$]{.col2} is **too large**, acceptance rates will be low.
+* If the [**step size** $\varepsilon$]{.col2} is **too small**, we will waste computation time.
+:::
+
+:::{.incremental .li4}
+* If the [**trajectory length** $L$]{.col4} is **too large**, trajectories may be long and still end up back at the starting point.
+* If the [**trajectory length** $L$]{.col4} is **too small**, it may not reach far enough into unconstrained directions. In connection with a **small** [**step size** $\varepsilon$]{.col2}, it may lead to slow exploration by a random walk.
+:::
+
+## Illustration {.centering}
+
+```{=html}
+<iframe src="mcmc-demo/app.html"
+        width="1280" height="600" data-external="1"></iframe>
+```
 
 # The No-U-Turn-Sampler (NUTS)
 
-## Slide Title
+## Why NUTS?
 
-:::{.incremental}
-* This
-* is
-* some
-* text.
-:::
+## Setting L
 
-# Empirical Stuff
+## Eliminating the Need to Set L
 
-## Slide Title
+## NUTS
 
-:::{.incremental}
-* This
-* is
-* some
-* text.
-:::
+## Adaptively Tuning ε
 
+## Dual-Averaging NUTS
 
+## Illustration {.centering}
+
+```{=html}
+<iframe src="mcmc-demo/app.html"
+        width="1280" height="600" data-external="1"></iframe>
+```
+
+# Our Implementation
+
+## Slide
 
 ## References 
 
