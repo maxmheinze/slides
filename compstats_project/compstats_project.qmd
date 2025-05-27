@@ -524,13 +524,36 @@ In addition to letting NUTS choose $L$, we can automatically determine $\varepsi
 
 # Our Implementation
 
-## Three Peak Density
+## Two Peak 1D Density
+
+
+* comparison of No-U-Turn Sampler and Metropolis-Hastings for one-dimensional mixture of Gaussians with peaks at -3 & 3
+
+:::{.centering}
+![](figures/two_peak.svg){width="100%" .fragment}
+:::
+
+
+## Two Peak 1D Density
+
+
+* however after 20,000 iterations, even though NUTS obtains a sample with less autocorrelation, quality of approximation similar to MH
+
+:::{.centering}
+![](figures/two_peak_2.svg){width="100%" .fragment}
+:::
+
+## Three Peak 2D Density 
+
+
+* real strength of NUTS shows for multidimensional distributions
+
 
 :::{.centering}
 ![](figures/three_peak_100_1000.svg){width="100%" .fragment}
 :::
 
-## Three Peak Density 
+## Three Peak 2D Density 
 
 :::{.centering}
 ![](figures/three_peak_trace_1000.svg){width="100%" .fragment}
@@ -538,7 +561,7 @@ In addition to letting NUTS choose $L$, we can automatically determine $\varepsi
 
 
 
-## Three Peak Density
+## Three Peak 2D Density
 
 :::{.centering}
 ![](figures/three_peak_acf.svg){width="100%" .fragment}
