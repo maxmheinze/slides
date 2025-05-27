@@ -547,19 +547,30 @@ In addition to letting NUTS choose $L$, we can automatically determine $\varepsi
 
 
 * real strength of NUTS shows for multidimensional distributions
-
+* already after 100 iterations, NUTS has visited all three peaks
 
 :::{.centering}
 ![](figures/three_peak_100_1000.svg){width="100%" .fragment}
 :::
 
+
+
 ## Three Peak 2D Density 
 
+* NUTS particularly good at exploring concentrations that are more distant to other peaks
+
 :::{.centering}
-![](figures/three_peak_trace_1000.svg){width="100%" .fragment}
+![](figures/Rplot02.svg){width="100%" .fragment}
 :::
 
+## Three Peak 2D Density 
 
+* step size adpatively set in Dual-Averaging procedure
+* standard setting: fix epsilon after first half of iterations
+
+:::{.centering}
+![](figures/three_peak_eps.svg){width="100%" .fragment}
+:::
 
 ## Three Peak 2D Density
 
