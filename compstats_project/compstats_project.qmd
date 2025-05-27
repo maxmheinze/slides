@@ -37,6 +37,7 @@ csl: ../style/apa.csl
 nocite: |
   @hoffman2014
   @feng2017
+  @neal2012
 ---
 
 # Intro and Recap
@@ -60,35 +61,12 @@ A [**Markov chain**]{.col1} is a stochastic process $\{X_t\}$ indexed by time $t
 
 [**Markov Chain Monte Carlo (MCMC)**]{.col1} methods make use of Markov chains to sample from a **target distribution**. 
 
+
 ## Markov Chain
 
 ::::{.columns}
 :::{.column width="40%" .fragment}
-::: {.w100 .centering}
-```{kroki-tikz}
-\documentclass{standalone}
-\usepackage{tikz}
-\usepackage{amsmath}
-\usetikzlibrary{automata,positioning,arrows.meta}
-
-\begin{document}
-\begin{tikzpicture}[->,>=Stealth,shorten >=1pt,auto,node distance=3cm,semithick]
-  \node[state] (A) {$A$};
-  \node[state] (B) [right of=A] {$B$};
-  \node[state] (C) [below of=A] {$C$};
-
-  \path
-    (A) edge [loop above] node {0.5} ()
-        edge              node {0.3} (B)
-        edge [bend left]  node {0.2} (C)
-    (B) edge [loop above] node {0.6} ()
-        edge [bend left]  node {0.4} (C)
-    (C) edge [loop below] node {0.7} ()
-        edge [bend left]  node {0.3} (A);
-\end{tikzpicture}
-\end{document}
-```
-:::
+![](figures/markov.svg){.nostretch width="100%"}
 :::
 :::{.column width="60%" .fragment}
 Markov chains are
@@ -109,38 +87,21 @@ Markov chains are
 ::::{.columns}
 :::{.column width="40%" .fragment}
 
-:vspace2
+:vspace4
 
-::: {.w100 .centering}
-```{kroki-tikz}
-\documentclass{standalone}
-\usepackage{tikz}
-\usetikzlibrary{automata,arrows,positioning}
-\begin{document}
-\begin{tikzpicture}[->,>=stealth',shorten >=1pt,node distance=3cm]
-  \node[state] (i) {$i$};
-  \node[state] (j) [right=of i] {$j$};
-  \node[state] (k) [below=of i] {$k$};
-  \path
-    (i) edge[bend left] node[above] {$g(j\mid i)\,\alpha(i,j)$} (j)
-        edge[loop above]  node           {$1-\sum_{h\neq i}g(h\mid i)\,\alpha(i,h)$} ()
-    (j) edge[bend left] node[below] {$g(i\mid j)\,\alpha(j,i)$} (i)
-        edge[bend left] node[above] {$g(k\mid j)\,\alpha(j,k)$} (k)
-    (k) edge[bend left] node[below] {$g(i\mid k)\,\alpha(k,i)$} (i)
-        edge[loop below]  node           {$1-\sum_{h\neq k}g(h\mid k)\,\alpha(k,h)$} ();
-\end{tikzpicture}
-\end{document}
-```
-:::
+
+![](figures/metropolis.svg){width="100%"}
 :::
 :::{.column width="60%" .fragment}
 
-**Metropolis-Hastings** is a class of MCMC methods. 
+**Metropolis-Hastings** is a class of MCMC methods. Using a Metropolis-Hastings algorithm, we follow these steps:
 
 :::{.incremental}
-*	Propose $Y\sim g(\cdot\mid X_t)$, compute $\alpha(i,j)=\min\Bigl(1,\frac{f(j)\,g(i\mid j)}{f(i)\,g(j\mid i)}\Bigr)$.
-* If $U\le\alpha(i,j)$, move $i\to j$; else stay at $i$.
-* Chain is reversible and has $f$ as its stationary distribution.
+* We draw the initial value from some density.
+*	We selet a proposal density $g(\cdot\mid i)$
+* We compute $\alpha(i,j)=\min\Bigl(1,\frac{f(j)\,g(i\mid j)}{f(i)\,g(j\mid i)}\Bigr)$.
+* We draw $U$ from $U(0,1)$.
+* If $U\le\alpha(i,j)$, we move from $i$ to $j$, otherwise we stay at $i$.
 :::
 
 
@@ -410,7 +371,7 @@ However, in order to actually **attain the benefits** of HMC, we have to **prope
 ## Illustration {.centering}
 
 ```{=html}
-<iframe src="mcmc-demo/app.html"
+<iframe data-src="mcmc-demo/app.html"
         width="1280" height="600" data-external="1"></iframe>
 ```
 
@@ -483,7 +444,7 @@ Roughly speaking, we follow these steps:
 :::{.incremental}
 1. Sample momentum $r\sim\mathcal N(0,I)$.  
 2. Draw the slice variable $u\sim\mathrm{Uniform}([0,\mathrm{exp}(\mathcal{L}(\theta^t)-\frac{1}{2}r\cdot r)$.  
-3. Sample $\mathcal{B}$ and $\mathcal{C}$ from their conditiopnal distribution $p(\mathcal{B},\mathcal{C}\mid\theta^t,r,u,\varepsilon)$; where $\mathcal{B}$ collects every state visited by leapfrog integration during an iteration, and $\mathcal{C}\subseteq \mathcal{B}$ are the states eligible as the next state.  
+3. Sample $\mathcal{B}$ and $\mathcal{C}$ from their conditional distribution $p(\mathcal{B},\mathcal{C}\mid\theta^t,r,u,\varepsilon)$; where $\mathcal{B}$ collects every state visited by leapfrog integration during an iteration, and $\mathcal{C}\subseteq \mathcal{B}$ are the states eligible as the next state.  
 4. Sample $\theta^{t+1},r\sim T(\theta^t,r,\mathcal{C})$, where $T(\theta',r'\mid\theta,r,\mathcal{C})$ is a transition kernel that leaves the uniform distribution over $\mathcal{C}$ invariant.   
 :::
 
@@ -518,7 +479,7 @@ In addition to letting NUTS choose $L$, we can automatically determine $\varepsi
 ## Illustration {.centering}
 
 ```{=html}
-<iframe src="mcmc-demo/app.html"
+<iframe data-src="mcmc-demo/app.html"
         width="1280" height="600" data-external="1"></iframe>
 ```
 
@@ -584,11 +545,6 @@ Slide content to be included in the final version of the slide set.
 
 ## References 
 
-:::{.centering .titlebox1}
-_This list is **scrollable**._
-:::
-
-
 ::: {#refs}
 :::
 
@@ -596,8 +552,10 @@ _This list is **scrollable**._
 
 ## NUTS algorithm in R
 
+:vspace1.5
 
-```{r}
+
+```{.r}
 # No-U-Turn sampler
 leapfrog <- function(theta, r, grad_log_prob, eps) {
   r_half   <- r + 0.5 * eps * grad_log_prob(theta)
