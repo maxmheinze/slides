@@ -487,8 +487,9 @@ In addition to letting NUTS choose $L$, we can automatically determine $\varepsi
 
 ## Two Peak 1D Density
 
+. . .
 
-* comparison of No-U-Turn Sampler and Metropolis-Hastings for one-dimensional mixture of Gaussians with peaks at -3 & 3
+* Comparison of No-U-Turn Sampler and Metropolis-Hastings for one-dimensional mixture of Gaussians with peaks at -3 & 3:
 
 :::{.centering}
 ![](figures/two_peak.svg){width="100%" .fragment}
@@ -497,8 +498,9 @@ In addition to letting NUTS choose $L$, we can automatically determine $\varepsi
 
 ## Two Peak 1D Density
 
+. . .
 
-* however after 20,000 iterations, even though NUTS obtains a sample with less autocorrelation, quality of approximation similar to MH
+* However, after 20,000 iterations, even though NUTS obtains a sample with less autocorrelation, the quality of approximation is similar to MH.
 
 :::{.centering}
 ![](figures/two_peak_2.svg){width="100%" .fragment}
@@ -506,9 +508,10 @@ In addition to letting NUTS choose $L$, we can automatically determine $\varepsi
 
 ## Three Peak 2D Density 
 
-
-* real strength of NUTS shows for multidimensional distributions
-* already after 100 iterations, NUTS has visited all three peaks
+:::{.incremental}
+* Real strength of NUTS shows for multidimensional distributions.
+* Already after 100 iterations, NUTS has visited all three peaks.
+:::
 
 :::{.centering}
 ![](figures/three_peak_100_1000.svg){width="100%" .fragment}
@@ -526,8 +529,10 @@ In addition to letting NUTS choose $L$, we can automatically determine $\varepsi
 
 ## Three Peak 2D Density 
 
-* step size adpatively set in Dual-Averaging procedure
-* standard setting: fix epsilon after first half of iterations
+:::{.incremental}
+* Step size adpatively set in Dual-Averaging procedure.
+* Standard setting: fix epsilon after first half of iterations.
+:::
 
 :::{.centering}
 ![](figures/three_peak_eps.svg){width="100%" .fragment}
@@ -536,12 +541,8 @@ In addition to letting NUTS choose $L$, we can automatically determine $\varepsi
 ## Three Peak 2D Density
 
 :::{.centering}
-![](figures/three_peak_acf.svg){width="100%" .fragment}
+![](figures/three_peak_acf.svg){width="80%" .fragment}
 :::
-
-## Additional Slides
-
-Slide content to be included in the final version of the slide set.
 
 ## References 
 
