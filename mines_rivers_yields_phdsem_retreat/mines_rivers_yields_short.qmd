@@ -31,6 +31,7 @@ format:
       - ../style/section-header.lua
       - _filters/pdf-to-svg.lua
       - _filters/space.lua
+      - _filters/appxslideno.lua
 engine: knitr
 bibliography: references.bib
 csl: ../style/apa.csl
@@ -630,7 +631,7 @@ Results were **robust** to changes of treatment, outcome, sample, methods, and e
 :::
 ::::
 
-## References 
+## References {.appendix}
 
 :::{.centering .titlebox1}
 _This list is **scrollable**._
@@ -640,7 +641,7 @@ _This list is **scrollable**._
 
 :::
 
-# Appendix
+# Appendix {.appendix}
 
 ## [Appendix ·]{.col1l} Basins {#appbasins}
 
